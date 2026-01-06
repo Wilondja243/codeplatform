@@ -4,11 +4,11 @@ import Router from './app/router';
 import './stylesheet/App.css';
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Router />} />
-    </Routes>
-  );
+    return (
+        <Routes>
+            <Route path="/" element={<Router />} />
+        </Routes>
+    );
 }
 
 export default App;

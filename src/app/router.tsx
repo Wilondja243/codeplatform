@@ -6,21 +6,20 @@ import PopularCourses from '../lib/section/popular-course';
 import HowItWorks from '../lib/section/how-it-work';
 import Testimonials from '../lib/section/testimonial';
 
-
 export default function Router() {
-  return (
-    <div>
-      <header>
-        <NavBar />
-        <Hero />
-      </header>
-      <main>
-        <Features />
-        <PopularCourses />
-        <HowItWorks />
-        <Testimonials />
-        <Footer />
-      </main>
-    </div>
-  );
+    return (
+        <div>
+            <header>
+                <NavBar />
+                <Hero />
+            </header>
+            <main>
+                <Features />
+                {/* <PopularCourses /> */}
+                <HowItWorks />
+                <Testimonials />
+                <Footer />
+            </main>
+        </div>
+    );
 }
