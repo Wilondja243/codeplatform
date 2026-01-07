@@ -13,6 +13,7 @@ export function cleanCode(code: string) {
         .trimEnd();
 }
 
+
 export function highlightPython(code: string) {
     // 1. Échappement HTML (Important pour la sécurité)
     code = code

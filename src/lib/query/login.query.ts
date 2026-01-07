@@ -1,4 +1,4 @@
-import { useRouter } from 'expo-router';
+
 import { useMutation } from '@tanstack/react-query';
 import { useUserToken } from '../store/user.token.store';
 import { login } from '../services/auth.service';
@@ -15,16 +15,13 @@ export default function useLoginQuery({
     setPassword,
     setIsErrorVisible,
 }: LoginValidationProps) {
-    const router = useRouter();
     const setUserToken = useUserToken((state) => state.setUserToken);
 
     const mutation = useMutation({
         mutationFn: async (data: any) => await login(data),
         onSuccess: async (data) => {
             console.log('data: ', data);
-            setUserToken(data?.token);
-
-            router.replace('/(tabs)');
+            // setUserToken(data?.token);
 
             setIdentifier('');
             setPassword('');

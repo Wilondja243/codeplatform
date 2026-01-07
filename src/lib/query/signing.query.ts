@@ -1,9 +1,8 @@
 import { AxiosError } from 'axios';
 import { useMutation } from '@tanstack/react-query';
-import { useRouter } from 'expo-router';
 import { register } from '../services/auth.service';
 import { useUserToken } from '../store/user.token.store';
-import { useErrorHandler } from '@/hooks/use-error-handler';
+// import { useErrorHandler } from '@/hooks/use-error-handler';
 
 type SingUpValidationProps = {
     setUsername: (v: string) => void;
@@ -20,17 +19,14 @@ export default function useSigninQuery({
     setPassword2,
     setVisible,
 }: SingUpValidationProps) {
-    const router = useRouter();
     const setUserToken = useUserToken((state) => state.setUserToken);
-    const { handleError } = useErrorHandler();
+    // const { handleError } = useErrorHandler();
 
     const mutation = useMutation({
         mutationFn: async (data: any) => await register(data),
 
         onSuccess: async (data) => {
             setUserToken(data?.token);
-
-            router.replace('/(auth)/(onboarding)/step-form');
 
             setUsername('');
             setEmail('');
@@ -47,7 +43,7 @@ export default function useSigninQuery({
                 return;
             }
 
-            handleError(e);
+            // handleError(e);
         },
     });
 
