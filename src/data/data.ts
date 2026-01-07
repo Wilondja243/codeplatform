@@ -7,6 +7,7 @@ export const courses = [
         gradient: 'yellow',
         level: 'Débutant',
         duration: '40 heures',
+        isNew: true
     },
     {
         title: 'Maîtrise de JavaScript',

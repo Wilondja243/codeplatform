@@ -41,9 +41,9 @@ export default function Hero() {
                                 arrow_forward
                             </span>
                         </button>
-                        <button className="btn-secondary">
+                        <a href='/explore' className="btn-secondary">
                             Voir les cours
-                        </button>
+                        </a>
                     </div>
                     <div className="hero-students">
                         <div className="student-avatars">

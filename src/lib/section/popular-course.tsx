@@ -6,7 +6,7 @@ export default function PopularCourses() {
             <div className="popular-container wrapper">
                 <div className="header">
                     <div>
-                        <h2>Parcours populaires</h2>
+                        <h2>Toutes nos formations</h2>
                         <p>
                             Des parcours structurés pour passer de débutant à
                             expert.
@@ -23,9 +23,6 @@ export default function PopularCourses() {
                 <div className="courses-grid">
                     {courses.map((course, index) => (
                         <div key={index} className="course-card">
-                            <div
-                                className={`course-gradient ${course.gradient}`}
-                            ></div>
                             <div className="course-body">
                                 <div
                                     className={`course-icon text-${course.gradient}-500`}
@@ -34,17 +31,13 @@ export default function PopularCourses() {
                                         {course.icon}
                                     </span>
                                 </div>
+                                <small className="formation">Formation</small>
                                 <h3 className="course-title">{course.title}</h3>
                                 <p className="course-desc">
                                     {course.description}
                                 </p>
                                 <div className="course-footer">
-                                    <span className="course-level">
-                                        {course.level}
-                                    </span>
-                                    <span className="course-duration">
-                                        {course.duration}
-                                    </span>
+                                    <button className='btn-secondary'>Voir les détails</button>
                                 </div>
                             </div>
                         </div>
