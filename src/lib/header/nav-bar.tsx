@@ -37,7 +37,9 @@ export default function navBar() {
                     <Link className="btn-secondary navbar-login" to="/login">
                         Connexion
                     </Link>
-                    <a href="/register" className="btn navbar-button">S'inscrire</a>
+                    <a href="/register" className="btn navbar-button">
+                        S'inscrire
+                    </a>
                 </div>
             </div>
         </nav>

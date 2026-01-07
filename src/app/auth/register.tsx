@@ -1,9 +1,8 @@
-import NavBar from "../../lib/header/nav-bar";
-import Footer from "../../lib/header/footer";
-import RegisterForm from "./signup";
+import NavBar from '../../lib/header/nav-bar';
+import Footer from '../../lib/header/footer';
+import RegisterForm from './signup';
 
-
-export default function Register(){
+export default function Register() {
     return (
         <div>
             <header>
@@ -14,5 +13,5 @@ export default function Register(){
                 <Footer />
             </main>
         </div>
-    )
+    );
 }

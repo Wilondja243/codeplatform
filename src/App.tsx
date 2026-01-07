@@ -10,6 +10,7 @@ import Explore from './app/page/explore';
 import FromZero from './app/page/from-zero';
 import Formation from './app/page/formation';
 import Register from './app/auth/register';
+import LoginForm from './app/auth/login';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path="/from-zero/:id" element={<FromZero />} />
             <Route path="/formation/:id" element={<Formation />} />
 
+            <Route path="/login" element={<LoginForm />} />
             <Route path="/register" element={<Register />} />
         </Routes>
     );

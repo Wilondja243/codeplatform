@@ -21,7 +21,10 @@ export default function RegisterForm() {
                     <div className="input-group">
                         <label>Address Email</label>
                         <div className="input-wrapper">
-                            <input type="email" placeholder="exemple@gmail.com" />
+                            <input
+                                type="email"
+                                placeholder="exemple@gmail.com"
+                            />
                             <Mail size={18} className="field-icon" />
                         </div>
                     </div>
