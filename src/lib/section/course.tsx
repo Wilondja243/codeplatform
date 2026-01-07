@@ -4,8 +4,8 @@ export default function Course() {
     const { id } = useParams();
 
     return (
-        <section className="course-header-page">
-            <div className="course-container">
+        <section>
+            <div className="course-header-page">
                 {/* Fil d’Ariane */}
                 <div className="uri">
                     <a href="/">Accueil/</a>
@@ -13,35 +13,37 @@ export default function Course() {
                     <small>{id}</small>
                 </div>
 
-                {/* INTRO */}
                 <div className="course-intro-grid">
                     <div className="course-intro-text">
-                        
-
                         <h1>
-                            Python : 
+                            Python :
                             <span className="text-primary">De Zéro à Héro</span>
                         </h1>
-                        
+
                         <span className="badge-featured">
                             Formation Intensive
                         </span>
 
                         <p className="course-main-desc">
-                            Aujourd’hui, savoir programmer n’est plus réservé aux ingénieurs ou aux
-                            experts. Python est devenu l’un des langages les plus accessibles et les
-                            plus puissants au monde. Cette formation a été pensée pour répondre à un
-                            problème concret : beaucoup de débutants apprennent la syntaxe, mais
-                            échouent à comprendre la logique derrière le code.
+                            Aujourd'hui, savoir programmer n'est plus réservé
+                            aux ingénieurs ou aux experts. Python est devenu
+                            l'un des langages les plus accessibles et les plus
+                            puissants au monde. Cette formation a été pensée
+                            pour répondre à un problème concret : beaucoup de
+                            débutants apprennent la syntaxe, mais échouent à
+                            comprendre la logique derrière le code.
                         </p>
 
                         <p>
-                            Ici, l’objectif n’est pas de vous noyer dans la théorie, mais de vous
-                            accompagner étape par étape pour développer une vraie capacité de
-                            raisonnement algorithmique. Chaque notion abordée est immédiatement
-                            appliquée à des cas réels, afin que vous compreniez non seulement
-                            <strong> comment écrire du code</strong>, mais surtout
-                            <strong> pourquoi vous l’écrivez</strong>.
+                            Ici, l'objectif n'est pas de vous noyer dans la
+                            théorie, mais de vous accompagner étape par étape
+                            pour développer une vraie capacité de raisonnement
+                            algorithmique. Chaque notion abordée est
+                            immédiatement appliquée à des cas réels, afin que
+                            vous compreniez non seulement
+                            <strong> comment écrire du code</strong>, mais
+                            surtout
+                            <strong> pourquoi vous l'écrivez</strong>.
                         </p>
 
                         <div className="course-quick-stats">
@@ -79,8 +81,10 @@ export default function Course() {
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <section className="course-section">
+            <div className="course-container">
+                <div className="course-section">
                     <h2>Prérequis</h2>
                     <ul>
                         <li>
@@ -90,9 +94,9 @@ export default function Course() {
                         <li>Une connexion Internet basique</li>
                         <li>Motivation, discipline et curiosité</li>
                     </ul>
-                </section>
+                </div>
 
-                <section className="course-section">
+                <div className="course-section">
                     <h2>Objectifs de la formation</h2>
                     <ul>
                         <li>
@@ -104,9 +108,9 @@ export default function Course() {
                         <li>Résoudre des problèmes concrets avec Python</li>
                         <li>Construire des mini-projets réels</li>
                     </ul>
-                </section>
+                </div>
 
-                <section className="course-section">
+                <div className="course-section">
                     <h2>À la fin de cette formation, vous saurez</h2>
                     <ul>
                         <li>Créer des scripts Python utiles</li>
@@ -115,9 +119,9 @@ export default function Course() {
                         <li>Lire et écrire un code professionnel</li>
                         <li>Continuer vers le Web, la Data ou l'Automation</li>
                     </ul>
-                </section>
+                </div>
 
-                <section className="course-section">
+                <div className="course-section">
                     <h2>À qui s'adresse cette formation ?</h2>
                     <p>
                         Cette formation est destinée aux étudiants,
@@ -125,7 +129,7 @@ export default function Course() {
                         acquérir des bases solides en programmation et entrer
                         sérieusement dans le monde du développement logiciel.
                     </p>
-                </section>
+                </div>
             </div>
         </section>
     );

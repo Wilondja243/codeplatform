@@ -13,8 +13,8 @@ export default function Footer() {
                             <span className="logo-text">CodePlatform</span>
                         </div>
                         <p className="footer-description">
-                            Empowering the next generation of developers with
-                            practical, project-based learning.
+                            Propulser la prochaine génération de développeurs
+                            via un apprentissage concret et axé sur les projets.
                         </p>
                         <div className="footer-socials">
                             <a
@@ -70,7 +70,7 @@ export default function Footer() {
                         <h4>Platform</h4>
                         <ul>
                             <li>
-                                <a href="explore">Explorer</a>
+                                <a href="/explore">Explorer</a>
                             </li>
                             <li>
                                 <a href="#">Roadmaps</a>
@@ -85,13 +85,13 @@ export default function Footer() {
                     </div>
 
                     <div>
-                        <h4>Company</h4>
+                        <h4>Entreprise</h4>
                         <ul>
                             <li>
-                                <a href="#">About Us</a>
+                                <a href="#">À propos</a>
                             </li>
                             <li>
-                                <a href="#">Careers</a>
+                                <a href="#">Carrières</a>
                             </li>
                             <li>
                                 <a href="#">Blog</a>
@@ -103,29 +103,29 @@ export default function Footer() {
                     </div>
 
                     <div>
-                        <h4>Support</h4>
+                        <h4>Assistance</h4>
                         <ul>
                             <li>
-                                <a href="#">Help Center</a>
+                                <a href="#">Centre d'aide</a>
                             </li>
                             <li>
-                                <a href="#">Terms of Service</a>
+                                <a href="#">Conditions d'utilisation</a>
                             </li>
                             <li>
-                                <a href="#">Privacy Policy</a>
+                                <a href="#">Politique de confidentialité</a>
                             </li>
                             <li>
-                                <a href="#">Cookie Settings</a>
+                                <a href="#">Gestion des cookies</a>
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <div className="footer-bottom">
-                    <p>© 2023 CodePlatform. All rights reserved.</p>
+                    <p>© 2026 CodePlatform. Tous droits réservés.</p>
                     <div className="footer-status">
                         <span className="status-dot"></span>
-                        <span>All systems operational</span>
+                        <span>Tous les systèmes sont opérationnels</span>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,118 @@
+@import url('./global.css');
+
+/*======== FORM =======*/
+
+.auth-container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    min-height: 100vh;
+    padding: 5em 0;
+    background: var(--background-ligh);
+    font-family: 'Manrope', sans-serif;
+}
+
+.auth-card {
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid var(--card-light-border);
+    background: var(--text-light);
+    box-shadow: 0 0 100px #00000009;
+}
+
+.auth-header{
+    text-align: center;
+}
+.auth-header h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+}
+
+.auth-header p {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+.input-group {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-group input, 
+.input-group select {
+    width: 100%;
+    padding: 12px 35px 12px 10px;
+    border: none;
+    border-radius: 10px;
+    border: 1px solid var(--card-light-border);
+    background: transparent;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.field-icon {
+    position: absolute;
+    right: 10px;
+    color: var(--text-muted);
+    opacity: 0.5;
+}
+
+.input-group input:focus {
+    outline: none;
+    border: 1px solid var(--primary);
+}
+
+/* L'icône réagit quand on clique sur l'input */
+.input-group input:focus + .field-icon {
+    color: var(--primary);
+    opacity: 1;
+}
+
+.auth-form .btn {
+    border-radius: 8px;
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    background: var(--primary);
+    color: white;
+    border: none;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 3em;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.auth-footer a {
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+    margin-left: 5px;
+}

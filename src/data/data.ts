@@ -7,7 +7,7 @@ export const courses = [
         gradient: 'yellow',
         level: 'Débutant',
         duration: '40 heures',
-        link: '/formation/formation-python-pour-debutant',
+        link: '/from-zero/python',
     },
     {
         title: 'Maîtrise de JavaScript',
