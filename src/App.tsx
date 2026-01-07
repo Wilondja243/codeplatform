@@ -1,5 +1,7 @@
 import React from 'react';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { Routes, Route } from 'react-router-dom';
+import { queryClient } from './hooks/use-query';
 import Router from './app/router';
 
 import './stylesheet/App.css';
@@ -15,15 +17,17 @@ import LoginForm from './app/auth/login';
 
 function App() {
     return (
-        <Routes>
-            <Route path="/" element={<Router />} />
-            <Route path="/explore" element={<Explore />} />
-            <Route path="/from-zero/:id" element={<FromZero />} />
-            <Route path="/formation/:id" element={<Formation />} />
+        <QueryClientProvider client={queryClient}>
+            <Routes>
+                <Route path="/" element={<Router />} />
+                <Route path="/explore" element={<Explore />} />
+                <Route path="/from-zero/:id" element={<FromZero />} />
+                <Route path="/formation/:id" element={<Formation />} />
 
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/register" element={<Register />} />
-        </Routes>
+                <Route path="/login" element={<LoginForm />} />
+                <Route path="/register" element={<Register />} />
+            </Routes>
+        </QueryClientProvider>
     );
 }
 

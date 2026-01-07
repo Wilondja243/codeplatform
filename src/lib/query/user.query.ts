@@ -1,0 +1,26 @@
+import { useQuery, useQueryClient, useInfiniteQuery } from '@tanstack/react-query';
+import { getUsers, getUser } from '../services/auth.service';
+import { useUserToken } from '../store/user.token.store';
+import { useEffect } from 'react';
+
+export function useUserMeQuery() {
+    const userToken = useUserToken((state) => state.userToken);
+
+    const { data, isLoading, refetch, isError, error } = useQuery({
+        queryKey: ['userme', userToken],
+        queryFn: async () => await getUser(),
+        enabled: !!userToken,
+    });
+
+    return { data, isLoading, refetch, isError, error };
+}
+
+export function useUsersQuery() {
+    const userToken = useUserToken((state) => state.userToken);
+
+    return useQuery({
+        queryKey: ['users', 'all'],
+        queryFn: async () => await getUsers(),
+        enabled: !!userToken,
+    });
+}
