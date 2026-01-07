@@ -9,7 +9,7 @@
     background: var(--background-light);
 }
 
-.t-bar{
+.t-bar {
     border-bottom: 1px solid #0505050c;
 }
 
@@ -20,7 +20,7 @@
     justify-content: space-between;
 }
 
-.nav-infos{
+.nav-infos {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -68,14 +68,14 @@
     justify-content: center;
     gap: 1rem;
 }
-.navbar-actions span{
+.navbar-actions span {
     font-size: clamp(18px, 5vw, 35px);
     cursor: pointer;
 }
-.navbar-actions span:hover{
-    color: var(--text-muted)
+.navbar-actions span:hover {
+    color: var(--text-muted);
 }
-.navbar-login{
+.navbar-login {
     color: var(--text-dark);
 }
 .navbar-login:hover {
@@ -431,13 +431,19 @@
 }
 
 @media (max-width: 1050px) {
-    .courses-grid { grid-template-columns: repeat(3, 1fr); }
+    .courses-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 @media (max-width: 950px) {
-    .courses-grid { grid-template-columns: repeat(2, 1fr);}
+    .courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
-@media screen and (max-width: 650px){
-    .courses-grid {grid-template-columns: repeat(1, 1fr);}
+@media screen and (max-width: 650px) {
+    .courses-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 .course-card {
@@ -465,7 +471,7 @@
     flex-direction: column;
     gap: 12px;
 }
-.course-body .formation{
+.course-body .formation {
     background: #b801722c;
     padding: 5px 8px;
     color: var(--text-dark);
@@ -508,17 +514,18 @@
     padding-top: 15px;
     border-top: 1px solid #eee;
 }
-.course-footer button{
+.course-footer a {
+    display: block;
+    text-align: center;
     color: var(--text-dark);
     text-wrap: nowrap;
     padding: 0.6em 0.8em;
     width: 100%;
     border: 1px solid var(--card-light-border);
 }
-.course-card:hover button{
+.course-card:hover a {
     background: var(--primary);
 }
-
 
 /* Explore hero */
 .explore-header {
@@ -556,12 +563,18 @@
     font-weight: 400;
 }
 
-.explore-visual img{
+.explore-visual img {
     border-radius: 5px;
     box-shadow: 0 0 100px #05050513;
 }
-.explore-visual img:hover{
+.explore-visual img:hover {
     transform: scale(1.03);
+}
+
+@media (max-width: 900px) {
+    .explore-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Explore search hero */
@@ -653,7 +666,6 @@
     background: var(--primary);
     color: white;
 }
-
 
 /* How it work */
 
@@ -759,7 +771,6 @@
     }
 }
 
-
 /* Testimonials */
 
 .testimonials-section {
@@ -830,37 +841,43 @@
 }
 
 /* Ready */
-.ready{
+.ready {
     padding: 4em 0;
 }
-.ready-container{
+.ready-container {
     padding: 4em 2em;
     border-radius: 8px;
     background: #a78bfa;
     text-align: center;
 }
-.ready-container .details{
+.ready-container .details {
     width: 70%;
     margin: auto;
 }
-.ready-container h2{
+.ready-container h2 {
     font-size: clamp(2em, 5vw, 3.5em);
     color: var(--text-dark);
 }
-.ready-container p{
+.ready-container p {
     margin-top: 1em;
 }
-.ready-container .btn{
+.ready-container .btn {
     margin: 2em auto 0 auto;
     padding: 0.8em 2em;
 }
 
-@media screen and (max-width: 850px){
-    .ready-container .details{width: 85%;}
+@media screen and (max-width: 850px) {
+    .ready-container .details {
+        width: 85%;
+    }
 }
-@media screen and (max-width: 600px){
-    .ready-container .details{width: 100%;}
-    .ready-container .btn{padding: 0.8em 1em;}
+@media screen and (max-width: 600px) {
+    .ready-container .details {
+        width: 100%;
+    }
+    .ready-container .btn {
+        padding: 0.8em 1em;
+    }
 }
 
 /*========= END MAIN ==========*/

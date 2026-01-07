@@ -6,7 +6,6 @@ import HowItWorks from '../lib/section/how-it-work';
 import Testimonials from '../lib/section/testimonial';
 import Ready from '../lib/section/ready';
 
-
 export default function Router() {
     return (
         <div>

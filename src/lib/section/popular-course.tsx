@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { courses } from '../../data/data';
 
 export default function PopularCourses() {
@@ -37,7 +38,12 @@ export default function PopularCourses() {
                                     {course.description}
                                 </p>
                                 <div className="course-footer">
-                                    <button className='btn-secondary'>Voir les détails</button>
+                                    <a
+                                        href={course.link}
+                                        className="btn-secondary"
+                                    >
+                                        Voir les détails
+                                    </a>
                                 </div>
                             </div>
                         </div>

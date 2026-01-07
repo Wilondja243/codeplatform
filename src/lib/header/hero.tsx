@@ -41,15 +41,28 @@ export default function Hero() {
                                 arrow_forward
                             </span>
                         </button>
-                        <a href='/explore' className="btn-secondary">
+                        <a href="/explore" className="btn-secondary">
                             Voir les cours
                         </a>
                     </div>
                     <div className="hero-students">
                         <div className="student-avatars">
-                            <div className="avatar" style={{ backgroundImage: "url(images/b.jpg)",}}></div>
-                            <div className="avatar" style={{ backgroundImage: "url(images/4442.jpg)",}}></div>
-                            <div className="avatar" style={{ backgroundImage: "url(images/4436.jpg)",}}></div>
+                            <div
+                                className="avatar"
+                                style={{ backgroundImage: 'url(images/b.jpg)' }}
+                            ></div>
+                            <div
+                                className="avatar"
+                                style={{
+                                    backgroundImage: 'url(images/4442.jpg)',
+                                }}
+                            ></div>
+                            <div
+                                className="avatar"
+                                style={{
+                                    backgroundImage: 'url(images/4436.jpg)',
+                                }}
+                            ></div>
                         </div>
                         <p>Rejoignez plus de 100 étudiants dans le monde</p>
                     </div>

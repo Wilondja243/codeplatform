@@ -70,16 +70,16 @@ export default function Footer() {
                         <h4>Platform</h4>
                         <ul>
                             <li>
-                                <a href="#">Browse Courses</a>
+                                <a href="explore">Explorer</a>
                             </li>
                             <li>
-                                <a href="#">Learning Paths</a>
+                                <a href="#">Roadmaps</a>
                             </li>
                             <li>
-                                <a href="#">Mentorship</a>
+                                <a href="#">Méthodologie</a>
                             </li>
                             <li>
-                                <a href="#">Success Stories</a>
+                                <a href="#">Succès</a>
                             </li>
                         </ul>
                     </div>

@@ -7,7 +7,7 @@ export const courses = [
         gradient: 'yellow',
         level: 'Débutant',
         duration: '40 heures',
-        isNew: true
+        link: '/formation/formation-python-pour-debutant',
     },
     {
         title: 'Maîtrise de JavaScript',
@@ -17,6 +17,7 @@ export const courses = [
         gradient: 'yellow',
         level: 'Intermédiaire',
         duration: '55 heures',
+        link: '#',
     },
     {
         title: 'SQL & Bases de données',
@@ -26,6 +27,7 @@ export const courses = [
         gradient: 'blue',
         level: 'Débutant',
         duration: '25 heures',
+        link: '#',
     },
     {
         title: 'Développement Web Full-Stack',
@@ -35,6 +37,7 @@ export const courses = [
         gradient: 'purple',
         level: 'Avancé',
         duration: '80 heures',
+        link: '#',
     },
     {
         title: 'Django Expert',
@@ -44,6 +47,7 @@ export const courses = [
         gradient: 'green',
         level: 'Avancé',
         duration: '65 heures',
+        link: '#',
     },
     {
         title: 'Microservices avec Flask',
@@ -53,6 +57,7 @@ export const courses = [
         gradient: 'blue',
         level: 'Intermédiaire',
         duration: '35 heures',
+        link: '#',
     },
     {
         title: 'Applications Mobiles Kivy',
@@ -62,6 +67,7 @@ export const courses = [
         gradient: 'orange',
         level: 'Intermédiaire',
         duration: '45 heures',
+        link: '#',
     },
     {
         title: 'Programmation C++',
@@ -71,6 +77,7 @@ export const courses = [
         gradient: 'blue-dark',
         level: 'Avancé',
         duration: '70 heures',
+        link: '#',
     },
     {
         title: 'Machine Learning Foundation',
@@ -80,6 +87,7 @@ export const courses = [
         gradient: 'indigo',
         level: 'Intermédiaire',
         duration: '60 heures',
+        link: '#',
     },
     {
         title: 'Deep Learning & Neural Networks',
@@ -89,6 +97,7 @@ export const courses = [
         gradient: 'red',
         level: 'Avancé',
         duration: '90 heures',
+        link: '#',
     },
 ];
 

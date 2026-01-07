@@ -15,10 +15,7 @@ export default function navBar() {
                     </div>
                     <div className="contact-infos">
                         <div className="navbar-actions">
-                            <Link
-                                className="btn"
-                                to="/login"
-                            >
+                            <Link className="btn" to="/login">
                                 Nous contactez
                             </Link>
                             <span className="material-symbols-outlined">
@@ -30,9 +27,9 @@ export default function navBar() {
             </div>
             <div className="navbar-container wrapper">
                 <nav className="navbar-nav">
-                    <Link to="/">Explorer</Link>
+                    <Link to="/explore">Explorer</Link>
                     <Link to="/paths">Roadmaps</Link>
-                    <Link to="/how-it-works">La Méthode</Link>
+                    <Link to="/method">Méthodologie</Link>
                     <Link to="/testimonials">Succès</Link>
                 </nav>
 

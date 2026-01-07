@@ -1,11 +1,10 @@
-import NavBar from "../../lib/header/nav-bar"
-import ExploreHero from "../../lib/header/explore-hero"
-import PopularCourses from "../../lib/section/popular-course"
-import Footer from "../../lib/header/footer"
+import NavBar from '../../lib/header/nav-bar';
+import ExploreHero from '../../lib/header/explore-hero';
+import PopularCourses from '../../lib/section/popular-course';
+import Footer from '../../lib/header/footer';
 
-
-export default function Explore(){
-    return(
+export default function Explore() {
+    return (
         <div>
             <header>
                 <NavBar />
@@ -16,5 +15,5 @@ export default function Explore(){
                 <Footer />
             </main>
         </div>
-    )
+    );
 }
