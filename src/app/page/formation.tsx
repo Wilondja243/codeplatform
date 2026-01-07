@@ -1,5 +1,5 @@
 import NavBar from '../../lib/header/nav-bar';
-import Course from '../../lib/section/course';
+import Course1 from '../tempo/phase1';
 import CourseCurriculum from '../../lib/section/course-curriculum';
 
 export default function Formation() {
@@ -13,7 +13,7 @@ export default function Formation() {
                     <CourseCurriculum />
                 </div>
                 <div className="lesson-content">
-                    <Course />
+                    <Course1 />
                 </div>
             </main>
         </div>

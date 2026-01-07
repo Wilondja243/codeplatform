@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 export default function Course() {
     const { id } = useParams();
@@ -57,19 +57,19 @@ export default function Course() {
                                 <i className="material-symbols-outlined">
                                     schedule
                                 </i>
-                                15 heures de contenu
+                                2 heures de lecture
                             </span>
-                            <span>
+                            {/* <span>
                                 <i className="material-symbols-outlined">
                                     workspace_premium
                                 </i>
                                 Certificat inclus
-                            </span>
+                            </span> */}
                         </div>
 
-                        <button className="btn btn-primary btn-large">
-                            S'inscrire à la formation
-                        </button>
+                        <Link to="/formation/python-pour-debutant" className="btn btn-primary btn-large">
+                            Commencer à apprendre
+                        </Link>
                     </div>
 
                     <div className="course-preview-card">
@@ -77,7 +77,8 @@ export default function Course() {
                             <span className="material-symbols-outlined">
                                 play_circle
                             </span>
-                            <p>Aperçu de la formation</p>
+                            <p>L'aperçu est indisponible pour le moment</p>
+                            <p>Nous sommes vraiment désolé</p>
                         </div>
                     </div>
                 </div>
