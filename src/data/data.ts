@@ -128,15 +128,15 @@ export const testimonials = [
     },
     {
         name: 'Wilondja Ebuela',
-        location: 'Congo Bukavu',
+        location: 'RD Cong Bukavu',
         image: 'images/w.jpg',
         feedback:
             "Le mentorat était incroyable. Avoir quelqu'un pour réviser mon code et me donner des retours m'a aidé à comprendre les bonnes pratiques.",
     },
     {
-        name: 'Priya Sharma',
-        location: 'Mumbai, Inde',
-        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAph_ldRGnkGIh1lALMCL-JS2QzTuVt05TA9ikZ0Jg-mS2TEIk4Oq-cNQajzCBGH-2KDWprkN8uzr4ekp6iAz-WJ3YZEBwuV-OM66cPirBqdoXtDCTYB9Kd84lPh3Whj6UvuBVT4PgSOeBUfcmPsOPLnS-1PlMivK8R2DNzh1KlfRERdg8ZK7Kog70Vyt3I8RNWyE1htAVYcQ5gDLSVCHWEM_mRQWY-EdboVpJt1CMhobEJOw-jDjimErNlkJwQ8beZR69qvNZdrug',
+        name: 'Miereil Jacqueline',
+        location: 'RD Congo Uvira',
+        image: 'images/4436.jpg',
         feedback:
             "CodePlatform m'a aidée à passer d'un rôle support à l'ingénierie. Le parcours Python est parfaitement structuré pour les débutants.",
     },

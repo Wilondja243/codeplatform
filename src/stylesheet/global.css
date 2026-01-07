@@ -41,7 +41,7 @@
     --text-muted: #686767;
     --text-dark: #111111;
 
-    --radius: 8px;
+    --radius: 35px;
 }
 
 html {
@@ -79,7 +79,10 @@ li {
 }
 
 .btn {
-    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 1em;
     color: var(--text-primary);
     border-radius: var(--radius);
     background: var(--primary);
@@ -93,15 +96,14 @@ li {
 }
 
 .btn-secondary {
-    padding: 0 2rem;
-    height: 3rem;
+    padding: 10px 2rem;
     font-weight: bold;
-    color: white;
-    background-color: var(--surface-dark);
-    border: 1px solid var(--surface-border);
-    border-radius: 0.5rem;
+    color: var(--text-light);
+    background-color: inherit;
+    border: 1px solid var(--primary);
+    border-radius: var(--radius);
+    font-size: clamp(17px, 4vw, 19px);
     cursor: pointer;
-    transition: all 0.2s;
 }
 
 .wrapper {
