@@ -1,24 +1,23 @@
 import React from 'react';
 import { useState } from 'react';
-import { ClipLoader } from 'react-spinners';
-import { useModuleQuery } from '../query/course.query';
+
 
 export default function CourseCurriculum() {
-    const { data: modules, isLoading } = useModuleQuery();
     const [activeModule, setActiveModule] = useState<number | null>(1);
-
-    if (isLoading) {
-        return (
-            <div style={{ display: 'flex', flexDirection: 'row', gap: 20 }}>
-                <ClipLoader size={24} />
-                <p>Chargement...</p>
-            </div>
-        );
-    }
 
     const toggleModule = (id: number) => {
         setActiveModule(activeModule === id ? null : id);
     };
+
+    const modules = [
+        {
+            id: 1,
+            titre: "Installation",
+            lesson: [
+                "premiere étape"
+            ]
+        }
+    ]
 
     return (
         <div className="curriculum-sidebar-container">

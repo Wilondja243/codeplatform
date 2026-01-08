@@ -6,7 +6,6 @@ import {
 import { getUsers, getUser } from '../services/auth.service';
 import { useUserToken } from '../store/user.token.store';
 
-
 export function useUserMeQuery() {
     const userToken = useUserToken((state) => state.userToken);
 

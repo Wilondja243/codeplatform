@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 interface StartProps {
     title: string;
@@ -29,11 +29,16 @@ export function Start({
 
                     <div className="start-actions">
                         {start_course ? (
-                            <Link to={`/formation/python`} className="btn btn-primary">
-                                <span className="material-symbols-outlined">rocket_launch</span>
+                            <Link
+                                to={`/apprentissage/python`}
+                                className="btn btn-primary"
+                            >
+                                <span className="material-symbols-outlined">
+                                    rocket_launch
+                                </span>
                                 Commencer le cours
                             </Link>
-                        ):(
+                        ) : (
                             <>
                                 <a href="/register" className="btn btn-primary">
                                     {register}
@@ -43,7 +48,6 @@ export function Start({
                                 </a>
                             </>
                         )}
-                        
                     </div>
                 </div>
             </div>

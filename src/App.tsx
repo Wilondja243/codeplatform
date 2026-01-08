@@ -11,10 +11,12 @@ import './stylesheet/style.css';
 import './stylesheet/form.css';
 
 import Explore from './app/page/explore';
+import PathCourse from './app/page/course-path';
 import FromZero from './app/page/from-zero';
 import Formation from './app/page/formation';
 import Register from './app/auth/register';
 import LoginForm from './app/auth/login';
+
 
 function App() {
     return (
@@ -26,6 +28,7 @@ function App() {
                     <Route path="/" element={<Router />} />
                     <Route path="/explore" element={<Explore />} />
                     <Route path="/start/:id" element={<FromZero />} />
+                    <Route path="/apprentissage/:id" element={<PathCourse />} />
                     <Route path="/formation/:id" element={<Formation />} />
 
                     <Route path="/login" element={<LoginForm />} />

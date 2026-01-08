@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { ClipLoader } from 'react-spinners';
 import { useModuleQuery } from '../query/course.query';
 
-export default function CourseCurriculum() {
+
+export default function LearningPath() {
     const { data: modules, isLoading } = useModuleQuery();
-    const [activeModule, setActiveModule] = useState<number | null>(1);
 
     if (isLoading) {
         return (
@@ -16,42 +16,36 @@ export default function CourseCurriculum() {
         );
     }
 
-    const toggleModule = (id: number) => {
-        setActiveModule(activeModule === id ? null : id);
-    };
-
     return (
-        <div className="curriculum-sidebar-container">
-            <h2 className="sidebar-title">Parcours Python</h2>
+        <div
+            style={{
+                maxWidth: 350,
+                margin: 'auto',
+                paddingTop: 40,
+                paddingBottom: 40,
+            }}>
+            <h2 className="sidebar-title" style={{ display: 'block'}}>Parcours Python</h2>
 
-            <div className="modules-list">
+            <div className="modules-list" >
                 {modules.map((module: any, index: number) => (
                     <div
                         key={module.id}
-                        className={`module-item ${
-                            activeModule === module.id ? 'is-open' : ''
-                        }`}
+                        className={`module-item`}
                     >
                         <button
                             className="module-trigger"
-                            onClick={() => toggleModule(module.id)}
                         >
                             <div className="module-info">
                                 <span className="module-number">
                                     {String(index + 1).padStart(2, '0')}
                                 </span>
-                                <span className="module-title">
+                                <span className="module-title" style={{ fontSize: 20}}>
                                     {module.title}
                                 </span>
                             </div>
-                            <span className="material-symbols-outlined arrow-icon">
-                                {activeModule === module.id
-                                    ? 'expand_less'
-                                    : 'expand_more'}
-                            </span>
                         </button>
 
-                        <div className="lessons-dropdown">
+                        <div className="" style={{ marginLeft: 30}}>
                             {module.lessons.map(
                                 (lesson: any, index: string) => (
                                     <div key={index} className="lesson-link">

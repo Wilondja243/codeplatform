@@ -7,7 +7,6 @@ import useLoginQuery from '../../lib/query/login.query';
 import NavBar from '../../lib/header/nav-bar';
 import Footer from '../../lib/header/footer';
 
-
 export default function LoginForm() {
     const navigate = useNavigate();
     const { handleSubmit, errors } = useLoginValidation();
@@ -25,14 +24,17 @@ export default function LoginForm() {
         });
 
         if (isValid) {
-            mutate({email, password}, {
-                onSuccess: ()=> {
-                    setEmail("");
-                    setPassword("");
+            mutate(
+                { email, password },
+                {
+                    onSuccess: () => {
+                        setEmail('');
+                        setPassword('');
 
-                    navigate("/start/python")
+                        navigate('/start/python');
+                    },
                 },
-            })
+            );
         }
     };
 
@@ -102,7 +104,7 @@ export default function LoginForm() {
                                 ) : (
                                     <>
                                         Connexion <ArrowRight size={20} />
-                                    </>  
+                                    </>
                                 )}
                             </button>
                         </form>

@@ -5,7 +5,6 @@ import { User, Mail, Lock, ArrowRight } from 'lucide-react';
 import { useSigninValidation } from '../../utils/signin-validation';
 import useSigninQuery from '../../lib/query/signing.query';
 
-
 export default function RegisterForm() {
     const navigate = useNavigate();
     const { handleSubmit, errors } = useSigninValidation();
@@ -26,15 +25,18 @@ export default function RegisterForm() {
         });
 
         if (isValid) {
-            mutate({username, email, password}, {
-                onSuccess: ()=> {
-                    setUsername("");
-                    setEmail("");
-                    setPassword("");
+            mutate(
+                { username, email, password },
+                {
+                    onSuccess: () => {
+                        setUsername('');
+                        setEmail('');
+                        setPassword('');
 
-                    navigate("/start/python")
+                        navigate('/start/python');
+                    },
                 },
-            })
+            );
         }
     };
 
@@ -48,13 +50,13 @@ export default function RegisterForm() {
 
                 <form onSubmit={formSubmit} method="post" className="auth-form">
                     <div className="input-group">
-                        <label>Nom complet</label>
+                        <label>Nom</label>
                         <div className="input-wrapper">
                             <input
                                 type="text"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
-                                placeholder="Luckson premier"
+                                placeholder="ex: Luckson"
                             />
                             <User size={18} className="field-icon" />
                         </div>
@@ -93,17 +95,13 @@ export default function RegisterForm() {
                         )}
                     </div>
 
-                    <button
-                        type="submit"
-                        className="btn"
-                        disabled={isPending}
-                    >
+                    <button type="submit" className="btn" disabled={isPending}>
                         {isPending ? (
                             <ClipLoader size={20} color="#ffffff" />
                         ) : (
                             <>
                                 Créer un compte <ArrowRight size={20} />
-                            </>  
+                            </>
                         )}
                     </button>
                 </form>

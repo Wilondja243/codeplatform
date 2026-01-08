@@ -5,9 +5,8 @@ import { Start } from '../../lib/section/start';
 
 import { useUserMeQuery } from '../../lib/query/user.query';
 
-
 export default function FromZero() {
-    const {data: me, isLoading } = useUserMeQuery();
+    const { data: me, isLoading } = useUserMeQuery();
 
     return (
         <div>
@@ -19,7 +18,7 @@ export default function FromZero() {
                     <Course />
                 </div>
 
-                { !isLoading && me ? (
+                {!isLoading && me ? (
                     <Start
                         title="Commencer la formation"
                         description="Cliquez pour débuter le cours et suivre votre progression pas à pas."
@@ -32,7 +31,7 @@ export default function FromZero() {
                         register="Créer un compte"
                         connexion="Se connecter"
                     />
-                ) }
+                )}
 
                 <Footer />
             </main>

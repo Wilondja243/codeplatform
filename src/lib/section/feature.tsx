@@ -2,10 +2,7 @@ import { useFeatureQuery } from '../query/course.query';
 import { features } from '../../data/data';
 
 export default function Features() {
-    const {
-        data,
-        isLoading,
-        isError, error } = useFeatureQuery();
+    const { data, isLoading, isError, error } = useFeatureQuery();
 
     return (
         <section className="features-section">

@@ -16,39 +16,56 @@ export default function Course() {
                 <div className="course-intro-grid">
                     <div className="course-intro-text">
                         <h1>
-                            Python : <span className="text-primary">De Zéro à Héro</span>
+                            Python :{' '}
+                            <span className="text-primary">De Zéro à Héro</span>
                         </h1>
 
-                        <span className="badge-featured">Formation Intensive</span>
+                        <span className="badge-featured">
+                            Formation Intensive
+                        </span>
 
                         <p className="course-main-desc">
-                            Aujourd'hui, savoir programmer n'est plus réservé aux ingénieurs ou aux experts. 
-                            Python est devenu l'un des langages les plus accessibles et les plus puissants au monde.
-                            Cette formation a été pensée pour répondre à un problème concret : 
-                            beaucoup de débutants apprennent la syntaxe, mais échouent à comprendre la logique derrière le code.
+                            Aujourd'hui, savoir programmer n'est plus réservé
+                            aux ingénieurs ou aux experts. Python est devenu
+                            l'un des langages les plus accessibles et les plus
+                            puissants au monde. Cette formation a été pensée
+                            pour répondre à un problème concret : beaucoup de
+                            débutants apprennent la syntaxe, mais échouent à
+                            comprendre la logique derrière le code.
                         </p>
 
                         <p>
-                            Ici, l'objectif n'est pas de vous noyer dans la théorie,
-                            mais de vous accompagner étape par étape pour développer une vraie
-                            capacité de raisonnement algorithmique. Chaque notion 
-                            abordée est immédiatement appliquée à des cas réels, afin que vous
-                            compreniez non seulement <strong>comment écrire du code</strong>, mais surtout <strong>pourquoi vous l'écrivez</strong>.
+                            Ici, l'objectif n'est pas de vous noyer dans la
+                            théorie, mais de vous accompagner étape par étape
+                            pour développer une vraie capacité de raisonnement
+                            algorithmique. Chaque notion abordée est
+                            immédiatement appliquée à des cas réels, afin que
+                            vous compreniez non seulement{' '}
+                            <strong>comment écrire du code</strong>, mais
+                            surtout <strong>pourquoi vous l'écrivez</strong>.
                         </p>
 
                         <div className="course-quick-stats">
                             <span>
-                                <i className="material-symbols-outlined">analytics</i> Débutant accepté
+                                <i className="material-symbols-outlined">
+                                    analytics
+                                </i>{' '}
+                                Débutant accepté
                             </span>
                             <span>
-                                <i className="material-symbols-outlined">schedule</i> 2 heures de lecture
+                                <i className="material-symbols-outlined">
+                                    schedule
+                                </i>{' '}
+                                2 heures de lecture
                             </span>
                         </div>
                     </div>
 
                     <div className="course-preview-card">
                         <div className="video-placeholder">
-                            <span className="material-symbols-outlined">play_circle</span>
+                            <span className="material-symbols-outlined">
+                                play_circle
+                            </span>
                             <p>L'aperçu est indisponible pour le moment</p>
                             <p>Nous sommes vraiment désolé</p>
                         </div>
@@ -61,7 +78,9 @@ export default function Course() {
                 <div className="course-section">
                     <h2>Prérequis</h2>
                     <ul>
-                        <li>Aucune connaissance en programmation n'est requise</li>
+                        <li>
+                            Aucune connaissance en programmation n'est requise
+                        </li>
                         <li>Un ordinateur (Windows, Linux ou macOS)</li>
                         <li>Une connexion Internet basique</li>
                         <li>Motivation, discipline et curiosité</li>
@@ -71,7 +90,10 @@ export default function Course() {
                 <div className="course-section">
                     <h2>Objectifs de la formation</h2>
                     <ul>
-                        <li>Comprendre la logique de programmation et les algorithmes</li>
+                        <li>
+                            Comprendre la logique de programmation et les
+                            algorithmes
+                        </li>
                         <li>Maîtriser les bases solides du langage Python</li>
                         <li>Écrire un code clair, structuré et maintenable</li>
                         <li>Résoudre des problèmes concrets avec Python</li>
@@ -93,7 +115,9 @@ export default function Course() {
                 <div className="course-section">
                     <h2>À qui s'adresse cette formation ?</h2>
                     <p>
-                        Étudiants, professionnels, entrepreneurs ou autodidactes souhaitant acquérir des bases solides en programmation...
+                        Étudiants, professionnels, entrepreneurs ou autodidactes
+                        souhaitant acquérir des bases solides en
+                        programmation...
                     </p>
                 </div>
             </div>

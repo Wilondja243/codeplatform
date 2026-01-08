@@ -16,8 +16,7 @@ export default function useLoginValidation() {
 
         if (!email) {
             newErrors.email = 'Le champ email est réquis.';
-        }
-        else if(!re.test(email)){
+        } else if (!re.test(email)) {
             newErrors.email = "L'adresse email n'est pas valide.";
         }
 
