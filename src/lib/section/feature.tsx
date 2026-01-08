@@ -1,6 +1,12 @@
+import { useFeatureQuery } from '../query/course.query';
 import { features } from '../../data/data';
 
 export default function Features() {
+    const {
+        data,
+        isLoading,
+        isError, error } = useFeatureQuery();
+
     return (
         <section className="features-section">
             <div className="feature-container wrapper">
@@ -15,8 +21,8 @@ export default function Features() {
                 </div>
 
                 <div className="features-grid">
-                    {features.map((feature, index) => (
-                        <div key={index} className="feature-card">
+                    {features.map((feature: any) => (
+                        <div key={feature.id} className="feature-card">
                             <div className="feature-icon">
                                 <span className="material-symbols-outlined">
                                     {feature.icon}

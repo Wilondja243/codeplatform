@@ -33,14 +33,14 @@ export default function navBar() {
                     <Link to="/testimonials">Succès</Link>
                 </nav>
 
-                <div className="navbar-actions">
+                {/* <div className="navbar-actions">
                     <Link className="btn-secondary navbar-login" to="/login">
                         Connexion
                     </Link>
                     <a href="/register" className="btn navbar-button">
                         S'inscrire
                     </a>
-                </div>
+                </div> */}
             </div>
         </nav>
     );

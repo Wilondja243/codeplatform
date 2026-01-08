@@ -1,85 +1,5 @@
 export const courses = [
     {
-        title: 'Python pour débutants',
-        description:
-            'Maîtrisez les bases de la syntaxe Python, des structures de données et des algorithmes.',
-        icon: 'terminal',
-        gradient: 'yellow',
-        level: 'Débutant',
-        duration: '40 heures',
-        link: '/from-zero/python',
-    },
-    {
-        title: 'Maîtrise de JavaScript',
-        description:
-            'Approfondissez JS ES6+, manipulation du DOM et programmation asynchrone.',
-        icon: 'javascript',
-        gradient: 'yellow',
-        level: 'Intermédiaire',
-        duration: '55 heures',
-        link: '#',
-    },
-    {
-        title: 'SQL & Bases de données',
-        description:
-            'Apprenez à concevoir des bases de données et écrire des requêtes complexes avec PostgreSQL.',
-        icon: 'database',
-        gradient: 'blue',
-        level: 'Débutant',
-        duration: '25 heures',
-        link: '#',
-    },
-    {
-        title: 'Développement Web Full-Stack',
-        description:
-            'Créez des applications web complètes avec React, Node.js et CSS moderne.',
-        icon: 'devices',
-        gradient: 'purple',
-        level: 'Avancé',
-        duration: '80 heures',
-        link: '#',
-    },
-    {
-        title: 'Django Expert',
-        description:
-            'Développez des applications web robustes et sécurisées avec le framework Python le plus populaire.',
-        icon: 'layers',
-        gradient: 'green',
-        level: 'Avancé',
-        duration: '65 heures',
-        link: '#',
-    },
-    {
-        title: 'Microservices avec Flask',
-        description:
-            'Apprenez à créer des API légères et performantes avec ce micro-framework flexible.',
-        icon: 'api',
-        gradient: 'blue',
-        level: 'Intermédiaire',
-        duration: '35 heures',
-        link: '#',
-    },
-    {
-        title: 'Applications Mobiles Kivy',
-        description:
-            'Développez des applications multi-plateformes (Android, iOS) entièrement en Python.',
-        icon: 'smartphone',
-        gradient: 'orange',
-        level: 'Intermédiaire',
-        duration: '45 heures',
-        link: '#',
-    },
-    {
-        title: 'Programmation C++',
-        description:
-            'Maîtrisez la gestion de la mémoire, la POO et les performances de bas niveau.',
-        icon: 'settings_code',
-        gradient: 'blue-dark',
-        level: 'Avancé',
-        duration: '70 heures',
-        link: '#',
-    },
-    {
         title: 'Machine Learning Foundation',
         description:
             'Apprenez les algorithmes de régression, classification et clustering avec Scikit-Learn.',
@@ -87,16 +7,6 @@ export const courses = [
         gradient: 'indigo',
         level: 'Intermédiaire',
         duration: '60 heures',
-        link: '#',
-    },
-    {
-        title: 'Deep Learning & Neural Networks',
-        description:
-            'Construisez des modèles de vision par ordinateur et de NLP avec TensorFlow et PyTorch.',
-        icon: 'psychology',
-        gradient: 'red',
-        level: 'Avancé',
-        duration: '90 heures',
         link: '#',
     },
 ];

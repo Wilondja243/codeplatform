@@ -199,6 +199,7 @@
     margin-bottom: 12px;
 }
 
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
     .course-intro-grid {
@@ -217,6 +218,7 @@
 }
 
 /* End lesson */
+
 
 .curriculum-sidebar::-webkit-scrollbar {
     display: none;
@@ -407,88 +409,86 @@
 /*======== ALL COURSE STYLE ========*/
 
 .course-container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 20px;
-  font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
-  color: #1f2937;
-  background-color: #ffffff;
-  line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+    color: #1f2937;
+    background-color: #ffffff;
+    line-height: 1.8;
 }
 
-/* Titre principal */
 .course-container h1 {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 24px;
-  color: #111827;
-  border-bottom: 2px solid #e5e7eb;
-  padding-bottom: 12px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #111827;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 12px;
 }
 
-/* Titres de sections */
 .course-container h2 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-top: 40px;
-  margin-bottom: 16px;
-  color: #1f2937;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-top: 40px;
+    margin-bottom: 16px;
+    color: #1f2937;
 }
 
 /* Paragraphes */
 .course-container p {
-  font-size: 1rem;
-  margin-bottom: 16px;
-  color: #374151;
+    font-size: 1rem;
+    margin-bottom: 16px;
+    color: #374151;
 }
 
 /* Listes */
 .course-container ul {
-  margin-left: 20px;
-  margin-bottom: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
 }
 
 .course-container li {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .highlight-link {
-  background-color: #f9fafb;
-  border-left: 4px solid #2563eb;
-  padding: 12px 16px;
-  margin: 20px 0;
-  font-size: 0.95rem;
-  color: #1f2937;
+    background-color: #f9fafb;
+    border-left: 4px solid #2563eb;
+    padding: 12px 16px;
+    margin: 20px 0;
+    font-size: 0.95rem;
+    color: #1f2937;
 }
 
 .highlight-command {
-  background-color: #0f172a;
-  color: #e5e7eb;
-  padding: 14px 16px;
-  margin: 20px 0;
-  border-radius: 6px;
-  font-family: "JetBrains Mono", Consolas, monospace;
-  font-size: 0.95rem;
-  overflow-x: auto;
+    background-color: #0f172a;
+    color: #e5e7eb;
+    padding: 14px 16px;
+    margin: 20px 0;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-size: 0.95rem;
+    overflow-x: auto;
 }
 
 .highlight-demo {
-  background-color: #eef2ff;
-  border-left: 4px solid #6366f1;
-  padding: 14px 16px;
-  margin: 20px 0;
-  font-size: 0.95rem;
-  color: #1e1b4b;
+    background-color: #eef2ff;
+    border-left: 4px solid #6366f1;
+    padding: 14px 16px;
+    margin: 20px 0;
+    font-size: 0.95rem;
+    color: #1e1b4b;
 }
 
 .course-container code {
-  background-color: #f3f4f6;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 0.95rem;
-  font-family: "JetBrains Mono", Consolas, monospace;
+    background-color: #f3f4f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-family: 'JetBrains Mono', Consolas, monospace;
 }
 
 .course-container h2:last-of-type {
-  margin-top: 48px;
+    margin-top: 48px;
 }

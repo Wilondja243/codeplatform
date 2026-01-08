@@ -1,4 +1,20 @@
-export default function Start() {
+import { Link } from "react-router-dom";
+
+interface StartProps {
+    title: string;
+    description: string;
+    register?: string;
+    connexion?: string;
+    start_course?: string;
+}
+
+export function Start({
+    title,
+    description,
+    register,
+    connexion,
+    start_course,
+}: StartProps) {
     return (
         <section className="start-section" aria-labelledby="start-title">
             <div className="start-container">
@@ -7,17 +23,27 @@ export default function Start() {
                 </h2>
 
                 <div className="start-box">
-                    <h3>Tarifs, programmes, inscription</h3>
+                    <h3>{title}</h3>
 
-                    <p>Créez votre compte pour continuer votre formation.</p>
+                    <p>{description}</p>
 
                     <div className="start-actions">
-                        <button type="button" className="btn btn-primary">
-                            Créer un compte
-                        </button>
-                        <a href="/login" className="link-secondary">
-                            Se connecter
-                        </a>
+                        {start_course ? (
+                            <Link to={`/formation/python`} className="btn btn-primary">
+                                <span className="material-symbols-outlined">rocket_launch</span>
+                                Commencer le cours
+                            </Link>
+                        ):(
+                            <>
+                                <a href="/register" className="btn btn-primary">
+                                    {register}
+                                </a>
+                                <a href="/login" className="link-secondary">
+                                    {connexion}
+                                </a>
+                            </>
+                        )}
+                        
                     </div>
                 </div>
             </div>

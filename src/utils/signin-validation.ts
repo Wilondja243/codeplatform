@@ -38,12 +38,13 @@ export function useSigninValidation() {
         if (!password) {
             newErrors.password = 'Le champ mot de passe est requis.';
         } else if (password.length < 8) {
-            newErrors.password = 'Le mot de passe doit contenir au moins 8 caractères.';
+            newErrors.password =
+                'Le mot de passe doit contenir au moins 8 caractères.';
         }
 
         // if (!password2) {
         //     newErrors.password2 = 'Confirmation du mot de passe requise.';
-        // } 
+        // }
         // else if (password !== password2) {
         //     newErrors.password2 = 'Les mots de passe ne correspondent pas.';
         // }

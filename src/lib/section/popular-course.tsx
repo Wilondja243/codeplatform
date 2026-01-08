@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom';
-import { courses } from '../../data/data';
+import { useCourseQuery } from '../query/course.query';
 
 export default function PopularCourses() {
+    const { data, isLoading, isError, error } = useCourseQuery();
+
+    if (isLoading) return <p>Chargment...</p>;
+
+    console.log('data: ', JSON.stringify(data, null, 4));
+
     return (
         <section className="popular-courses">
             <div className="popular-container wrapper">
@@ -22,8 +28,8 @@ export default function PopularCourses() {
                 </div>
 
                 <div className="courses-grid">
-                    {courses.map((course, index) => (
-                        <div key={index} className="course-card">
+                    {data.map((course: any) => (
+                        <div key={course.id} className="course-card">
                             <div className="course-body">
                                 <div
                                     className={`course-icon text-${course.gradient}-500`}

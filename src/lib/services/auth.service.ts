@@ -2,12 +2,15 @@ import apiClient from '../api/client';
 import publicClient from '../api/public-client';
 
 export interface LoginRequest {
-    username?: string;
-    password?: string;
+    email: string;
+    password: string;
 }
 
 export const login = async (data: LoginRequest) => {
-    const response = await publicClient.post<LoginRequest>('/account/login/', data);
+    const response = await publicClient.post<LoginRequest>(
+        '/account/login/',
+        data,
+    );
     return response.data;
 };
 

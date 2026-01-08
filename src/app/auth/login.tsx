@@ -1,27 +1,40 @@
 import React, { useState } from 'react';
-import { User, Mail, Lock, GraduationCap, ArrowRight } from 'lucide-react';
+import { User, Lock, ArrowRight } from 'lucide-react';
+import { ClipLoader } from 'react-spinners';
+import { useNavigate } from 'react-router-dom';
+import useLoginValidation from '../../utils/login-validation';
+import useLoginQuery from '../../lib/query/login.query';
 import NavBar from '../../lib/header/nav-bar';
 import Footer from '../../lib/header/footer';
-import useLoginValidation from '../../utils/login-validation';
 
 
 export default function LoginForm() {
+    const navigate = useNavigate();
     const { handleSubmit, errors } = useLoginValidation();
+    const { mutate, isPending } = useLoginQuery();
 
-    const [identifier, setIdentifier] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const formSubmit =  (e: React.FormEvent)=> {
+    const formSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
         const isValid = handleSubmit({
-            identifier, password
-        })
+            email,
+            password,
+        });
 
-        if(isValid){
-            alert("isValid")
+        if (isValid) {
+            mutate({email, password}, {
+                onSuccess: ()=> {
+                    setEmail("");
+                    setPassword("");
+
+                    navigate("/start/python")
+                },
+            })
         }
-    }
+    };
 
     return (
         <div>
@@ -39,20 +52,26 @@ export default function LoginForm() {
                             </p>
                         </div>
 
-                        <form onSubmit={formSubmit} method='post' className="auth-form">
+                        <form
+                            onSubmit={formSubmit}
+                            method="post"
+                            className="auth-form"
+                        >
                             <div className="input-group">
                                 <label>Nom complet</label>
                                 <div className="input-wrapper">
                                     <input
                                         type="text"
-                                        value={identifier}
-                                        onChange={(e)=> setIdentifier(e.target.value)}
+                                        value={email}
+                                        onChange={(e) =>
+                                            setEmail(e.target.value)
+                                        }
                                         placeholder="Luckson premier"
                                     />
                                     <User size={18} className="field-icon" />
                                 </div>
-                                {errors.identifier && (
-                                    <p className='error'>{errors.identifier}</p>
+                                {errors.email && (
+                                    <p className="error">{errors.email}</p>
                                 )}
                             </div>
                             <div className="input-group">
@@ -61,23 +80,36 @@ export default function LoginForm() {
                                     <input
                                         type="password"
                                         value={password}
-                                        onChange={(e)=> setPassword(e.target.value)}
+                                        onChange={(e) =>
+                                            setPassword(e.target.value)
+                                        }
                                         placeholder="••••••••"
                                     />
                                     <Lock size={18} className="field-icon" />
                                 </div>
                                 {errors.password && (
-                                    <p className='error'>{errors.password}</p>
+                                    <p className="error">{errors.password}</p>
                                 )}
                             </div>
 
-                            <button type="submit" className="btn">
-                                Connexion <ArrowRight size={20} />
+                            <button
+                                type="submit"
+                                className="btn"
+                                disabled={isPending}
+                            >
+                                {isPending ? (
+                                    <ClipLoader size={20} color="#ffffff" />
+                                ) : (
+                                    <>
+                                        Connexion <ArrowRight size={20} />
+                                    </>  
+                                )}
                             </button>
                         </form>
 
                         <p className="auth-footer">
-                            Vous n'avez pas de compte ? <a href="/register">Inscrivez-vous</a>
+                            Vous n'avez pas de compte ?{' '}
+                            <a href="/register">Inscrivez-vous</a>
                         </p>
                     </div>
                 </div>

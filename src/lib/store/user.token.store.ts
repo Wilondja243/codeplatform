@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
-
 export type UserTokenProps = {
     userToken: null | string;
     tokenHydrated: boolean;
@@ -20,7 +19,7 @@ export const useUserToken = create<UserTokenProps>()(
             hasCompletedOnboarding: false,
 
             setUserToken: (token) => set({ userToken: token }),
-            
+
             clearToken: () => {
                 set({
                     userToken: null,
@@ -34,7 +33,7 @@ export const useUserToken = create<UserTokenProps>()(
         }),
         {
             name: 'user-token',
-            storage: createJSONStorage(() => localStorage), 
+            storage: createJSONStorage(() => localStorage),
             onRehydrateStorage: () => (state) => {
                 state?.setTokenHydrated();
             },

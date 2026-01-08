@@ -2,23 +2,12 @@ import { AxiosError } from 'axios';
 import { useMutation } from '@tanstack/react-query';
 import { register } from '../services/auth.service';
 import { useUserToken } from '../store/user.token.store';
+import useNotification from '../../hooks/use-taost-notification';
 // import { useErrorHandler } from '@/hooks/use-error-handler';
 
-type SingUpValidationProps = {
-    setUsername: (v: string) => void;
-    setEmail: (v: string) => void;
-    setPassword: (v: string) => void;
-    setPassword2: (v: string) => void;
-    setVisible: (v: boolean) => void;
-};
 
-export default function useSigninQuery({
-    setUsername,
-    setEmail,
-    setPassword,
-    setPassword2,
-    setVisible,
-}: SingUpValidationProps) {
+export default function useSigninQuery() {
+    const { notifyError } = useNotification();
     const setUserToken = useUserToken((state) => state.setUserToken);
     // const { handleError } = useErrorHandler();
 
@@ -27,24 +16,37 @@ export default function useSigninQuery({
 
         onSuccess: async (data) => {
             setUserToken(data?.token);
-
-            setUsername('');
-            setEmail('');
-            setPassword('');
-            setPassword2('');
         },
         onError: (error) => {
-            const e = error as AxiosError;
+    const e = error as AxiosError<any>;
 
-            if (!e.response) {
-                console.log('Network Error', e.message);
+    if (!e.response) {
+        console.log('Network Error', e.message);
+        return;
+    }
 
-                setVisible(true);
-                return;
-            }
+    const { status, data } = e.response;
 
-            // handleError(e);
-        },
+    console.log('DATA:', JSON.stringify(data, null, 4));
+
+    if (status === 400) {
+        const msg = Object.values(data)
+            .flat()
+            .map((err: any) => {
+                if (typeof err === 'string') return err;
+                return err?.message || err;
+            });
+
+        if (msg.length > 0) {
+            notifyError(msg[0]); // le premier message d'erreur
+        } else {
+            notifyError("Une erreur de validation est survenue.");
+        }
+
+        console.log(`response_message: ${msg}`);
+    }
+},
+
     });
 
     return mutation;
