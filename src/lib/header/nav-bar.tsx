@@ -15,7 +15,7 @@ export default function navBar() {
                     </div>
                     <div className="contact-infos">
                         <div className="navbar-actions">
-                            <Link className="btn" to="/login">
+                            <Link className="btn" to="#">
                                 Nous contactez
                             </Link>
                             <span className="material-symbols-outlined">

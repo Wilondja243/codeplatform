@@ -1,72 +1,33 @@
 import React from 'react';
 import { useState } from 'react';
+import { ClipLoader } from 'react-spinners';
+import { useModuleQuery } from '../query/course.query';
+
 
 export default function CourseCurriculum() {
+    const { data: modules, isLoading } = useModuleQuery();
     const [activeModule, setActiveModule] = useState<number | null>(1);
+
+
+    if(isLoading){
+        return (
+            <div style={{ display: 'flex', flexDirection: 'row', gap: 20}}>
+                <ClipLoader size={24} />
+                <p>Chargement...</p>
+            </div>
+        )
+    }
 
     const toggleModule = (id: number) => {
         setActiveModule(activeModule === id ? null : id);
     };
-
-    const modules = [
-        {
-            id: 1,
-            title: "L'Installation",
-            lessons: [
-                "Configuration de l'environnement",
-                'VS Code & Extensions',
-                'Premier script Python',
-            ],
-        },
-        {
-            id: 2,
-            title: 'Fondamentaux',
-            lessons: [
-                'Les conditions (if, elif, else)',
-                'Les boucles For et While',
-                'Les fonctions et les arguments',
-                'Exercices pratiques',
-            ],
-        },
-        {
-            id: 3,
-            title: 'Introduction à la POO',
-            lessons: [
-                'Concept de Classe et Objet',
-                'Attributs et Méthodes',
-                "L'Héritage en Python",
-                'Projet : Créer un système bancaire',
-            ],
-        },
-        {
-            id: 4,
-            title: 'Base de Données (SQL)',
-            lessons: [
-                'Introduction aux bases de données',
-                'SQL avec SQLite : Créer et Lire',
-                'Mise à jour et Suppression (CRUD)',
-                'Lier Python à une base de données',
-                'Projet : Annuaire interactif',
-            ],
-        },
-        {
-            id: 5,
-            title: 'Vers le niveau Héro',
-            lessons: [
-                'Gestion des erreurs (Try/Except)',
-                'Manipulation des modules et packages',
-                'Web Scraping ou Automatisation',
-                'Examen final et Certification',
-            ],
-        },
-    ];
 
     return (
         <div className="curriculum-sidebar-container">
             <h2 className="sidebar-title">Parcours Python</h2>
 
             <div className="modules-list">
-                {modules.map((module) => (
+                {modules.map((module: any, index: number) => (
                     <div
                         key={module.id}
                         className={`module-item ${activeModule === module.id ? 'is-open' : ''}`}
@@ -77,7 +38,7 @@ export default function CourseCurriculum() {
                         >
                             <div className="module-info">
                                 <span className="module-number">
-                                    0{module.id}
+                                    {String(index + 1).padStart(2, '0')}
                                 </span>
                                 <span className="module-title">
                                     {module.title}
@@ -91,7 +52,7 @@ export default function CourseCurriculum() {
                         </button>
 
                         <div className="lessons-dropdown">
-                            {module.lessons.map((lesson, index) => (
+                            {module.lessons.map((lesson: any, index: string) => (
                                 <div key={index} className="lesson-link">
                                     <span className="material-symbols-outlined">
                                         {lesson.includes('Exercice') ||

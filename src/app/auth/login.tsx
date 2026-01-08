@@ -58,15 +58,15 @@ export default function LoginForm() {
                             className="auth-form"
                         >
                             <div className="input-group">
-                                <label>Nom complet</label>
+                                <label>Email</label>
                                 <div className="input-wrapper">
                                     <input
-                                        type="text"
+                                        type="email"
                                         value={email}
                                         onChange={(e) =>
                                             setEmail(e.target.value)
                                         }
-                                        placeholder="Luckson premier"
+                                        placeholder="example@gmail.com"
                                     />
                                     <User size={18} className="field-icon" />
                                 </div>

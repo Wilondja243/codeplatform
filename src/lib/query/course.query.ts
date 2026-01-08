@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { course, feature } from '../services/course.service';
+import { course, feature, module } from '../services/course.service';
 
 
 export function useCourseQuery() {
@@ -13,5 +13,12 @@ export function useFeatureQuery() {
     return useQuery({
         queryKey: ['features', 'all'],
         queryFn: async () => await feature(),
+    });
+}
+
+export function useModuleQuery() {
+    return useQuery({
+        queryKey: ['modules', 'all'],
+        queryFn: async () => await module(),
     });
 }
