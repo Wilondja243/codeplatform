@@ -13,10 +13,9 @@ import './stylesheet/form.css';
 import Explore from './app/page/explore';
 import PathCourse from './app/page/course-path';
 import FromZero from './app/page/from-zero';
-import Formation from './app/page/formation';
+import Formation from './app/page/learning-center';
 import Register from './app/auth/register';
 import LoginForm from './app/auth/login';
-
 
 function App() {
     return (

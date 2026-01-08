@@ -19,7 +19,6 @@
 
 /* Lesson */
 .lesson-content {
-    padding: 4em 20px;
 }
 
 .course-header-page {
@@ -489,7 +488,6 @@
 .course-container h2:last-of-type {
     margin-top: 48px;
 }
-
 
 /*======== COURSE NAVIGATION ========*/
 

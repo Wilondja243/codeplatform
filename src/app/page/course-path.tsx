@@ -4,7 +4,6 @@ import LearningPath from '../../lib/section/learning-path';
 import { useUserMeQuery } from '../../lib/query/user.query';
 import CourseNavigation from '../../components/ui/CourseNavigation';
 
-
 export default function PathCourse() {
     const navigate = useNavigate();
     const { data: me, isLoading } = useUserMeQuery();
@@ -19,8 +18,12 @@ export default function PathCourse() {
                 <main className="wrapper">
                     <LearningPath />
                     <CourseNavigation
-                        onNext={()=> navigate("/formation/apprendre-python-pour-debutant")}
-                        nextLabel='Commencer le cours'
+                        onNext={() =>
+                            navigate(
+                                '/formation/apprendre-python-pour-debutant',
+                            )
+                        }
+                        nextLabel="Commencer le cours"
                     />
                 </main>
             ) : (

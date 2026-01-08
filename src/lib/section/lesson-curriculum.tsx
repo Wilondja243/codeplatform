@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 
-
 export default function CourseCurriculum() {
     const [activeModule, setActiveModule] = useState<number | null>(1);
 
@@ -12,12 +11,10 @@ export default function CourseCurriculum() {
     const modules = [
         {
             id: 1,
-            titre: "Installation",
-            lesson: [
-                "premiere étape"
-            ]
-        }
-    ]
+            titre: 'Installation',
+            lesson: ['premiere étape'],
+        },
+    ];
 
     return (
         <div className="curriculum-sidebar-container">

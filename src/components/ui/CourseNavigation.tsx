@@ -17,7 +17,7 @@ export default function CourseNavigation({
         <div
             className="course-navigation"
             style={{
-                justifyContent: onNext && 'end'
+                justifyContent: onNext && 'end',
             }}
         >
             {prevLabel && (
@@ -39,7 +39,6 @@ export default function CourseNavigation({
                     {nextLabel} →
                 </button>
             )}
-            
         </div>
     );
 }

@@ -232,8 +232,19 @@ export default function Course2() {
                 <h2 className="course-section-title">7. Utiliser if et else</h2>
 
                 <p className="course-paragraph">
-                    Si la condition n’est pas vraie, on peut utiliser{' '}
-                    <code>else</code>.
+                    Parfois, la condition que l’on vérifie avec <code>if</code> peut ne pas être vraie. 
+                    Dans ce cas, Python ne fera rien si on n’ajoute rien d’autre.  
+                    C’est là qu’intervient <code>else</code>.
+                </p>
+
+                <p className="course-paragraph">
+                    Le mot <code>else</code> signifie « sinon ». Il permet de dire à Python : 
+                    <em>« si la condition n’est pas vraie, fais ceci à la place »</em>.
+                </p>
+
+                <p className="course-paragraph">
+                    Cela rend notre programme capable de prendre des décisions et de réagir 
+                    correctement dans tous les cas.
                 </p>
 
                 <div className="highlight-command">

@@ -28,9 +28,9 @@ export default function navBar() {
             <div className="navbar-container wrapper">
                 <nav className="navbar-nav">
                     <Link to="/explore">Explorer</Link>
-                    <Link to="/paths">Roadmaps</Link>
-                    <Link to="/method">Méthodologie</Link>
-                    <Link to="/testimonials">Succès</Link>
+                    <Link to="#">Roadmaps</Link>
+                    <Link to="#">Méthodologie</Link>
+                    <Link to="#">Succès</Link>
                 </nav>
 
                 {/* <div className="navbar-actions">
