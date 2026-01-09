@@ -1,7 +1,7 @@
 import Footer from '../../lib/header/footer';
 import NavBar from '../../lib/header/nav-bar';
 import Course from '../../lib/section/course';
-import { Start } from '../../lib/section/start';
+import { Start } from '../../components/start';
 
 import { useUserMeQuery } from '../../lib/query/user.query';
 

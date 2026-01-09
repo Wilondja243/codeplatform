@@ -47,7 +47,7 @@ export default function LoginForm() {
                 <div className="auth-container wrapper">
                     <div className="auth-card">
                         <div className="auth-header">
-                            <h2>Rejoindre codePlatform</h2>
+                            <h2>Connectez toi avec codePlatform</h2>
                             <p>
                                 Commencez votre voyage de Zéro à Héro
                                 aujourd'hui.

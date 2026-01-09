@@ -1,17 +1,18 @@
+import MarkdownRenderer from '../../hooks/use-markdown';
 import { cleanCode, highlightPython } from '../../utils/clean-code';
 
-const rawCode = cleanCode(`
-        class Student:
-            def __init__(self, name, course):
-                self.name = name
-                self.course = course
+const rawCode = `
+class Student:
+    def __init__(self, name, course):
+        self.name = name
+        self.course = course
 
-            def introduce(self):
-                return f"Hi, I'm {self.name} learning {self.course}"
+    def introduce(self):
+        return f"I m {self.name} learning {self.course}"
 
-        student = Student("Alex", "Python")
-        print(student.introduce())
-`);
+student = Student("Alex", "Python")
+print(student.introduce())
+`;
 
 const highlighted = highlightPython(rawCode);
 
@@ -76,11 +77,17 @@ export default function Hero() {
                         <span className="terminal-title">python main.py</span>
                     </div>
 
-                    <pre className="terminal-body">
+                    <pre
+                        className="terminal-body"
+                        // style={{ overflow: 'hidden' }}
+                    >
                         <code
                             dangerouslySetInnerHTML={{ __html: highlighted }}
                         />
+
+                        {/* <MarkdownRenderer content={rawCode} /> */}
                     </pre>
+
                 </div>
             </div>
         </section>
