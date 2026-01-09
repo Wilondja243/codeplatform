@@ -1,5 +1,6 @@
 import Course1 from '../app/tempo/phase1';
 import Course2 from '../app/tempo/phase2';
+import Course3 from '../app/tempo/phase3';
 
 export const courses = [
     {
@@ -29,6 +30,20 @@ export const courses = [
             'Les conditions : prendre une décision',
             'Utiliser if et else',
             'Exemple complet',
+            'Conclusion',
+        ],
+    },
+    {
+        id: 3,
+        title: 'Conditions avancées : comparaisons et logique',
+        component: Course3,
+        sections: [
+            'Rappel : les conditions simples',
+            'Opérations de comparaison',
+            'Opérations logiques : combiner plusieurs conditions',
+            'Utiliser elif pour plusieurs choix',
+            'Exemples pratiques combinant tout',
+            'Mini-exercices pour pratiquer',
             'Conclusion',
         ],
     },

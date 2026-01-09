@@ -87,7 +87,6 @@ export default function Hero() {
 
                         {/* <MarkdownRenderer content={rawCode} /> */}
                     </pre>
-
                 </div>
             </div>
         </section>

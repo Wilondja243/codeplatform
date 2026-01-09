@@ -1,4 +1,3 @@
-
 export const CourseSkeleton = () => (
     <div className="course-card skeleton-card">
         <div className="course-body">

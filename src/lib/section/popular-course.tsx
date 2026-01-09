@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { useCourseQuery } from '../query/course.query';
 import { CourseSkeleton } from '../../components/course-skelleton';
 
-
 export default function PopularCourses() {
     const { data, isLoading, isError, error } = useCourseQuery();
 
@@ -30,36 +29,40 @@ export default function PopularCourses() {
                 </div>
 
                 <div className="courses-grid">
-                    {isLoading ? (
-                        skeletons.map((_, index) => <CourseSkeleton key={index} />)
-                    ) : (
-                        data.map((course: any) => (
-                            <div key={course.id} className="course-card">
-                                <div className="course-body">
-                                    <div
-                                        className={`course-icon text-${course.gradient}-500`}
-                                    >
-                                        <span className="material-symbols-outlined">
-                                            {course.icon}
-                                        </span>
-                                    </div>
-                                    <small className="formation">Formation</small>
-                                    <h3 className="course-title">{course.title}</h3>
-                                    <p className="course-desc">
-                                        {course.description}
-                                    </p>
-                                    <div className="course-footer">
-                                        <a
-                                            href={course.link}
-                                            className="btn-secondary"
-                                        >
-                                            Voir les détails
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        ))
-                    )}
+                    {isLoading
+                        ? skeletons.map((_, index) => (
+                              <CourseSkeleton key={index} />
+                          ))
+                        : data.map((course: any) => (
+                              <div key={course.id} className="course-card">
+                                  <div className="course-body">
+                                      <div
+                                          className={`course-icon text-${course.gradient}-500`}
+                                      >
+                                          <span className="material-symbols-outlined">
+                                              {course.icon}
+                                          </span>
+                                      </div>
+                                      <small className="formation">
+                                          Formation
+                                      </small>
+                                      <h3 className="course-title">
+                                          {course.title}
+                                      </h3>
+                                      <p className="course-desc">
+                                          {course.description}
+                                      </p>
+                                      <div className="course-footer">
+                                          <a
+                                              href={course.link}
+                                              className="btn-secondary"
+                                          >
+                                              Voir les détails
+                                          </a>
+                                      </div>
+                                  </div>
+                              </div>
+                          ))}
                 </div>
             </div>
         </section>
