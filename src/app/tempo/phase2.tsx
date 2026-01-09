@@ -229,6 +229,122 @@ export default function Course2() {
                     le message est affiché.
                 </p>
 
+                <h2 className="course-section-title">
+                    9. Indentation et blocs de code en Python
+                </h2>
+
+                <p className="course-paragraph">
+                    Avant d'aller plus loin avec les conditions, il est très
+                    important de comprendre deux notions fondamentales en Python
+                    : l’indentation et les blocs de code. Ces notions sont
+                    obligatoires, car Python s’appuie entièrement sur elles pour
+                    comprendre la structure d’un programme.
+                </p>
+
+                <p className="course-paragraph">
+                    Un bloc de code est un ensemble de lignes qui doivent être
+                    exécutées ensemble. En Python, lorsqu’on écrit une condition
+                    avec <code>if</code>, le programme doit savoir quelles
+                    instructions dépendent de cette condition.
+                </p>
+
+                <p className="course-paragraph">
+                    Contrairement à d’autres langages de programmation, Python
+                    n’utilise pas de symboles spéciaux comme des accolades. À la
+                    place, il utilise l’indentation, c’est-à-dire les espaces
+                    placés au début des lignes.
+                </p>
+
+                <p className="course-paragraph">
+                    L’indentation consiste à décaler une ou plusieurs lignes
+                    vers la droite. Toutes les lignes ayant la même indentation
+                    font partie du même bloc de code. Cela signifie que les
+                    espaces à gauche ne sont pas décoratifs : ils ont une
+                    signification très importante.
+                </p>
+
+                <div className="highlight-command">
+                    age = 12
+                    <br />
+                    <br />
+                    if age &gt;= 10:
+                    <br />
+                    &nbsp;&nbsp;print("Tu peux suivre la formation")
+                </div>
+
+                <p className="course-paragraph">
+                    Dans cet exemple, la ligne <code>print()</code> est
+                    indentée. Cela indique à Python que cette instruction fait
+                    partie du bloc du <code>if</code>. Si la condition est
+                    vraie, toutes les lignes indentées seront exécutées.
+                </p>
+
+                <p className="course-paragraph">
+                    Si l’on oublie l’indentation ou si elle est incorrecte,
+                    Python ne saura pas interpréter le programme et affichera
+                    une erreur appelée
+                    <strong> IndentationError</strong>.
+                </p>
+
+                <div className="highlight-command">
+                    age = 12
+                    <br />
+                    <br />
+                    if age &gt;= 10:
+                    <br />
+                    print("Tu peux suivre la formation")
+                </div>
+
+                <p className="course-paragraph">
+                    Dans ce cas, la ligne <code>print()</code> n’est pas
+                    indentée. Python ne comprend donc pas qu’elle doit être
+                    exécutée uniquement si la condition est vraie, ce qui
+                    provoque une erreur.
+                </p>
+
+                <p className="course-paragraph">
+                    Un bloc de code se termine automatiquement lorsque l’on
+                    revient à l’indentation normale, c’est-à-dire lorsque l’on
+                    commence une ligne sans espace au début.
+                </p>
+
+                <div className="highlight-command">
+                    age = 12
+                    <br />
+                    <br />
+                    if age &gt;= 10:
+                    <br />
+                    &nbsp;&nbsp;print("Accès autorisé")
+                    <br />
+                    &nbsp;&nbsp;print("Bienvenue")
+                    <br />
+                    <br />
+                    print("Fin du programme")
+                </div>
+
+                <p className="course-paragraph">
+                    Ici, les deux premières lignes indentées appartiennent au
+                    bloc du
+                    <code>if</code>. La dernière ligne n’est plus indentée, elle
+                    sera donc exécutée dans tous les cas, que la condition soit
+                    vraie ou fausse.
+                </p>
+
+                <p className="course-paragraph">
+                    Cette règle d’indentation s’applique également lorsque l’on
+                    utilise
+                    <code>else</code>. Chaque bloc doit être correctement
+                    indenté pour que Python puisse distinguer les différentes
+                    parties du programme.
+                </p>
+
+                <p className="course-paragraph">
+                    Il est très important de retenir que sans une bonne
+                    indentation, les conditions, les boucles et même les
+                    fonctions ne fonctionneront pas correctement. En Python,
+                    l’indentation fait partie du langage.
+                </p>
+
                 <h2 className="course-section-title">7. Utiliser if et else</h2>
 
                 <p className="course-paragraph">

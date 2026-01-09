@@ -10,9 +10,8 @@ export default function Course3() {
                 Dans le cours précédent, nous avons appris les bases des
                 conditions avec <code>if</code> et <code>else</code>.
                 Maintenant, nous allons aller plus loin et apprendre à prendre
-                des décisions plus complexes dans nos programmes.
-                
-                Vous verrez comment combiner plusieurs critères et gérer différentes
+                des décisions plus complexes dans nos programmes. Vous verrez
+                comment combiner plusieurs critères et gérer différentes
                 situations avec Python. Ces notions sont essentielles pour
                 écrire des programmes intelligents et flexibles.
             </p>
@@ -52,7 +51,6 @@ export default function Course3() {
                 <code>False</code> (faux). Voici les plus importantes :{' '}
                 <code>==</code>, <code>!=</code>, <code>&lt;</code>,{' '}
                 <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>.
-
                 Chaque opération permet de tester une condition différente, par
                 exemple l’égalité, l’inégalité ou la grandeur d’un nombre. Elles
                 sont indispensables pour que votre programme prenne des
@@ -78,9 +76,8 @@ export default function Course3() {
             <p className="course-paragraph">
                 Ces comparaisons permettent à Python de savoir si une condition
                 est remplie. Vous pouvez ensuite utiliser ces résultats dans vos{' '}
-                <code>if</code> pour décider quoi faire.
-                
-                Par exemple, vérifier si un utilisateur est assez âgé ou si son score est suffisant.
+                <code>if</code> pour décider quoi faire. Par exemple, vérifier
+                si un utilisateur est assez âgé ou si son score est suffisant.
                 Cela rend vos programmes interactifs et intelligents.
             </p>
 
@@ -102,7 +99,6 @@ export default function Course3() {
                 Avec ces opérateurs, vous pouvez créer des règles complexes pour
                 votre programme. Par exemple, vérifier si un utilisateur peut
                 suivre un cours en fonction de son âge et du paiement effectué.
-
                 Cela rend votre programme capable de prendre des décisions très
                 précises. Sans logique, un programme ne pourrait pas gérer
                 plusieurs critères simultanément.
@@ -131,14 +127,11 @@ export default function Course3() {
                 Quand vous avez plus de deux options, il ne suffit pas
                 d’utiliser <code>if</code> et <code>else</code>. Python propose{' '}
                 <code>elif</code> (else if) pour vérifier d’autres conditions si
-                la première n’est pas vraie.
-                
-                Cela permet de créer plusieurs
+                la première n’est pas vraie. Cela permet de créer plusieurs
                 branches dans votre programme et de gérer tous les cas
                 possibles. C’est très pratique pour classer des scores, donner
-                des messages différents ou prendre des décisions complexes.
-
-                par exemple:
+                des messages différents ou prendre des décisions complexes. par
+                exemple:
             </p>
 
             <div className="highlight-command">
@@ -204,9 +197,7 @@ export default function Course3() {
                 Ici, Python combine deux conditions avec <code>or</code>. Si au
                 moins une des conditions est vraie, l’utilisateur peut
                 participer. Sinon, il reçoit un message lui indiquant qu’il ne
-                peut pas participer.
-                
-                Ce type de décision est très courant dans
+                peut pas participer. Ce type de décision est très courant dans
                 la vie réelle et montre comment Python peut simuler des règles
                 complexes.
             </p>
@@ -237,12 +228,9 @@ export default function Course3() {
                 <code>or</code>, <code>not</code>, et gérer plusieurs choix avec{' '}
                 <code>elif</code> et <code>else</code>. Ces notions permettent
                 de créer des programmes beaucoup plus puissants et flexibles.
-
                 Grâce à ces outils, vous pouvez écrire des programmes capables
                 de prendre des décisions complexes en fonction de plusieurs
-                critères.
-                
-                La prochaine étape sera d’apprendre les boucles pour
+                critères. La prochaine étape sera d’apprendre les boucles pour
                 répéter des actions automatiquement.
             </p>
         </div>
