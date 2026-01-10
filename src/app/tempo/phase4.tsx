@@ -333,7 +333,7 @@ export default function Course4() {
             </p>
 
             <h2 className="course-section-title">
-                5. Exercices pratiques : boucles avec contrôle
+                5. Exercices pratiques
             </h2>
 
             <p className="course-paragraph">
@@ -343,7 +343,7 @@ export default function Course4() {
                 avant de regarder les solutions.
             </p>
 
-            <ol className="course-list">
+            <ul className="course-list">
                 <li>
                     <strong>Compteur inversé :</strong>
                     Écrivez une boucle <code>while</code> qui compte de 10 à 1
@@ -363,7 +363,7 @@ export default function Course4() {
                     <code>break</code> pour sortir de la boucle quand il trouve
                     le bon nombre.
                 </li>
-            </ol>
+            </ul>
 
             <p className="course-paragraph">
                 Astuce : Essayez chaque exercice plusieurs fois et modifiez
