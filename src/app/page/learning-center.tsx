@@ -11,7 +11,7 @@ export default function Formation() {
     const { data: me, isLoading } = useUserMeQuery();
     const [currentIndex, setCurrentIndex] = useState(0);
     const currentCourse = courses[currentIndex];
-    const CourseComponent = currentCourse.component;
+    const CourseComponent = currentCourse.component as React.FC;
 
     return (
         <div>

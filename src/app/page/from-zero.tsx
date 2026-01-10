@@ -4,6 +4,7 @@ import Course from '../../lib/section/course';
 import { Start } from '../../components/start';
 
 import { useUserMeQuery } from '../../lib/query/user.query';
+import { StartSkeleton } from '../../components/start-skeletton';
 
 export default function FromZero() {
     const { data: me, isLoading } = useUserMeQuery();
@@ -18,7 +19,9 @@ export default function FromZero() {
                     <Course />
                 </div>
 
-                {!isLoading && me ? (
+                {isLoading ? (
+                    <StartSkeleton isLoading />
+                ) : me ? (
                     <Start
                         title="Commencer la formation"
                         description="Cliquez pour débuter le cours et suivre votre progression pas à pas."

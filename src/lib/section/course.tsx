@@ -61,7 +61,7 @@ export default function Course() {
                         </div>
                     </div>
 
-                    <div className="course-preview-card">
+                    {/* <div className="course-preview-card">
                         <div className="video-placeholder">
                             <span className="material-symbols-outlined">
                                 play_circle
@@ -69,7 +69,7 @@ export default function Course() {
                             <p>L'aperçu est indisponible pour le moment</p>
                             <p>Nous sommes vraiment désolé</p>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
