@@ -46,7 +46,7 @@ export default function HowItWorks() {
                         </div>
                     </div>
 
-                    <div className="step">
+                    {/* <div className="step">
                         <div className="step-number">4</div>
                         <div className="step-content">
                             <h3>Obtenir une certification</h3>
@@ -55,7 +55,7 @@ export default function HowItWorks() {
                                 compétences auprès des employeurs.
                             </p>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </section>

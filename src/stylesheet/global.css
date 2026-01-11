@@ -12,14 +12,15 @@
     --primary: #f59e0b;
     --primary-light: #fbbf24;
     --primary-dark: #d97706;
+    --blue: #0062e2;
 
     --background-light: #ffffff;
-    --background-muted: #eeeeeefd;
+    --background-muted: #fcfcfcfd;
     --background-dark: #0f1117;
 
     /* light */
     --card-light: #ffffff;
-    --card-light-hover: #fcfcfc;
+    --card-light-hover: #f5f5f5;
     --card-light-border: #e5e7eb;
 
     /* dark */
@@ -35,7 +36,7 @@
     --text-muted: #686767;
     --text-dark: #22272eea;
 
-    --radius: 35px;
+    --radius: 8px;
 }
 
 @font-face {
@@ -96,6 +97,13 @@ li {
     font-optical-sizing: auto;
     color: var(--bs-text);
     word-wrap: break-word;
+}
+
+.btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
 }
 
 .btn {

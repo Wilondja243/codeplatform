@@ -8,9 +8,11 @@ import Router from './app/router';
 
 import './stylesheet/App.css';
 import './stylesheet/style.css';
+import './stylesheet/roadmap.css';
 import './stylesheet/form.css';
 
 import Explore from './app/page/explore';
+import Roadmap from './app/page/roadmap';
 import PathCourse from './app/page/course-path';
 import FromZero from './app/page/from-zero';
 import Formation from './app/page/learning-center';
@@ -26,6 +28,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Router />} />
                     <Route path="/explore" element={<Explore />} />
+                    <Route path="roadmap/" element={<Roadmap />} />
                     <Route path="/start/:id" element={<FromZero />} />
                     <Route path="/apprentissage/:id" element={<PathCourse />} />
                     <Route path="/formation/:id" element={<Formation />} />

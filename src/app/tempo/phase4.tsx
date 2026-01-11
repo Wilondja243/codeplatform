@@ -332,9 +332,7 @@ export default function Course4() {
                 cas particuliers sans interrompre toute la boucle.
             </p>
 
-            <h2 className="course-section-title">
-                5. Exercices pratiques
-            </h2>
+            <h2 className="course-section-title">5. Exercices pratiques</h2>
 
             <p className="course-paragraph">
                 Ces exercices vont vous permettre de manipuler les boucles,
@@ -366,8 +364,8 @@ export default function Course4() {
             </ul>
 
             <p className="course-paragraph">
-                Astuce : Essayez chaque exercice plusieurs fois et modifiez
-                les conditions pour observer comment <code>break</code>,{' '}
+                Astuce : Essayez chaque exercice plusieurs fois et modifiez les
+                conditions pour observer comment <code>break</code>,{' '}
                 <code>continue</code> et <code>pass</code> affectent la boucle.
                 Cela vous aidera à vraiment comprendre le flux de contrôle.
             </p>

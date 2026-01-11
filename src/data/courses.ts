@@ -2,6 +2,7 @@ import Course1 from '../app/tempo/phase1';
 import Course2 from '../app/tempo/phase2';
 import Course3 from '../app/tempo/phase3';
 import Course4 from '../app/tempo/phase4';
+import Course5 from '../app/tempo/phase5';
 
 export type CourseSection = {
     id: string;
@@ -153,6 +154,22 @@ export const courses = [
                     'Conseils pour écrire un code propre',
                 ],
             },
+        ],
+    },
+    {
+        id: 5,
+        title: 'Les fonctions en Python : organiser et réutiliser son code',
+        component: Course5,
+        sections: [
+            'Qu’est-ce qu’une fonction en programmation',
+            'Les fonctions prédéfinies de Python',
+            'Créer sa première fonction avec def',
+            'Les paramètres : transmettre des informations à une fonction',
+            'Fonctions avec plusieurs paramètres',
+            'Différence entre print() et return',
+            'Stocker le résultat d’une fonction dans une variable',
+            'Exemples pratiques complets',
+            'Résumé et points clés à retenir',
         ],
     },
 ];
