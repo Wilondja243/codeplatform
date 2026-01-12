@@ -31,7 +31,28 @@ const useNotification = () => {
         });
     };
 
-    return { notifySuccess, notifyError };
+    const notifyInfo = (message: string) => {
+        toast.info(message, {
+            position: 'top-right',
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            style: {
+                borderRadius: '8px',
+                background: '#faedcd',
+                color: '#f59e0b',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                padding: '12px 16px',
+                fontWeight: 500,
+                fontSize: '0.95rem',
+                minWidth: '300px',
+            },
+        });
+    };
+
+    return { notifySuccess, notifyError, notifyInfo };
 };
 
 export default useNotification;

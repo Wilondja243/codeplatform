@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
-import { User, Mail, Lock, ArrowRight } from 'lucide-react';
+import { User, Mail, Lock, ArrowRight, Unlock } from 'lucide-react';
 import { useSigninValidation } from '../../utils/signin-validation';
 import useSigninQuery from '../../lib/query/signing.query';
 
@@ -14,6 +14,8 @@ export default function RegisterForm() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
     const formSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -83,12 +85,17 @@ export default function RegisterForm() {
                         <label>Mot de passe</label>
                         <div className="input-wrapper">
                             <input
-                                type="password"
+                                type={isPasswordVisible ? "text" : "password"}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="••••••••"
                             />
-                            <Lock size={18} className="field-icon" />
+                            {isPasswordVisible ? (
+                                <Unlock size={18} onClick={()=> setIsPasswordVisible(p => !p)} className="field-icon cursor-pointer" />
+                            ):(
+                                <Lock size={18} onClick={()=> setIsPasswordVisible(p => !p)} className='field-icon cursor-pointer' />
+                            )}
+                            
                         </div>
                         {errors.password && (
                             <p className="error">{errors.password}</p>

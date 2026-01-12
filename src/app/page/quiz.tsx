@@ -1,15 +1,14 @@
 import NavBar from '../../features/shared/nav-bar';
 import Footer from '../../features/shared/footer';
-import RegisterForm from './signup';
+import Quiz1 from '../../features/quiz/quiz1';
 
-export default function Register() {
+export default function Quiz() {
     return (
         <div>
             <header>
                 <NavBar />
             </header>
             <main>
-                <RegisterForm />
                 <Footer />
             </main>
         </div>

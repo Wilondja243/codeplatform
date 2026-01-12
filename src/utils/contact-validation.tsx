@@ -1,18 +1,23 @@
 import { useState } from 'react';
 
 type ContactProps = {
+    title: string;
     email: string;
-    password: string;
+    description: string;
 };
 
 type LoginPartialProps = Partial<ContactProps>;
 
-export default function useLoginValidation() {
+export default function useContactValidation() {
     const [errors, setErrors] = useState<LoginPartialProps>({});
 
-    const handleSubmit = ({ email, password }: ContactProps) => {
+    const handleSubmit = ({ title, email, description }: ContactProps) => {
         const newErrors: typeof errors = {};
         const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!title) {
+            newErrors.title = 'Le champ titre est réquis.';
+        }
 
         if (!email) {
             newErrors.email = 'Le champ email est réquis.';
@@ -20,8 +25,8 @@ export default function useLoginValidation() {
             newErrors.email = "L'adresse email n'est pas valide.";
         }
 
-        if (!password) {
-            newErrors.password = 'Le champ mot de passe est réquis.';
+        if (!description) {
+            newErrors.description = 'Le champ mot de passe est réquis.';
         }
 
         setErrors(newErrors);

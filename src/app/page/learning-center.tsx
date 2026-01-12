@@ -1,11 +1,13 @@
 import { Navigate } from 'react-router-dom';
 import { useState } from 'react';
-import NavBar from '../../lib/header/nav-bar';
+import NavBar from '../../features/shared/nav-bar';
 import { ClipLoader } from 'react-spinners';
 import CourseNavigation from '../../components/ui/CourseNavigation';
 import CurriculumSidebar from '../../components/curriculum-sidebar';
 import { courses } from '../../data/courses';
 import { useUserMeQuery } from '../../lib/query/user.query';
+import LessonFeedback from '../../components/lesson-feadback';
+import Quiz from '../../features/quiz/quiz1';
 
 export default function Formation() {
     const { data: me, isLoading } = useUserMeQuery();
@@ -43,6 +45,8 @@ export default function Formation() {
 
                         <div className="lesson-content">
                             <CourseComponent />
+                            <LessonFeedback />
+                            <Quiz />
 
                             <CourseNavigation
                                 prevLabel={

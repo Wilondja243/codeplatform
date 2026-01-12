@@ -1,5 +1,5 @@
-import { useCourseQuery } from '../../../lib/query/course.query';
-import { CourseSkeleton } from '../../../components/course-skelleton';
+import { useCourseQuery } from '../../lib/query/course.query';
+import { CourseSkeleton } from '../../components/course-skelleton';
 
 export default function FeatureRoadmaps() {
     const { data, isLoading, isError, error } = useCourseQuery();

@@ -1,5 +1,5 @@
-import Footer from '../../lib/header/footer';
-import NavBar from '../../lib/header/nav-bar';
+import Footer from '../../features/shared/footer';
+import NavBar from '../../features/shared/nav-bar';
 import Course from '../../lib/section/course';
 import { Start } from '../../components/start';
 

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { User, Lock, ArrowRight } from 'lucide-react';
+import { Mail, Lock, ArrowRight, Unlock } from 'lucide-react';
 import { ClipLoader } from 'react-spinners';
 import { useNavigate } from 'react-router-dom';
 import useLoginValidation from '../../utils/login-validation';
 import useLoginQuery from '../../lib/query/login.query';
-import NavBar from '../../lib/header/nav-bar';
-import Footer from '../../lib/header/footer';
+import NavBar from '../../features/shared/nav-bar';
+import Footer from '../../features/shared/footer';
 
 export default function LoginForm() {
     const navigate = useNavigate();
@@ -14,6 +14,8 @@ export default function LoginForm() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
     const formSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -70,7 +72,7 @@ export default function LoginForm() {
                                         }
                                         placeholder="example@gmail.com"
                                     />
-                                    <User size={18} className="field-icon" />
+                                    <Mail size={18} className="field-icon" />
                                 </div>
                                 {errors.email && (
                                     <p className="error">{errors.email}</p>
@@ -80,14 +82,19 @@ export default function LoginForm() {
                                 <label>Mot de passe</label>
                                 <div className="input-wrapper">
                                     <input
-                                        type="password"
+                                        type={isPasswordVisible ? 'text' : 'password'}
                                         value={password}
                                         onChange={(e) =>
                                             setPassword(e.target.value)
                                         }
                                         placeholder="••••••••"
                                     />
-                                    <Lock size={18} className="field-icon" />
+                                    {isPasswordVisible ? (
+                                        <Unlock size={18} onClick={()=> setIsPasswordVisible(p => !p)} className='field-icon cursor-pointer' />
+                                    ):(
+                                        <Lock size={18} onClick={()=> setIsPasswordVisible(p => !p)} className="field-icon cursor-pointer" />
+                                    )}
+                                    
                                 </div>
                                 {errors.password && (
                                     <p className="error">{errors.password}</p>

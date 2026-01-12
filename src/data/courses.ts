@@ -1,8 +1,8 @@
-import Course1 from '../app/tempo/phase1';
-import Course2 from '../app/tempo/phase2';
-import Course3 from '../app/tempo/phase3';
-import Course4 from '../app/tempo/phase4';
-import Course5 from '../app/tempo/phase5';
+import Course1 from '../features/tempo/phase1';
+import Course2 from '../features/tempo/phase2';
+import Course3 from '../features/tempo/phase3';
+import Course4 from '../features/tempo/phase4';
+import Course5 from '../features/tempo/phase5';
 
 export type CourseSection = {
     id: string;

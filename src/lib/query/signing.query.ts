@@ -37,7 +37,7 @@ export default function useSigninQuery() {
                     });
 
                 if (msg.length > 0) {
-                    notifyError(msg[0]); // le premier message d'erreur
+                    notifyError(msg[0]);
                 } else {
                     notifyError('Une erreur de validation est survenue.');
                 }

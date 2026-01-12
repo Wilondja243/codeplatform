@@ -1,5 +1,5 @@
 import { Navigate, useNavigate } from 'react-router-dom';
-import NavBar from '../../lib/header/nav-bar';
+import NavBar from '../../features/shared/nav-bar';
 import LearningPath from '../../lib/section/learning-path';
 import { useUserMeQuery } from '../../lib/query/user.query';
 import CourseNavigation from '../../components/ui/CourseNavigation';

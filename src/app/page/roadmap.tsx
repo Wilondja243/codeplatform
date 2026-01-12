@@ -1,8 +1,8 @@
-import NavBar from '../../lib/header/nav-bar';
-import Footer from '../../lib/header/footer';
-import RoadmapHero from './roadmaps/roadmap-hero';
-import FeatureRoadmap from './roadmaps/features-roadmap';
-import RoadmapStep from './roadmaps/roadmap-stet';
+import NavBar from '../../features/shared/nav-bar';
+import Footer from '../../features/shared/footer';
+import RoadmapHero from '../../features/roadmap/roadmap-hero';
+import FeatureRoadmap from '../../features/roadmap/features-roadmap';
+import RoadmapStep from '../../features/roadmap/roadmap-stet';
 
 export default function Roadmap() {
     return (

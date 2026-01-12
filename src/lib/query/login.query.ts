@@ -25,10 +25,8 @@ export default function useLoginQuery() {
 
             const { status, data } = e?.response;
 
-            console.log('response_message', data?.response_message);
-
-            if (status === 400 && data?.response_message) {
-                const msg = Object.values(data.response_message)
+            if (status === 400) {
+                const msg = Object.values(data)
                     .flat()
                     .map((err: any) => {
                         if (typeof err === 'string') return err;
