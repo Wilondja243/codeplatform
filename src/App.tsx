@@ -18,9 +18,12 @@ import FromZero from './app/page/from-zero';
 import Formation from './app/page/learning-center';
 import Contact from './app/page/contact';
 import Quiz from './app/page/quiz';
+import WebDev from './app/page/web-developement';
+import WebLearning from './app/page/web-learning';
 
 import Register from './app/auth/register';
 import LoginForm from './app/auth/login';
+
 
 function App() {
     return (
@@ -36,7 +39,11 @@ function App() {
                     <Route path="/apprentissage/:id" element={<PathCourse />} />
                     <Route path="/formation/:id" element={<Formation />} />
                     <Route path="formation/:id/quiz/" element={<Quiz />} />
+                    
                     <Route path="/contact" element={<Contact />} />
+
+                    <Route path="/start-web/:id" element={<WebDev/>} />
+                    <Route path="/formation-web/:id" element={<WebLearning />} />
 
                     <Route path="/login" element={<LoginForm />} />
                     <Route path="/register" element={<Register />} />

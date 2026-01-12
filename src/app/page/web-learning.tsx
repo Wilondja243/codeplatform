@@ -4,15 +4,14 @@ import NavBar from '../../features/shared/nav-bar';
 import { ClipLoader } from 'react-spinners';
 import CourseNavigation from '../../components/ui/CourseNavigation';
 import CurriculumSidebar from '../../components/curriculum-sidebar';
-import { courses } from '../../data/courses';
+import { htmlCourses } from '../../data/html-course';
 import { useUserMeQuery } from '../../lib/query/user.query';
-import LessonFeedback from '../../components/lesson-feadback';
-import Quiz from '../../features/quiz/quiz1';
 
-export default function Formation() {
+
+export default function WebLearning() {
     const { data: me, isLoading } = useUserMeQuery();
     const [currentIndex, setCurrentIndex] = useState(0);
-    const currentCourse = courses[currentIndex];
+    const currentCourse = htmlCourses[currentIndex];
     const CourseComponent = currentCourse.component as React.FC;
 
     return (
@@ -51,12 +50,12 @@ export default function Formation() {
                             <CourseNavigation
                                 prevLabel={
                                     currentIndex > 0
-                                        ? courses[currentIndex - 1].title
+                                        ? htmlCourses[currentIndex - 1].title
                                         : ''
                                 }
                                 nextLabel={
-                                    currentIndex < courses.length - 1
-                                        ? courses[currentIndex + 1].title
+                                    currentIndex < htmlCourses.length - 1
+                                        ? htmlCourses[currentIndex + 1].title
                                         : ''
                                 }
                                 onPrev={() =>
@@ -66,7 +65,7 @@ export default function Formation() {
                                 }
                                 onNext={() =>
                                     setCurrentIndex((prev) =>
-                                        Math.min(prev + 1, courses.length - 1),
+                                        Math.min(prev + 1, htmlCourses.length - 1),
                                     )
                                 }
                             />

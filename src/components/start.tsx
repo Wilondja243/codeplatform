@@ -6,6 +6,7 @@ interface StartProps {
     register?: string;
     connexion?: string;
     start_course?: string;
+    path?: string;
 }
 
 export function Start({
@@ -14,6 +15,7 @@ export function Start({
     register,
     connexion,
     start_course,
+    path,
 }: StartProps) {
     return (
         <section className="start-section" aria-labelledby="start-title">
@@ -30,7 +32,7 @@ export function Start({
                     <div className="start-actions">
                         {start_course ? (
                             <Link
-                                to={`/apprentissage/python`}
+                                to={`${path}`}
                                 className="btn btn-primary"
                             >
                                 <span className="material-symbols-outlined">

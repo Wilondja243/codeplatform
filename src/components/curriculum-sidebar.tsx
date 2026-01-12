@@ -14,7 +14,6 @@ export default function CurriculumSidebar({
             <h3>Plan du cours</h3>
             <div className="modules-list">
                 {sections.map((section, idx) => {
-                    // Si c'est juste une string, on l'affiche directement
                     if (typeof section === 'string') {
                         return (
                             <div key={idx} className="lesson-link">

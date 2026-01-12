@@ -1,12 +1,12 @@
 import Footer from '../../features/shared/footer';
 import NavBar from '../../features/shared/nav-bar';
-import Course from '../../lib/section/course';
+import WebDevelopmentIntro from '../../lib/section/web-dev';
 import { Start } from '../../components/start';
 
 import { useUserMeQuery } from '../../lib/query/user.query';
 import { StartSkeleton } from '../../components/start-skeletton';
 
-export default function FromZero() {
+export default function WebDev() {
     const { data: me, isLoading } = useUserMeQuery();
 
     return (
@@ -16,7 +16,7 @@ export default function FromZero() {
             </header>
             <main>
                 <div className="lesson-content wrapper">
-                    <Course />
+                    <WebDevelopmentIntro />
                 </div>
 
                 {isLoading ? (
@@ -26,7 +26,7 @@ export default function FromZero() {
                         title="Commencer la formation"
                         description="Cliquez pour débuter le cours et suivre votre progression pas à pas."
                         start_course="Commencer le cours"
-                        path='/apprentissage/python'
+                        path='/formation-web/developpement-web'
                     />
                 ) : (
                     <Start
