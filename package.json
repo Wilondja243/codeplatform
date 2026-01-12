@@ -2,6 +2,7 @@
     "name": "on-line",
     "version": "0.1.0",
     "private": true,
+    "homepage": ".",
     "dependencies": {
         "@emailjs/browser": "^4.4.1",
         "@tanstack/react-query": "^5.90.16",

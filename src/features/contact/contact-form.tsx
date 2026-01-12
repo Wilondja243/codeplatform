@@ -4,6 +4,7 @@ import { ClipLoader } from 'react-spinners';
 import useNotification from '../../hooks/use-taost-notification';
 import useContactValidation from '../../utils/contact-validation';
 
+
 export default function ContactForm() {
     const { notifySuccess } = useNotification();
     const { errors, handleSubmit } = useContactValidation();
