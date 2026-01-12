@@ -1,4 +1,9 @@
+import { useUserMeQuery } from "../../lib/query/user.query";
+
+
 export default function Navbar() {
+    const { data, isLoading } = useUserMeQuery();
+
     return (
         <header className="sticky top-0 z-50 flex items-center justify-between border-b bg-background-light py-3 wrapper">
             <div className="flex items-center gap-8">
@@ -36,9 +41,12 @@ export default function Navbar() {
                 >
                     Contact
                 </a>
-                <a href="/register" className="flex items-center justify-center bg-primary text-text-light px-6 h-10 rounded-lg font-bold hover:bg-primary-dark">
-                    Inscription
-                </a>
+                {!(isLoading && data ) && (
+                    <a href="/register" className="flex items-center justify-center bg-primary text-text-light px-6 h-10 rounded-lg font-bold hover:bg-primary-dark">
+                        Inscription
+                    </a>
+                )}
+                
             </div>
         </header>
     );
