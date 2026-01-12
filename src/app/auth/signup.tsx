@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
 import { User, Mail, Lock, ArrowRight, Unlock } from 'lucide-react';
 import { useSigninValidation } from '../../utils/signin-validation';
 import useSigninQuery from '../../lib/query/signing.query';
+import useNotification from '../../hooks/use-taost-notification';
+
 
 export default function RegisterForm() {
     const navigate = useNavigate();
     const { handleSubmit, errors } = useSigninValidation();
-    const { mutate, isPending } = useSigninQuery();
+    const { mutateAsync, isPending } = useSigninQuery();
+    const { notifyError } = useNotification();
 
     // États Formulaire
     const [username, setUsername] = useState('');
@@ -26,8 +29,10 @@ export default function RegisterForm() {
             password,
         });
 
-        if (isValid) {
-            mutate(
+        if(!isValid) return;
+
+        try {
+            mutateAsync(
                 { username, email, password },
                 {
                     onSuccess: () => {
@@ -35,10 +40,14 @@ export default function RegisterForm() {
                         setEmail('');
                         setPassword('');
 
-                        navigate('/start/python');
+                        navigate('/explore');
                     },
                 },
             );
+        }
+        catch (err) {
+            console.error("Login error", err);
+            notifyError("Une erreur est survenue. Vérifiez la console.");
         }
     };
 
@@ -114,7 +123,7 @@ export default function RegisterForm() {
                 </form>
 
                 <p className="auth-footer">
-                    Déjà inscrit ? <a href="/login">Connectez-vous</a>
+                    Déjà inscrit ? <Link to="/login">Connectez-vous</Link>
                 </p>
             </div>
         </div>

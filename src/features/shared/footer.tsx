@@ -1,3 +1,6 @@
+import { BookOpen } from "lucide-react";
+
+
 export default function Footer() {
     return (
         <footer className="footer">
@@ -5,10 +8,8 @@ export default function Footer() {
                 <div className="footer-grid">
                     <div className="footer-logo-section">
                         <div className="footer-logo">
-                            <div className="logo-icon">
-                                <span className="material-symbols-outlined">
-                                    terminal
-                                </span>
+                            <div className="size-8 flex items-center justify-center bg-primary rounded-lg text-text-light">
+                                <BookOpen size={25} color="white" />
                             </div>
                             <span className="logo-text">CodePlatform</span>
                         </div>
@@ -97,7 +98,7 @@ export default function Footer() {
                                 <a href="#">Blog</a>
                             </li>
                             <li>
-                                <a href="#">Contact</a>
+                                <a href="/contact">Contact</a>
                             </li>
                         </ul>
                     </div>

@@ -8,15 +8,24 @@ const apiClient = axios.create({
     },
 });
 
-apiClient.interceptors.request.use(async (config) => {
-    const stored = await localStorage.getItem('user-token');
-    const parsed = JSON.parse(stored as any);
-    const token = parsed?.state?.userToken;
+apiClient.interceptors.request.use((config) => {
+    let token;
+    try {
+        const stored = localStorage.getItem('user-token');
+        if (stored) {
+            const parsed = JSON.parse(stored);
+            token = parsed?.state?.userToken;
+        }
+    } catch (err) {
+        console.warn("Erreur récupération token:", err);
+    }
 
     if (token) {
         config.headers.Authorization = `Token ${token}`;
     }
+
     return config;
 });
+
 
 export default apiClient;

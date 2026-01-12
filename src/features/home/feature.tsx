@@ -1,4 +1,4 @@
-import { useFeatureQuery } from '../query/course.query';
+import { useFeatureQuery } from '../../lib/query/course.query';
 import { features } from '../../data/data';
 
 export default function Features() {

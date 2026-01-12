@@ -1,5 +1,7 @@
+import { ArrowRight } from 'lucide-react';
 import { useCourseQuery } from '../../lib/query/course.query';
 import { CourseSkeleton } from '../../components/course-skelleton';
+
 
 export default function FeatureRoadmaps() {
     const { data, isLoading, isError, error } = useCourseQuery();
@@ -17,7 +19,7 @@ export default function FeatureRoadmaps() {
                         >
                             auto_awesome
                         </span>
-                        Futur Roadmaps
+                        Roadmaps
                     </h3>
                 </div>
 
@@ -74,9 +76,7 @@ export default function FeatureRoadmaps() {
                                               className="view-roadmap"
                                           >
                                               Voir Roadmap{' '}
-                                              <span className="material-symbols-outlined">
-                                                  arrow_forward
-                                              </span>
+                                              <ArrowRight size={20} className="inline" />
                                           </a>
                                       </div>
                                   </div>

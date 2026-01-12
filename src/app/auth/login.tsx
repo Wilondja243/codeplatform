@@ -1,44 +1,42 @@
 import React, { useState } from 'react';
 import { Mail, Lock, ArrowRight, Unlock } from 'lucide-react';
 import { ClipLoader } from 'react-spinners';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import useNotification from '../../hooks/use-taost-notification';
 import useLoginValidation from '../../utils/login-validation';
 import useLoginQuery from '../../lib/query/login.query';
 import NavBar from '../../features/shared/nav-bar';
 import Footer from '../../features/shared/footer';
 
+
 export default function LoginForm() {
     const navigate = useNavigate();
     const { handleSubmit, errors } = useLoginValidation();
-    const { mutate, isPending } = useLoginQuery();
+    const { mutateAsync, isPending } = useLoginQuery();
+    const { notifyError } = useNotification();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-    const formSubmit = (e: React.FormEvent) => {
+    const formSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        try {
+            const isValid = handleSubmit({ email, password });
+            if (!isValid) return;
 
-        const isValid = handleSubmit({
-            email,
-            password,
-        });
+            await mutateAsync({ email, password });
+            setEmail('');
+            setPassword('');
+            navigate('/explore');
 
-        if (isValid) {
-            mutate(
-                { email, password },
-                {
-                    onSuccess: () => {
-                        setEmail('');
-                        setPassword('');
-
-                        navigate('/start/python');
-                    },
-                },
-            );
+        } catch (err) {
+            console.error("Login error", err);
+            notifyError("Une erreur est survenue. Vérifiez la console.");
         }
     };
+
 
     return (
         <div>
@@ -118,7 +116,7 @@ export default function LoginForm() {
 
                         <p className="auth-footer">
                             Vous n'avez pas de compte ?{' '}
-                            <a href="/register">Inscrivez-vous</a>
+                            <Link to="/register">Inscrivez-vous</Link>
                         </p>
                     </div>
                 </div>

@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import MarkdownRenderer from '../../hooks/use-markdown';
 import { cleanCode, highlightPython } from '../../utils/clean-code';
+
 
 const rawCode = `
 class Student:
@@ -36,15 +38,15 @@ export default function Hero() {
                         Conçu pour les autodidactes qui veulent des résultats.
                     </p>
                     <div className="hero-buttons">
-                        <button className="btn">
+                        <Link to="roadmap" className="btn">
                             Commencer à apprendre
                             <span className="material-symbols-outlined">
                                 arrow_forward
                             </span>
-                        </button>
-                        <a href="/explore" className="btn-secondary">
+                        </Link>
+                        <Link to="/explore" className="btn-secondary">
                             Voir les cours
-                        </a>
+                        </Link>
                     </div>
                     <div className="hero-students">
                         <div className="student-avatars">

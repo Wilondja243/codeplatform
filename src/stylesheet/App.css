@@ -760,9 +760,11 @@
 .ready-container h2 {
     font-size: clamp(2em, 5vw, 3.5em);
     color: var(--text-dark);
+    font-weight: bold;
 }
 .ready-container p {
     margin-top: 1em;
+    color: #050505c9;
 }
 .ready-container .btn {
     margin: 2em auto 0 auto;
