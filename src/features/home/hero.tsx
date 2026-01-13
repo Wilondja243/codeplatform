@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import MarkdownRenderer from '../../hooks/use-markdown';
 import { cleanCode, highlightPython } from '../../utils/clean-code';
 
-
 const rawCode = `
 class Student:
     def __init__(self, name, course):

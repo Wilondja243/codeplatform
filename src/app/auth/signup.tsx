@@ -6,7 +6,6 @@ import { useSigninValidation } from '../../utils/signin-validation';
 import useSigninQuery from '../../lib/query/signing.query';
 import useNotification from '../../hooks/use-taost-notification';
 
-
 export default function RegisterForm() {
     const navigate = useNavigate();
     const { handleSubmit, errors } = useSigninValidation();
@@ -29,7 +28,7 @@ export default function RegisterForm() {
             password,
         });
 
-        if(!isValid) return;
+        if (!isValid) return;
 
         try {
             mutateAsync(
@@ -44,10 +43,9 @@ export default function RegisterForm() {
                     },
                 },
             );
-        }
-        catch (err) {
-            console.error("Login error", err);
-            notifyError("Une erreur est survenue. Vérifiez la console.");
+        } catch (err) {
+            console.error('Login error', err);
+            notifyError('Une erreur est survenue. Vérifiez la console.');
         }
     };
 
@@ -94,17 +92,28 @@ export default function RegisterForm() {
                         <label>Mot de passe</label>
                         <div className="input-wrapper">
                             <input
-                                type={isPasswordVisible ? "text" : "password"}
+                                type={isPasswordVisible ? 'text' : 'password'}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="••••••••"
                             />
                             {isPasswordVisible ? (
-                                <Unlock size={18} onClick={()=> setIsPasswordVisible(p => !p)} className="field-icon cursor-pointer" />
-                            ):(
-                                <Lock size={18} onClick={()=> setIsPasswordVisible(p => !p)} className='field-icon cursor-pointer' />
+                                <Unlock
+                                    size={18}
+                                    onClick={() =>
+                                        setIsPasswordVisible((p) => !p)
+                                    }
+                                    className="field-icon cursor-pointer"
+                                />
+                            ) : (
+                                <Lock
+                                    size={18}
+                                    onClick={() =>
+                                        setIsPasswordVisible((p) => !p)
+                                    }
+                                    className="field-icon cursor-pointer"
+                                />
                             )}
-                            
                         </div>
                         {errors.password && (
                             <p className="error">{errors.password}</p>

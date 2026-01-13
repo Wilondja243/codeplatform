@@ -1,6 +1,5 @@
-import { BookOpen } from "lucide-react";
-import { useUserMeQuery } from "../../lib/query/user.query";
-
+import { BookOpen } from 'lucide-react';
+import { useUserMeQuery } from '../../lib/query/user.query';
 
 export default function Navbar() {
     const { data, isLoading } = useUserMeQuery();
@@ -42,11 +41,13 @@ export default function Navbar() {
                         Contact
                     </a>
                     {!data && (
-                        <a href="/register" className="flex items-center justify-center bg-primary text-text-light px-6 h-10 rounded-lg font-bold hover:bg-primary-dark">
+                        <a
+                            href="/register"
+                            className="flex items-center justify-center bg-primary text-text-light px-6 h-10 rounded-lg font-bold hover:bg-primary-dark"
+                        >
                             Inscription
                         </a>
                     )}
-                    
                 </div>
             </div>
         </nav>

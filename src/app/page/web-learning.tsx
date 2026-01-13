@@ -7,7 +7,6 @@ import CurriculumSidebar from '../../components/curriculum-sidebar';
 import { htmlCourses } from '../../data/html-course';
 import { useUserMeQuery } from '../../lib/query/user.query';
 
-
 export default function WebLearning() {
     const { data: me, isLoading } = useUserMeQuery();
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -65,7 +64,10 @@ export default function WebLearning() {
                                 }
                                 onNext={() =>
                                     setCurrentIndex((prev) =>
-                                        Math.min(prev + 1, htmlCourses.length - 1),
+                                        Math.min(
+                                            prev + 1,
+                                            htmlCourses.length - 1,
+                                        ),
                                     )
                                 }
                             />

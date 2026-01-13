@@ -8,7 +8,6 @@ import useLoginQuery from '../../lib/query/login.query';
 import NavBar from '../../features/shared/nav-bar';
 import Footer from '../../features/shared/footer';
 
-
 export default function LoginForm() {
     const navigate = useNavigate();
     const { handleSubmit, errors } = useLoginValidation();
@@ -30,13 +29,11 @@ export default function LoginForm() {
             setEmail('');
             setPassword('');
             navigate('/explore');
-
         } catch (err) {
-            console.error("Login error", err);
-            notifyError("Une erreur est survenue. Vérifiez la console.");
+            console.error('Login error', err);
+            notifyError('Une erreur est survenue. Vérifiez la console.');
         }
     };
-
 
     return (
         <div>
@@ -80,7 +77,11 @@ export default function LoginForm() {
                                 <label>Mot de passe</label>
                                 <div className="input-wrapper">
                                     <input
-                                        type={isPasswordVisible ? 'text' : 'password'}
+                                        type={
+                                            isPasswordVisible
+                                                ? 'text'
+                                                : 'password'
+                                        }
                                         value={password}
                                         onChange={(e) =>
                                             setPassword(e.target.value)
@@ -88,11 +89,22 @@ export default function LoginForm() {
                                         placeholder="••••••••"
                                     />
                                     {isPasswordVisible ? (
-                                        <Unlock size={18} onClick={()=> setIsPasswordVisible(p => !p)} className='field-icon cursor-pointer' />
-                                    ):(
-                                        <Lock size={18} onClick={()=> setIsPasswordVisible(p => !p)} className="field-icon cursor-pointer" />
+                                        <Unlock
+                                            size={18}
+                                            onClick={() =>
+                                                setIsPasswordVisible((p) => !p)
+                                            }
+                                            className="field-icon cursor-pointer"
+                                        />
+                                    ) : (
+                                        <Lock
+                                            size={18}
+                                            onClick={() =>
+                                                setIsPasswordVisible((p) => !p)
+                                            }
+                                            className="field-icon cursor-pointer"
+                                        />
                                     )}
-                                    
                                 </div>
                                 {errors.password && (
                                     <p className="error">{errors.password}</p>

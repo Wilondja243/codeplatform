@@ -2,7 +2,6 @@ import { ArrowRight } from 'lucide-react';
 import { useCourseQuery } from '../../lib/query/course.query';
 import { CourseSkeleton } from '../../components/course-skelleton';
 
-
 export default function FeatureRoadmaps() {
     const { data, isLoading, isError, error } = useCourseQuery();
 
@@ -76,7 +75,10 @@ export default function FeatureRoadmaps() {
                                               className="view-roadmap"
                                           >
                                               Voir Roadmap{' '}
-                                              <ArrowRight size={20} className="inline" />
+                                              <ArrowRight
+                                                  size={20}
+                                                  className="inline"
+                                              />
                                           </a>
                                       </div>
                                   </div>

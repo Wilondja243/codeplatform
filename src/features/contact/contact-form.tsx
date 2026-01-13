@@ -4,7 +4,6 @@ import { ClipLoader } from 'react-spinners';
 import useNotification from '../../hooks/use-taost-notification';
 import useContactValidation from '../../utils/contact-validation';
 
-
 export default function ContactForm() {
     const { notifySuccess } = useNotification();
     const { errors, handleSubmit } = useContactValidation();
@@ -13,7 +12,6 @@ export default function ContactForm() {
     const [email, setEmail] = useState('');
     const [description, setDescription] = useState('');
     const [isSending, setIsSending] = useState(false);
-
 
     const onFormSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -60,7 +58,9 @@ export default function ContactForm() {
                     className="w-full p-3 rounded-md bg-background-muted border border-gray-100 focus:border-primary"
                     placeholder="Titre"
                 />
-                {errors.title && (<p className='text-red-600 -mt-1'>{errors.title}</p>)}
+                {errors.title && (
+                    <p className="text-red-600 -mt-1">{errors.title}</p>
+                )}
 
                 <input
                     type="email"
@@ -69,7 +69,9 @@ export default function ContactForm() {
                     className="w-full p-3 rounded-md bg-background-muted border border-gray-100 focus:border-primary"
                     placeholder="Email"
                 />
-                {errors.email && (<p className='text-red-600 -mt-1'>{errors.email}</p>)}
+                {errors.email && (
+                    <p className="text-red-600 -mt-1">{errors.email}</p>
+                )}
 
                 <textarea
                     value={description}
@@ -77,18 +79,22 @@ export default function ContactForm() {
                     className="w-full p-3 rounded-md bg-background-muted border border-gray-100 focus:border-primary"
                     placeholder="Message"
                 />
-                {errors.description && (<p className='text-red-600 -mt-1'>{errors.description}</p>)}
+                {errors.description && (
+                    <p className="text-red-600 -mt-1">{errors.description}</p>
+                )}
 
                 <button
                     type="submit"
                     className="w-full h-12 bg-primary text-text-light rounded-md font-bold cursor-pointer"
                 >
-                    {isSending  ? (
-                      <span className='flex items-center justify-center gap-2'>
-                        <ClipLoader size={20} color='#fff'/>
-                        Envoyé un message
-                      </span>
-                      ) : 'Enoyé un message'}
+                    {isSending ? (
+                        <span className="flex items-center justify-center gap-2">
+                            <ClipLoader size={20} color="#fff" />
+                            Envoyé un message
+                        </span>
+                    ) : (
+                        'Enoyé un message'
+                    )}
                 </button>
             </form>
         </div>

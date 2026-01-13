@@ -1,4 +1,5 @@
 import React from 'react';
+import { ClipLoader } from 'react-spinners';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { QueryClientProvider } from '@tanstack/react-query';
@@ -25,10 +26,31 @@ import PythonCalculator from './features/tempo/challenge';
 import Register from './app/auth/register';
 import LoginForm from './app/auth/login';
 
-
 function App() {
+    const [isReady, setIsReady] = React.useState(false);
+
+    React.useEffect(()=> {
+        const handleLoad = () => {
+            setIsReady(true)
+        }
+        
+        if(document.readyState == 'complete'){
+            handleLoad();
+        }
+        else{
+            window.addEventListener('load', handleLoad);
+
+            return ()=> window.removeEventListener('load', handleLoad);
+        }
+    }, [])
+
     return (
         <QueryClientProvider client={queryClient}>
+            <div className={`${isReady ? "hidden" : "flex items-center justify-center h-screen"}`}>
+                <ClipLoader size={50} />
+            </div>
+
+            
             <div>
                 <ToastContainer position="top-right" autoClose={3000} />
 
@@ -40,12 +62,18 @@ function App() {
                     <Route path="/apprentissage/:id" element={<PathCourse />} />
                     <Route path="/formation/:id" element={<Formation />} />
                     <Route path="/formation/:id/quiz/" element={<Quiz />} />
-                    <Route path="/formation/:id/challenge" element={<PythonCalculator />} />
-                    
+                    <Route
+                        path="/formation/:id/challenge"
+                        element={<PythonCalculator />}
+                    />
+
                     <Route path="/contact" element={<Contact />} />
 
-                    <Route path="/start-web/:id" element={<WebDev/>} />
-                    <Route path="/formation-web/:id" element={<WebLearning />} />
+                    <Route path="/start-web/:id" element={<WebDev />} />
+                    <Route
+                        path="/formation-web/:id"
+                        element={<WebLearning />}
+                    />
 
                     <Route path="/login" element={<LoginForm />} />
                     <Route path="/register" element={<Register />} />

@@ -26,7 +26,7 @@ export default function WebDev() {
                         title="Commencer la formation"
                         description="Cliquez pour débuter le cours et suivre votre progression pas à pas."
                         start_course="Commencer le cours"
-                        path='/formation-web/developpement-web'
+                        path="/formation-web/developpement-web"
                     />
                 ) : (
                     <Start

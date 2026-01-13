@@ -26,7 +26,7 @@ export default function FromZero() {
                         title="Commencer la formation"
                         description="Cliquez pour débuter le cours et suivre votre progression pas à pas."
                         start_course="Commencer le cours"
-                        path='/apprentissage/python'
+                        path="/apprentissage/python"
                     />
                 ) : (
                     <Start

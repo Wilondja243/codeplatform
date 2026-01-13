@@ -17,7 +17,7 @@ apiClient.interceptors.request.use((config) => {
             token = parsed?.state?.userToken;
         }
     } catch (err) {
-        console.warn("Erreur récupération token:", err);
+        console.warn('Erreur récupération token:', err);
     }
 
     if (token) {
@@ -26,6 +26,5 @@ apiClient.interceptors.request.use((config) => {
 
     return config;
 });
-
 
 export default apiClient;

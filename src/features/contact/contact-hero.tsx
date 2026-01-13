@@ -1,7 +1,6 @@
 import { Headset } from 'lucide-react';
 import useNotification from '../../hooks/use-taost-notification';
 
-
 export default function ContactHero() {
     const { notifyInfo } = useNotification();
 
@@ -41,7 +40,10 @@ export default function ContactHero() {
                 <div className="hidden md:block w-72 h-72 bg-primary/20 rounded-full blur-3xl absolute -right-20 -top-20" />
 
                 <div className="w-full md:w-1/3 aspect-square bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center border border-primary/10 shadow-inner">
-                    <Headset size={100} className="text-primary text-[9rem] animate-pulse" />
+                    <Headset
+                        size={100}
+                        className="text-primary text-[9rem] animate-pulse"
+                    />
                 </div>
             </div>
         </section>
