@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CourseHTMLIntroComplet() {
+export default function HtmlCourse1() {
   return (
     <div className="course-container space-y-6 p-6 bg-white rounded-xl">
       <h1 className="text-3xl font-bold text-gray-800">

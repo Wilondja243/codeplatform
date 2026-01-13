@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
+
 export default function Course5() {
     return (
+        <>
         <div className="course-container">
             <h1 className="course-title">
                 Les fonctions en Python : comprendre, utiliser et créer ses
@@ -383,5 +386,8 @@ export default function Course5() {
                 est essentiel pour la suite de la formation.
             </p>
         </div>
+
+        <Link to="/formation/apprendre-python-pour-débutant/challenge" className="ml-5 mt-5 p-5 bg-primary font-bold text-text-light rounded-md">Commencer l'exercices</Link>
+        </>
     );
 }
