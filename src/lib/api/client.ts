@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_BASE_URL = 'https://monalina.onrender.com';
+export const API_BASE_URL = 'https://monalina-yz1q.onrender.com/';
 const apiClient = axios.create({
     baseURL: `${API_BASE_URL}/api/v1`,
     headers: {
