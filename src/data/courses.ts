@@ -5,7 +5,6 @@ import Course4 from '../features/tempo/phase4';
 import Course5 from '../features/tempo/phase5';
 import Course6 from '../features/tempo/phase6';
 
-
 export type CourseSection = {
     id: string;
     title: string;
@@ -258,5 +257,5 @@ export const courses = [
                 ],
             },
         ],
-    }
+    },
 ];

@@ -29,28 +29,28 @@ import LoginForm from './app/auth/login';
 function App() {
     const [isReady, setIsReady] = React.useState(false);
 
-    React.useEffect(()=> {
+    React.useEffect(() => {
         const handleLoad = () => {
-            setIsReady(true)
-        }
-        
-        if(document.readyState == 'complete'){
+            setIsReady(true);
+        };
+
+        if (document.readyState == 'complete') {
             handleLoad();
-        }
-        else{
+        } else {
             window.addEventListener('load', handleLoad);
 
-            return ()=> window.removeEventListener('load', handleLoad);
+            return () => window.removeEventListener('load', handleLoad);
         }
-    }, [])
+    }, []);
 
     return (
         <QueryClientProvider client={queryClient}>
-            <div className={`${isReady ? "hidden" : "flex items-center justify-center h-screen"}`}>
+            <div
+                className={`${isReady ? 'hidden' : 'flex items-center justify-center h-screen'}`}
+            >
                 <ClipLoader size={50} />
             </div>
 
-            
             <div>
                 <ToastContainer position="top-right" autoClose={3000} />
 
