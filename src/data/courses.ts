@@ -194,7 +194,6 @@ export const courses = [
                     'Créer une liste : vide ou avec valeurs',
                     'Accéder et modifier les éléments par index',
                     'Méthodes des listes : append, remove, pop, extend, insert',
-                    'Exemples pratiques avec les listes',
                 ],
             },
             {
@@ -204,7 +203,6 @@ export const courses = [
                     'Définition et structure clé / valeur',
                     'Créer et accéder aux données d’un dictionnaire',
                     'Méthodes : get, keys, values, items, update, pop',
-                    'Exemples pratiques avec les dictionnaires',
                 ],
             },
             {
@@ -214,7 +212,6 @@ export const courses = [
                     'Définition et caractéristiques (ordonné et immuable)',
                     'Créer et lire un tuple',
                     'Méthodes : count, index',
-                    'Exemples pratiques avec les tuples',
                 ],
             },
             {
@@ -224,37 +221,12 @@ export const courses = [
                     'Définition et caractéristiques (non ordonné, valeurs uniques)',
                     'Créer un set et conversion depuis une liste',
                     'Méthodes : add, remove, discard, union, intersection, difference',
-                    'Exemples pratiques avec les sets',
-                ],
-            },
-            {
-                id: 'd4-s6',
-                title: 'Comparaison des structures de données',
-                lessons: [
-                    'Quand utiliser une liste',
-                    'Quand utiliser un dictionnaire',
-                    'Quand utiliser un tuple',
-                    'Quand utiliser un set',
-                ],
-            },
-            {
-                id: 'd4-s7',
-                title: 'Exercices pratiques finaux',
-                lessons: [
-                    'Exercices sur les listes',
-                    'Exercices sur les dictionnaires',
-                    'Exercices sur les tuples',
-                    'Exercices sur les sets',
                 ],
             },
             {
                 id: 'd4-s8',
                 title: 'Conclusion pédagogique',
-                lessons: [
-                    'Ce que l’apprenant doit maîtriser',
-                    'Erreurs courantes à éviter',
-                    'Préparation au module suivant',
-                ],
+                lessons: [],
             },
         ],
     },

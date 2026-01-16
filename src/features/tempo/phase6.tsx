@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Course6() {
     return (
-        <div className="course-container space-y-8 p-6 bg-white rounded-xl shadow-md">
+        <div className="course-container space-y-8 p-6 ">
             <h1 className="text-3xl font-bold text-gray-800">
                 Les structures de données
             </h1>
@@ -127,19 +127,59 @@ print(personne.get("email", "Non défini")) Résultat : Non défini`}
             <h3 className="text-xl font-semibold text-gray-800">
                 b. keys(), values(), items()
             </h3>
+
             <p className="text-gray-700">
-                Ces méthodes permettent de parcourir un dictionnaire. Elles sont
-                essentielles pour les boucles.
+                Un dictionnaire en Python est une collection de paires{' '}
+                <strong>clé : valeur</strong>. Pour parcourir un dictionnaire
+                efficacement, on utilise les méthodes <code>keys()</code>,{' '}
+                <code>values()</code> et <code>items()</code>.
             </p>
 
-            <pre className="bg-gray-100 p-4 rounded text-sm">
-                {`print(personne.keys())
-print(personne.values())
-print(personne.items())`}
-            </pre>
+            <p className="text-gray-700">
+                - <code>keys()</code> renvoie toutes les clés du dictionnaire.{' '}
+                <br />- <code>values()</code> renvoie toutes les valeurs. <br />
+                - <code>items()</code> renvoie les paires clé/valeur sous forme
+                de tuples. <br />
+                Ces méthodes sont très utiles pour combiner avec des boucles et
+                traiter chaque élément.
+            </p>
+
+            <div className="bg-gray-100 p-4 rounded-md border-l-4 border-blue-500">
+                <p className="text-gray-700 font-semibold">
+                    Exemple pratique avec une boucle :
+                </p>
+                <pre className="text-sm overflow-x-auto">
+                    {`personne = {"nom": "Alice", "age": 25, "ville": "Paris"}
+
+# Parcourir les clés
+for cle in personne.keys():
+    print("Clé :", cle)
+
+
+# Parcourir les valeurs
+for valeur in personne.values():
+    print("Valeur :", valeur)
+
+
+# Parcourir les paires clé/valeur
+for cle, valeur in personne.items():
+    print(f"{cle} => {valeur}")`}
+                </pre>
+            </div>
+            <p className="text-gray-700">
+                Ici, la boucle <code>for</code> permet d’itérer sur les éléments
+                du dictionnaire. Avec <code>items()</code>, on récupère
+                directement la clé et la valeur dans chaque itération, ce qui
+                est très pratique pour afficher ou manipuler les données.
+            </p>
+            <p className="text-gray-700">
+                Cette approche est essentielle pour traiter dynamiquement des
+                dictionnaires, par exemple pour générer des rapports, filtrer
+                des données ou effectuer des calculs.
+            </p>
 
             <h2 className="text-2xl font-semibold text-gray-800">
-                3. Les tuples (tuple)
+                3. Les tuples
             </h2>
 
             <p className="text-gray-700">
@@ -154,7 +194,7 @@ jours = ("lundi", "mardi", "mercredi")`}
             </pre>
 
             {/* Méthode count */}
-            <h3 className="text-xl font-semibold text-gray-800">a) count()</h3>
+            <h3 className="text-xl font-semibold text-gray-800">a. count()</h3>
             <p className="text-gray-700">
                 <code>count()</code> compte combien de fois un élément apparaît
                 dans le tuple.
@@ -168,7 +208,7 @@ print(nums.count(5))`}
             </pre>
 
             {/* Méthode index */}
-            <h3 className="text-xl font-semibold text-gray-800">b) index()</h3>
+            <h3 className="text-xl font-semibold text-gray-800">b. index()</h3>
             <p className="text-gray-700">
                 <code>index()</code> retourne la position du premier élément
                 trouvé.
@@ -182,7 +222,7 @@ print(jours.index("lundi"))`}
 
             {/* ===================== 4. SET ===================== */}
             <h2 className="text-2xl font-semibold text-gray-800">
-                4. Les ensembles (set)
+                4. Les ensembles
             </h2>
 
             <p className="text-gray-700">
@@ -196,7 +236,7 @@ print(nombres)`}
             </pre>
 
             {/* Méthode add */}
-            <h3 className="text-xl font-semibold text-gray-800">a) add()</h3>
+            <h3 className="text-xl font-semibold text-gray-800">a. add()</h3>
             <p className="text-gray-700">
                 <code>add()</code> ajoute un élément au set. Les doublons sont
                 ignorés automatiquement.
@@ -212,7 +252,7 @@ print(s)`}
 
             {/* Méthode remove / discard */}
             <h3 className="text-xl font-semibold text-gray-800">
-                b) remove() et discard()
+                b. remove() et discard()
             </h3>
             <p className="text-gray-700">
                 <code>remove()</code> supprime un élément mais provoque une
