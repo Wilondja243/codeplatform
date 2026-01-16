@@ -3,6 +3,8 @@ import Course2 from '../features/tempo/phase2';
 import Course3 from '../features/tempo/phase3';
 import Course4 from '../features/tempo/phase4';
 import Course5 from '../features/tempo/phase5';
+import Course6 from '../features/tempo/phase6';
+
 
 export type CourseSection = {
     id: string;
@@ -172,4 +174,89 @@ export const courses = [
             'Résumé et points clés à retenir',
         ],
     },
+    {
+        id: 6,
+        title: 'Structures de données',
+        component: Course6,
+        sections: [
+            {
+                id: 'd4-s1',
+                title: 'Introduction aux structures de données',
+                lessons: [
+                    'Qu’est-ce qu’une structure de données ?',
+                    'Pourquoi utiliser plusieurs types de structures ?',
+                ],
+            },
+            {
+                id: 'd4-s2',
+                title: 'Les listes (list)',
+                lessons: [
+                    'Définition et caractéristiques',
+                    'Créer une liste : vide ou avec valeurs',
+                    'Accéder et modifier les éléments par index',
+                    'Méthodes des listes : append, remove, pop, extend, insert',
+                    'Exemples pratiques avec les listes',
+                ],
+            },
+            {
+                id: 'd4-s3',
+                title: 'Les dictionnaires (dict)',
+                lessons: [
+                    'Définition et structure clé / valeur',
+                    'Créer et accéder aux données d’un dictionnaire',
+                    'Méthodes : get, keys, values, items, update, pop',
+                    'Exemples pratiques avec les dictionnaires',
+                ],
+            },
+            {
+                id: 'd4-s4',
+                title: 'Les tuples (tuple)',
+                lessons: [
+                    'Définition et caractéristiques (ordonné et immuable)',
+                    'Créer et lire un tuple',
+                    'Méthodes : count, index',
+                    'Exemples pratiques avec les tuples',
+                ],
+            },
+            {
+                id: 'd4-s5',
+                title: 'Les ensembles (set)',
+                lessons: [
+                    'Définition et caractéristiques (non ordonné, valeurs uniques)',
+                    'Créer un set et conversion depuis une liste',
+                    'Méthodes : add, remove, discard, union, intersection, difference',
+                    'Exemples pratiques avec les sets',
+                ],
+            },
+            {
+                id: 'd4-s6',
+                title: 'Comparaison des structures de données',
+                lessons: [
+                    'Quand utiliser une liste',
+                    'Quand utiliser un dictionnaire',
+                    'Quand utiliser un tuple',
+                    'Quand utiliser un set',
+                ],
+            },
+            {
+                id: 'd4-s7',
+                title: 'Exercices pratiques finaux',
+                lessons: [
+                    'Exercices sur les listes',
+                    'Exercices sur les dictionnaires',
+                    'Exercices sur les tuples',
+                    'Exercices sur les sets',
+                ],
+            },
+            {
+                id: 'd4-s8',
+                title: 'Conclusion pédagogique',
+                lessons: [
+                    'Ce que l’apprenant doit maîtriser',
+                    'Erreurs courantes à éviter',
+                    'Préparation au module suivant',
+                ],
+            },
+        ],
+    }
 ];
