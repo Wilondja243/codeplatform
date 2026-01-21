@@ -22,9 +22,11 @@ import Quiz from './app/page/quiz';
 import WebDev from './app/page/web-developement';
 import WebLearning from './app/page/web-learning';
 import PythonCalculator from './features/tempo/challenge';
+// import LessonPage from './app/page/lesson';
 
 import Register from './app/auth/register';
 import LoginForm from './app/auth/login';
+
 
 function App() {
     const [isReady, setIsReady] = React.useState(false);
@@ -57,11 +59,11 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Router />} />
                     <Route path="/explore" element={<Explore />} />
-                    <Route path="roadmap/" element={<Roadmap />} />
+                    <Route path="/roadmap" element={<Roadmap />} />
                     <Route path="/start/:id" element={<FromZero />} />
                     <Route path="/apprentissage/:id" element={<PathCourse />} />
                     <Route path="/formation/:id" element={<Formation />} />
-                    <Route path="/formation/:id/quiz/" element={<Quiz />} />
+                    <Route path="/formation/:id/quiz" element={<Quiz />} />
                     <Route
                         path="/formation/:id/challenge"
                         element={<PythonCalculator />}
@@ -74,6 +76,7 @@ function App() {
                         path="/formation-web/:id"
                         element={<WebLearning />}
                     />
+                    {/* <Route path="/lesson/:id" element={<LessonPage />} /> */}
 
                     <Route path="/login" element={<LoginForm />} />
                     <Route path="/register" element={<Register />} />

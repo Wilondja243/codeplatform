@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { course, feature, module } from '../services/course.service';
 
+
 export function useCourseQuery() {
     return useQuery({
         queryKey: ['courses', 'all'],

@@ -4,6 +4,7 @@ import Course3 from '../features/tempo/phase3';
 import Course4 from '../features/tempo/phase4';
 import Course5 from '../features/tempo/phase5';
 import Course6 from '../features/tempo/phase6';
+import Course7 from '../features/tempo/phase7';
 
 export type CourseSection = {
     id: string;
@@ -230,4 +231,54 @@ export const courses = [
             },
         ],
     },
+    {
+        id: 7,
+        title: 'Gestion des Exceptions en Python',
+        component: Course7,
+        sections: [
+            {
+                id: 'c7-s1',
+                title: 'Introduction aux exceptions',
+                lessons: [
+                    'Qu’est-ce qu’une exception et à quoi ça sert',
+                    'Différence entre erreur syntaxique et exception',
+                    'Pourquoi gérer les exceptions est important',
+                ],
+            },
+            {
+                id: 'c7-s2',
+                title: 'Bloc try / except',
+                lessons: [
+                    'Syntaxe de base du try / except',
+                    'Attraper des exceptions spécifiques vs générales',
+                ],
+            },
+            {
+                id: 'c7-s3',
+                title: 'Bloc else et finally',
+                lessons: [
+                    'Utilité du bloc else après try / except',
+                    'Bloc finally : toujours exécuté, même en cas d’erreur',
+                ],
+            },
+            {
+                id: 'c7-s4',
+                title: 'Lever ses propres exceptions',
+                lessons: [
+                    'Utiliser raise pour créer une exception personnalisée',
+                    'Bonnes pratiques pour lever et documenter les exceptions',
+                ],
+            },
+            {
+                id: 'c7-s5',
+                title: 'Résumé et bonnes pratiques',
+                lessons: [
+                    'Quand utiliser try / except',
+                    'Quand lever une exception',
+                    'Résumé des erreurs courantes et comment les éviter',
+                    'Mini-exercice pratique combinant toutes les notions',
+                ],
+            },
+        ],
+    }
 ];
