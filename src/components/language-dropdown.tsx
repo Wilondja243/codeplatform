@@ -12,7 +12,7 @@ export default function LanguageDropdown() {
         <div className="relative z-[100]">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`flex items-center justify-center gap-2 max-lg-nav:p-3 dark:text-text-light px-2 py-1 rounded-md transition-all duration-200 group text-sm font-semibold max-lg-nav:w-full max-lg-nav:bg-card-dark ${
+                className={`flex items-center justify-center gap-2 max-lg-nav:p-3 text-text-dark px-2 py-1 rounded-md transition-all duration-200 group text-sm font-semibold max-lg-nav:w-full max-lg-nav:bg-card-dark ${
                     isOpen ? 'text-primary bg-primary/5' : 'hover:text-primary'
                 }`}
             >
