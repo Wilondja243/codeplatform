@@ -48,6 +48,7 @@
     max-height: 350px;
 }
 
+
 /*======= FEATURE ROADMAP ========*/
 
 .roadmap-container {
@@ -192,59 +193,4 @@
     display: flex;
     align-items: center;
     gap: 0.25rem;
-}
-
-/*======== ROADMAP STEP ========*/
-
-.roadmap-step {
-    background: var(--background-muted);
-    padding: 4em 0;
-}
-
-.roadmap-step-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 10px;
-    padding-top: 4em;
-}
-
-.roadmap-step-header,
-.step-item {
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.roadmap-step-header p {
-    margin-top: 0.5em;
-    color: var(--text-muted);
-}
-.step-item span {
-    color: var(--text-light);
-    margin-bottom: 1.2em;
-    background: linear-gradient(var(--primary), var(--primary-dark));
-    padding: 13px;
-    border-radius: var(--radius);
-}
-
-.step-detail {
-    background: var(--background-light);
-    border-radius: var(--radius);
-    box-shadow: 0 0 10px #64748b15;
-    border-bottom: 1px solid var(--card-light-border);
-    padding: 20px;
-}
-.step-detail:hover {
-    box-shadow: 0 0 10px #64748b2a;
-    transform: translateY(-8px);
-}
-
-.step-detail h2 {
-    font-size: 1.1em;
-    margin-bottom: 15px;
-}
-.step-detail p {
-    color: var(--text-muted);
-    font-size: 0.9em;
 }

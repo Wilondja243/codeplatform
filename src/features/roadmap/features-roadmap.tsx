@@ -37,7 +37,7 @@ export default function FeatureRoadmaps() {
                                       }}
                                   >
                                       <div className="icons">
-                                          <div className="icon">Python</div>
+                                          <div className="icon">{course.title}</div>
                                       </div>
                                   </div>
                                   <div className="roadmap-card-body">
@@ -46,7 +46,7 @@ export default function FeatureRoadmaps() {
                                               Développement
                                           </span>
                                           <span className="lessons">
-                                              22 Leçons
+                                              {course.duration} Leçons
                                           </span>
                                       </div>
                                       <h5 className="roadmap-card-title">

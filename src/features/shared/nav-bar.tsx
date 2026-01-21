@@ -14,9 +14,12 @@ import {
 } from 'lucide-react';
 import { useUserMeQuery } from '../../lib/query/user.query';
 import LanguageDropdown from '../../components/language-dropdown';
+import useNotification from '../../hooks/use-taost-notification';
+
 
 export default function Navbar() {
     const { data } = useUserMeQuery();
+    const { notifyInfo } = useNotification();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -51,7 +54,10 @@ export default function Navbar() {
                 {/* Préférences utilisateur */}
                 <div className="flex items-center gap-5">
                     <button
-                        onClick={toggleDarkMode}
+                        onClick={()=>{
+                            toggleDarkMode()
+                            notifyInfo("Fonctionnalité à venir bientôt !")
+                        }}
                         className="flex items-center gap-2 hover:text-primary transition-all duration-200 group"
                     >
                         <div className="p-1 rounded-md group-hover:bg-primary/10">
@@ -173,7 +179,10 @@ export default function Navbar() {
 
                         <div className="grid grid-cols-2 gap-2 mb-4">
                             <button
-                                onClick={toggleDarkMode}
+                                onClick={()=>{
+                                    toggleDarkMode()
+                                    notifyInfo("Fonctionnalité à venir bientôt !")
+                                }}
                                 className="flex items-center justify-center gap-2 p-3 rounded-md bg-card-dark dark:bg-card-dark text-text-light dark:text-text-light hover:bg-primary/10 hover:text-primary transition-colors text-sm font-semibold"
                             >
                                 {isDarkMode ? (
@@ -189,7 +198,7 @@ export default function Navbar() {
                             </div>
                         </div>
 
-                        <hr className="border-slate-100 dark:border-slate-800 mb-6" />
+                        <hr className="border-card-dark-border dark:border-card-light-border mb-6" />
 
                         <div className="space-y-4">
                             <div className="flex flex-col gap-1 px-2">
