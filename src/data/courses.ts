@@ -280,5 +280,5 @@ export const courses = [
                 ],
             },
         ],
-    }
+    },
 ];

@@ -3,6 +3,9 @@ module.exports = {
     content: ['./src/**/*.{js,jsx,ts,tsx}'],
     theme: {
         extend: {
+            screens: {
+                'lg-nav': '950px',
+            },
             colors: {
                 primary: 'var(--primary)',
                 'primary-light': 'var(--primary-light)',

@@ -2,6 +2,12 @@
 
 /* Navbar */
 
+@media screen and (max-width: 950px) {
+    .reponsive-nav {
+        display: hidden;
+    }
+}
+
 .hero {
     width: 100%;
     padding: 5rem 1rem;

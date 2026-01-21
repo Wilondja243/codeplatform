@@ -27,7 +27,6 @@ import PythonCalculator from './features/tempo/challenge';
 import Register from './app/auth/register';
 import LoginForm from './app/auth/login';
 
-
 function App() {
     const [isReady, setIsReady] = React.useState(false);
 
