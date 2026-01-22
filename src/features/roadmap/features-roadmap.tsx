@@ -37,7 +37,9 @@ export default function FeatureRoadmaps() {
                                       }}
                                   >
                                       <div className="icons">
-                                          <div className="icon">{course.title}</div>
+                                          <div className="icon">
+                                              {course.title}
+                                          </div>
                                       </div>
                                   </div>
                                   <div className="roadmap-card-body">

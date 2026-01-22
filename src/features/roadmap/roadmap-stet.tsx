@@ -4,7 +4,9 @@ export default function RoadmapStep() {
             <div className="roadmap-step-container wrapper">
                 <div className="roadmap-step-section">
                     <div className="flex text-center flex-col justify-center items-center">
-                        <h1 className="mb-[1.2em] text-text-muted">Comment ca marche</h1>
+                        <h1 className="mb-[1.2em] text-text-muted">
+                            Comment ca marche
+                        </h1>
                         <p>
                             Trois étapes simples pour maîtriser n’importe quelle
                             compétence
@@ -23,7 +25,9 @@ export default function RoadmapStep() {
                                 map
                             </span>
                             <div className="p-5 bg-background-light rounded-md shadow-sm border-b border-card-light-border hover:shadow-md hover:-translate-y-3">
-                                <h2 className="text-[1.1em] mb-[15px]">Choisir une voie</h2>
+                                <h2 className="text-[1.1em] mb-[15px]">
+                                    Choisir une voie
+                                </h2>
                                 <p className="text-text-muted text-[0.9em]">
                                     Sélectionnez une filière qui correspond à
                                     vos objectifs et centres d'intérêt.
@@ -41,7 +45,9 @@ export default function RoadmapStep() {
                                 school
                             </span>
                             <div className="p-5 bg-background-light rounded-md shadow-sm border-b border-card-light-border hover:shadow-md hover:-translate-y-3">
-                                <h2 className="text-[1.1em] mb-[15px]">Apprendre & Pratiquer</h2>
+                                <h2 className="text-[1.1em] mb-[15px]">
+                                    Apprendre & Pratiquer
+                                </h2>
                                 <p className="text-text-muted text-[0.9em]">
                                     Regardez des vidéos concises et résolvez des
                                     défis interactifs de code.
@@ -59,7 +65,9 @@ export default function RoadmapStep() {
                                 trending_up
                             </span>
                             <div className="p-5 bg-background-light rounded-md shadow-sm border-b border-card-light-border hover:shadow-md hover:-translate-y-3">
-                                <h2 className="text-[1.1em] mb-[15px]">Construire des projets</h2>
+                                <h2 className="text-[1.1em] mb-[15px]">
+                                    Construire des projets
+                                </h2>
                                 <p className="text-text-muted text-[0.9em]">
                                     Appliquez vos compétences en créant des
                                     applications prêtes pour la production.

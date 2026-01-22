@@ -16,7 +16,6 @@ import { useUserMeQuery } from '../../lib/query/user.query';
 import LanguageDropdown from '../../components/language-dropdown';
 import useNotification from '../../hooks/use-taost-notification';
 
-
 export default function Navbar() {
     const { data } = useUserMeQuery();
     const { notifyInfo } = useNotification();
@@ -28,9 +27,9 @@ export default function Navbar() {
 
     return (
         <header
-            className={` ${isDarkMode ? 'bg-background-dark text-text-light' : 'bg-background-light text-text-dark'}`}
+            className={` sticky top-0 ${isDarkMode ? 'bg-background-dark text-text-light' : 'bg-background-light text-text-dark'}`}
         >
-            <div className="hidden lg-nav:flex justify-end items-center gap-6 px-6 py-2 border-b border-slate-100  text-[13px] font-medium text-text-dark">
+            <div className="hidden lg-nav:flex justify-center items-center gap-6 px-6 py-2 border-b border-slate-100  text-[13px] font-medium text-text-dark">
                 {/* Contact & Support */}
                 <div className="flex items-center gap-4">
                     <a
@@ -54,9 +53,9 @@ export default function Navbar() {
                 {/* Préférences utilisateur */}
                 <div className="flex items-center gap-5">
                     <button
-                        onClick={()=>{
-                            toggleDarkMode()
-                            notifyInfo("Fonctionnalité à venir bientôt !")
+                        onClick={() => {
+                            toggleDarkMode();
+                            notifyInfo('Fonctionnalité à venir bientôt !');
                         }}
                         className="flex items-center gap-2 hover:text-primary transition-all duration-200 group"
                     >
@@ -105,7 +104,7 @@ export default function Navbar() {
 
                     <div className="flex items-center gap-2">
                         {!data ? (
-                            <div className="max-sm:hidden">
+                            <div className="flex items-center gap-5 max-sm:hidden">
                                 <a
                                     href="/login"
                                     className="flex items-center justify-center px-4 h-10 rounded-lg font-bold border border-card-light-border hover:text-primary hover:border-primary"
@@ -116,7 +115,7 @@ export default function Navbar() {
                                     href="/register"
                                     className="flex items-center justify-center bg-primary text-text-light px-6 h-10 rounded-lg font-bold hover:bg-primary-dark"
                                 >
-                                    S’inscrire
+                                    S'inscrire
                                 </a>
                             </div>
                         ) : (
@@ -179,9 +178,11 @@ export default function Navbar() {
 
                         <div className="grid grid-cols-2 gap-2 mb-4">
                             <button
-                                onClick={()=>{
-                                    toggleDarkMode()
-                                    notifyInfo("Fonctionnalité à venir bientôt !")
+                                onClick={() => {
+                                    toggleDarkMode();
+                                    notifyInfo(
+                                        'Fonctionnalité à venir bientôt !',
+                                    );
                                 }}
                                 className="flex items-center justify-center gap-2 p-3 rounded-md bg-card-dark dark:bg-card-dark text-text-light dark:text-text-light hover:bg-primary/10 hover:text-primary transition-colors text-sm font-semibold"
                             >

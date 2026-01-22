@@ -1,3 +1,4 @@
+import { title } from 'process';
 import Course1 from '../features/tempo/phase1';
 import Course2 from '../features/tempo/phase2';
 import Course3 from '../features/tempo/phase3';
@@ -5,6 +6,7 @@ import Course4 from '../features/tempo/phase4';
 import Course5 from '../features/tempo/phase5';
 import Course6 from '../features/tempo/phase6';
 import Course7 from '../features/tempo/phase7';
+import Course8 from '../features/tempo/phase8';
 
 export type CourseSection = {
     id: string;
@@ -278,6 +280,44 @@ export const courses = [
                     'Résumé des erreurs courantes et comment les éviter',
                     'Mini-exercice pratique combinant toutes les notions',
                 ],
+            },
+        ],
+    },
+    {
+        id: 7,
+        title: 'Introduction à la Programmation Orientée Objet (POO)',
+        component: Course8,
+        sections: [
+            {
+                id: 'poo-s1',
+                title: 'Pourquoi la Programmation Orientée Objet ?',
+                lessons: [],
+            },
+            {
+                id: 'poo-s2',
+                title: 'Exemple sans POO',
+                lessons: [],
+            },
+            {
+                id: 'poo-s3',
+                title: 'Qu’est-ce qu’un objet ?',
+                lessons: [],
+            },
+            {
+                id: 'poo-s4',
+                title: 'Qu’est-ce qu’une classe ?',
+                lessons: [
+                    'Créer sa première classe',
+                    'Créer un objet à partir d’une classe',
+                    'Les attributs (données de l’objet)',
+                    'Utiliser les attributs',
+                    'Les méthodes (fonctions dans une classe)',
+                ],
+            },
+            {
+                id: 'poo-s10',
+                title: 'Conclusion',
+                lessons: [],
             },
         ],
     },
