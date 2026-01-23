@@ -260,7 +260,7 @@ export const courses = [
                 title: 'Bloc else et finally',
                 lessons: [
                     'Utilité du bloc else après try / except',
-                    'Bloc finally : toujours exécuté, même en cas d’erreur',
+                    "Bloc finally : toujours exécuté, même en cas derreur",
                 ],
             },
             {
@@ -300,16 +300,16 @@ export const courses = [
             },
             {
                 id: 'poo-s3',
-                title: 'Qu’est-ce qu’un objet ?',
+                title: "Qu'est-ce qu'un objet ?",
                 lessons: [],
             },
             {
                 id: 'poo-s4',
-                title: 'Qu’est-ce qu’une classe ?',
+                title: "Qu'est-ce qu'une classe ?",
                 lessons: [
                     'Créer sa première classe',
-                    'Créer un objet à partir d’une classe',
-                    'Les attributs (données de l’objet)',
+                    "Créer un objet à partir d'une classe ",
+                    "Les attributs (données de l'objet)",
                     'Utiliser les attributs',
                     'Les méthodes (fonctions dans une classe)',
                 ],
