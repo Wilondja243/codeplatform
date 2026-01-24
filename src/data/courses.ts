@@ -7,6 +7,7 @@ import Course5 from '../features/tempo/phase5';
 import Course6 from '../features/tempo/phase6';
 import Course7 from '../features/tempo/phase7';
 import Course8 from '../features/tempo/phase8';
+import Course9 from '../features/tempo/phase9';
 
 export type CourseSection = {
     id: string;
@@ -260,7 +261,7 @@ export const courses = [
                 title: 'Bloc else et finally',
                 lessons: [
                     'Utilité du bloc else après try / except',
-                    "Bloc finally : toujours exécuté, même en cas derreur",
+                    'Bloc finally : toujours exécuté, même en cas derreur',
                 ],
             },
             {
@@ -318,6 +319,68 @@ export const courses = [
                 id: 'poo-s10',
                 title: 'Conclusion',
                 lessons: [],
+            },
+        ],
+    },
+    {
+        id: 9,
+        title: 'POO : Attributs, Méthodes et Objets',
+        component: Course9,
+        sections: [
+            {
+                id: 'c9-s1',
+                title: 'Attributs',
+                lessons: [
+                    'Définition des attributs',
+                    'Exemple simple d’attribut',
+                    'Différents types d’attributs',
+                ],
+            },
+            {
+                id: 'c9-s2',
+                title: 'Méthodes',
+                lessons: [
+                    'Définition des méthodes',
+                    'Exemple simple de méthode',
+                    'Méthodes avec paramètres',
+                ],
+            },
+            {
+                id: 'c9-s3',
+                title: 'Utilisation des objets (instances)',
+                lessons: [
+                    'Création d’objets',
+                    'Appel des méthodes sur les objets',
+                ],
+            },
+            {
+                id: 'c9-s4',
+                title: '__init__ et self',
+                lessons: [
+                    'Explication de __init__',
+                    'Explication de self',
+                    'Exemple pratique avec plusieurs objets',
+                ],
+            },
+            {
+                id: 'c9-s5',
+                title: 'Exemple pratique complet',
+                lessons: [
+                    'Classe Produit avec attributs et méthodes',
+                    'Création et utilisation des objets',
+                    'Modification des attributs via méthodes',
+                ],
+            },
+            {
+                id: 'c9-s6',
+                title: 'Exercices pratiques',
+                lessons: [
+                    'Créer une classe Animal avec attributs nom et age',
+                    'Ajouter une méthode parler() pour chaque objet',
+                    'Créer plusieurs objets et tester leurs méthodes',
+                    'Ajouter un nouvel attribut couleur et l’utiliser dans parler()',
+                    'Vérifier que chaque instance conserve ses propres valeurs',
+                ],
             },
         ],
     },
