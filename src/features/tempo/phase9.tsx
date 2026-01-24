@@ -235,10 +235,13 @@ p2 = Produit("Cahier", 3, 50)
 
 # Utilisation des méthodes
 p1.afficher_info()  # Stylo - Prix: 1.5€, Quantité: 100
+
 p1.vendre(20)       # Vendu 20 unités de Stylo
+
 p1.afficher_info()  # Stylo - Prix: 1.5€, Quantité: 80
 
 p2.afficher_info()  # Cahier - Prix: 3€, Quantité: 50
+
 p2.vendre(60)       # Quantité insuffisante`}
                 </pre>
             </div>
@@ -248,12 +251,15 @@ p2.vendre(60)       # Quantité insuffisante`}
             </h2>
             <p className="text-gray-700">
                 1. Créez une classe <code>Animal</code> avec des attributs{' '}
-                <code>nom</code> et <code>age</code>. 2. Ajoutez une méthode{' '}
+                <code>nom</code> et <code>age</code>. <br />
+                2. Ajoutez une méthode{' '}
                 <code>parler()</code> qui affiche un message utilisant le nom de
-                l’animal. 3. Créez au moins deux objets et testez leurs
-                méthodes. 4. Modifiez la classe pour ajouter un attribut{' '}
-                <code>couleur</code> et utilisez-le dans la méthode. 5. Testez
-                vos objets pour vérifier que chaque instance conserve ses
+                l’animal. <br />
+                3. Créez au moins deux objets et testez leurs
+                méthodes. <br />
+                4. Modifiez la classe pour ajouter un attribut{' '}
+                <code>couleur</code> et utilisez-le dans la méthode. <br />
+                5. Testez vos objets pour vérifier que chaque instance conserve ses
                 propres valeurs.
             </p>
         </div>
