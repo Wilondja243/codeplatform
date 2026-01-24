@@ -37,7 +37,7 @@ export default function Course9() {
             </p>
             <div className="bg-gray-100 p-4 rounded-md border-l-4 border-blue-500">
                 <pre className="text-sm overflow-x-auto">
-                    {`class Voiture:
+{`class Voiture:
     def __init__(self, couleur):
         self.couleur = couleur  # Attribut de l'objet
 
@@ -61,20 +61,21 @@ print(ma_voiture.couleur)  # Affiche: rouge`}
             </p>
             <div className="bg-gray-100 p-4 rounded-md border-l-4 border-blue-500">
                 <pre className="text-sm overflow-x-auto">
-                    {`class Personne:
+{`class Personne:
     def __init__(self, nom, age):
         self.nom = nom
         self.age = age
 
 p = Personne("Alice", 25)
+
 print(p.nom)  # Alice
 print(p.age)  # 25`}
                 </pre>
-                <p className="text-gray-700">
-                    Chaque objet <code>p</code> possède ses propres attributs{' '}
-                    <code>nom</code> et <code>age</code>.
-                </p>
             </div>
+            <p className="text-gray-700">
+                Chaque objet <code>p</code> possède ses propres attributs{' '}
+                <code>nom</code> et <code>age</code>.
+            </p>
 
             {/* 2. Les méthodes */}
             <h2 className="text-2xl font-semibold text-gray-800">
@@ -95,22 +96,23 @@ print(p.age)  # 25`}
             </p>
             <div className="bg-gray-100 p-4 rounded-md border-l-4 border-blue-500">
                 <pre className="text-sm overflow-x-auto">
-                    {`class Voiture:
-    def __init__(self, couleur):
-        self.couleur = couleur
+{`class Voiture:
+    def __init__(self, vitesse):
+        self.vitesse = vitesse
 
-    def klaxonner(self):
-        print("Bip bip! La voiture de couleur", self.couleur, "klaxonne.")
+    def rouler(self):
+        print("La voiture roule à la vitesse", self.vitesse)
 
-ma_voiture = Voiture("bleue")
-ma_voiture.klaxonner()  # Affiche: Bip bip! La voiture de couleur bleue klaxonne.`}
+ma_voiture = Voiture(55)
+ma_voiture.rouler()  # Affiche: La voiture de vitesse 55`}
                 </pre>
-                <p className="text-gray-700">
-                    Ici <code>klaxonner</code> est une méthode. Elle utilise
-                    l’attribut <code>self.couleur</code> pour afficher un
-                    message personnalisé.
-                </p>
+                
             </div>
+            <p className="text-gray-700">
+                Ici <code>rouler</code> est une méthode. Elle utilise
+                l'attribut <code>self.vitesse</code> pour afficher un
+                message personnalisé.
+            </p>
 
             <h3 className="text-md font-semibold text-gray-800">
                 b. Méthodes avec paramètres
@@ -132,12 +134,13 @@ ma_voiture.klaxonner()  # Affiche: Bip bip! La voiture de couleur bleue klaxonne
 mon_compte = CompteBancaire(100)
 mon_compte.deposer(50)  # Nouveau solde : 150`}
                 </pre>
-                <p className="text-gray-700">
-                    Ici <code>montant</code> est un paramètre passé à la méthode{' '}
-                    <code>deposer</code>, qui modifie l’attribut{' '}
-                    <code>solde</code> de l’objet.
-                </p>
+                
             </div>
+            <p className="text-gray-700">
+                Ici <code>montant</code> est un paramètre passé à la méthode{' '}
+                <code>deposer</code>, qui modifie l’attribut{' '}
+                <code>solde</code> de l’objet.
+            </p>
 
             {/* 3. Utilisation des objets */}
             <h2 className="text-2xl font-semibold text-gray-800">
@@ -162,11 +165,12 @@ chien2 = Chien("Max")
 chien1.aboyer()  # Rex aboie! Woof Woof!
 chien2.aboyer()  # Max aboie! Woof Woof!`}
                 </pre>
-                <p className="text-gray-700">
-                    Chaque objet possède ses propres données et peut appeler les
-                    méthodes de la classe indépendamment des autres objets.
-                </p>
+                
             </div>
+            <p className="text-gray-700">
+                Chaque objet possède ses propres données et peut appeler les
+                méthodes de la classe indépendamment des autres objets.
+            </p>
 
             {/* 4. Explication de __init__ et self */}
             <h2 className="text-2xl font-semibold text-gray-800">
