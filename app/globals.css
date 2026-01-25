@@ -1,26 +1,77 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+* {
+    transition: all 0.3s ease-in-out;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    /* Backgrounds */
+    --background: #ffffff;
+    --foreground: #0f172a;
+
+    --primary: #2563eb;
+    --primary-light: #dbeafe;
+    --primary-dark: #1e40af;
+    --accent-cyan: #06b6d4;
+
+    --background-muted: #f4f6f8;
+
+    --card-bg: #ffffff;
+    --card-hover: #f8fafc;
+    --card-border: #e2e8f0;
+
+    --radius-premium: 1rem;
+    --radius-button: 0.75rem;
+}
+
+.dark {
+    --background: #0a0a0b;
+    --foreground: #f8f9fa;
+
+    --card-bg: #111113;
+    --card-hover: #18181b;
+    --card-border: #27272a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-primary: var(--primary);
+    --color-primary-light: var(--primary-light);
+    --color-primary-dark: var(--primary-dark);
+    --color-accent: var(--accent-cyan);
+
+    --color-bg-muted: var(--background-muted);
+
+    --color-card: var(--card-bg);
+    --color-card-hover: var(--card-hover);
+    --color-card-border: var(--card-border);
+
+    --breakpoint-lg-nav: 950px;
+
+    --radius-xl: var(--radius-premium);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* --- Styles de base --- */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.wrapper {
+    max-width: 1400px;
+    width: 90%;
+    margin-inline: auto;
+}
+
+@utility glass {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
