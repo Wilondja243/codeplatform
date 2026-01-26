@@ -18,7 +18,7 @@ export default function Courses() {
             tag: 'Data & Backend',
             duration: '24h de contenu',
             rating: 4.9,
-            link: '/courses/python',
+            slug: 'python',
             color: 'blue',
         },
         {
@@ -34,7 +34,7 @@ export default function Courses() {
             tag: 'Web Development',
             duration: '32h de contenu',
             rating: 5.0,
-            link: '/courses/javascript',
+            slug: 'javascript',
             color: 'yellow',
         },
         {
@@ -50,7 +50,7 @@ export default function Courses() {
             tag: 'Frontend Design',
             duration: '18h de contenu',
             rating: 4.8,
-            link: '/courses/html-css',
+            slug: 'HTML-CSS',
             color: 'orange',
         },
     ];
@@ -134,7 +134,7 @@ export default function Courses() {
                                 </div>
 
                                 <Link
-                                    href={course.link}
+                                    href={`/roadmaps/${course.slug}`}
                                     className="w-full h-14 bg-white border border-card-border text-foreground font-black rounded-2xl flex items-center justify-center gap-2 group-hover:bg-slate-900 group-hover:text-white group-hover:border-slate-900 transition-all duration-300"
                                 >
                                     Détails du parcours

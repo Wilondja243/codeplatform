@@ -19,6 +19,7 @@ import {
     Sparkles,
 } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Footer from '@/components/layout/footer';
 import NavBar from '@/components/layout/nav-bar';
 
@@ -29,6 +30,7 @@ export default function RoadmapDetailPage({
 }) {
     const param = use(params);
     const slug = param.slug;
+    const router = useRouter();
 
     if (slug !== 'python') {
         return (
@@ -37,12 +39,12 @@ export default function RoadmapDetailPage({
                     <h2 className="text-2xl font-black text-slate-900 uppercase">
                         Roadmap non disponible
                     </h2>
-                    <Link
-                        href="/roadmaps"
+                    <button
+                        onClick={() => router.back()}
                         className="text-primary font-bold hover:underline"
                     >
                         Retourner aux parcours
-                    </Link>
+                    </button>
                 </div>
             </div>
         );

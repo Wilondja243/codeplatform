@@ -4,7 +4,9 @@ import Footer from '@/components/layout/footer';
 import Features from '@/components/sections/home/feature';
 import HowItWorks from '@/components/sections/home/roadmap-step';
 import Testimonials from '@/components/sections/home/testimonial';
+import Courses from '@/components/sections/explore/expore-course';
 import Ready from '@/components/sections/home/ready';
+
 
 export default function Home() {
     return (
@@ -15,6 +17,7 @@ export default function Home() {
             </header>
             <main>
                 <Features />
+                <Courses />
                 <HowItWorks />
                 <Testimonials />
                 <Ready />
