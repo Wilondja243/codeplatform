@@ -4,7 +4,6 @@ import RoadmapHero from '@/components/sections/roadmap/roadmap-hero';
 import FeatureRoadmap from '@/components/sections/roadmap/features-roadmap';
 import RoadmapStep from '@/components/sections/home/roadmap-step';
 
-
 export default function RoadmapPage() {
     return (
         <div>

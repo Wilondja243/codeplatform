@@ -7,7 +7,6 @@ export default function Footer() {
         <footer className="bg-[#0a0a0b] border-t border-card-border py-20">
             <div className="wrapper mx-auto space-y-16">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg-nav:grid-cols-4 gap-12">
-
                     <div className="space-y-8">
                         <div className="flex items-center gap-3 group cursor-pointer w-fit">
                             <div className="relative size-11 flex items-center justify-center bg-primary rounded-2xl transition-all duration-500 group-hover:rotate-6 shadow-xl shadow-primary/20">
