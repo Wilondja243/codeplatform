@@ -62,7 +62,7 @@ export default function ExploreHero() {
                     <div className="relative group">
                         <div className="absolute -inset-4 bg-gradient-to-tr from-primary/10 to-transparent rounded-[2.5rem] blur-2xl group-hover:scale-110 transition-transform duration-700" />
 
-                        <div className="relative rounded-[2.5rem] border-8 border-white shadow-2xl overflow-hidden bg-bg-muted">
+                        <div className="relative rounded-[2.5rem] border-8 border-card overflow-hidden bg-bg-muted">
                             <img
                                 src="images/formation.webp"
                                 alt="Formation CodePlatform"

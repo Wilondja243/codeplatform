@@ -4,10 +4,10 @@ import { BookOpen } from 'lucide-react';
 
 export default function Footer() {
     return (
-        <footer className="bg-bg-muted border-t border-card-border py-20">
+        <footer className="bg-[#0a0a0b] border-t border-card-border py-20">
             <div className="wrapper mx-auto space-y-16">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg-nav:grid-cols-4 gap-12">
-                    {/* Branding Section */}
+
                     <div className="space-y-8">
                         <div className="flex items-center gap-3 group cursor-pointer w-fit">
                             <div className="relative size-11 flex items-center justify-center bg-primary rounded-2xl transition-all duration-500 group-hover:rotate-6 shadow-xl shadow-primary/20">
@@ -17,15 +17,15 @@ export default function Footer() {
                                     strokeWidth={2.5}
                                 />
                             </div>
-                            <span className="text-2xl font-black text-foreground tracking-tighter">
+                            <span className="text-2xl font-black text-card-hover tracking-tighter">
                                 Code
                                 <span className="text-primary">Platform</span>
                             </span>
                         </div>
-                        <p className="text-slate-500 text-lg leading-relaxed font-medium">
+                        <p className="text-gray-300 text-lg leading-relaxed font-medium">
                             Propulser la prochaine génération de développeurs
                             via un apprentissage{' '}
-                            <span className="text-foreground font-bold">
+                            <span className="text-primary font-bold">
                                 concret
                             </span>{' '}
                             et axé sur les projets.
@@ -36,7 +36,7 @@ export default function Footer() {
                                 aria-label="WhatsApp"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="size-11 flex items-center justify-center rounded-xl bg-white border border-card-border text-slate-400 hover:text-green-600 hover:bg-green-50 hover:border-green-200 transition-all duration-300 shadow-sm"
+                                className="size-11 flex items-center justify-center rounded-xl border border-green-900 text-green-700 hover:text-green-500 transition-all duration-300 shadow-sm"
                             >
                                 <svg
                                     fill="currentColor"
@@ -52,7 +52,7 @@ export default function Footer() {
                                 target="_blank"
                                 aria-label="GitHub"
                                 rel="noopener noreferrer"
-                                className="size-11 flex items-center justify-center rounded-xl bg-white border border-card-border text-slate-400 hover:text-foreground hover:bg-slate-50 transition-all duration-300 shadow-sm"
+                                className="size-11 flex items-center justify-center rounded-xl border border-gray-700 text-slate-400 hover:text-card transition-all duration-300 shadow-sm"
                             >
                                 <svg
                                     fill="currentColor"
@@ -72,7 +72,7 @@ export default function Footer() {
                                 target="_blank"
                                 aria-label="LinkedIn"
                                 rel="noopener noreferrer"
-                                className="size-11 flex items-center justify-center rounded-xl bg-white border border-card-border text-slate-400 hover:text-primary hover:bg-primary-light transition-all duration-300 shadow-sm"
+                                className="size-11 flex items-center justify-center rounded-xl border border-blue-900 text-blue-400 hover:text-primary transition-all duration-300 shadow-sm"
                             >
                                 <svg
                                     fill="currentColor"
@@ -86,14 +86,14 @@ export default function Footer() {
                     </div>
 
                     <div className="space-y-6">
-                        <h4 className="text-foreground font-bold text-sm uppercase tracking-[0.2em]">
+                        <h4 className="text-primary font-bold text-sm uppercase tracking-[0.2em]">
                             Platform
                         </h4>
-                        <ul className="space-y-4 text-[15px] font-medium text-slate-500">
+                        <ul className="space-y-4 text-[15px] font-medium text-gray-300">
                             <li>
                                 <a
                                     href="/explore"
-                                    className="hover:text-primary transition-colors"
+                                    className="hover:text-bg-muted transition-colors"
                                 >
                                     Explorer
                                 </a>
@@ -101,7 +101,7 @@ export default function Footer() {
                             <li>
                                 <a
                                     href="/roadmap"
-                                    className="hover:text-primary transition-colors"
+                                    className="hover:text-bg-muted transition-colors"
                                 >
                                     Roadmaps
                                 </a>
@@ -109,7 +109,7 @@ export default function Footer() {
                             <li>
                                 <a
                                     href="#"
-                                    className="hover:text-primary transition-colors"
+                                    className="hover:text-bg-muted transition-colors"
                                 >
                                     Méthodologie
                                 </a>
@@ -117,7 +117,7 @@ export default function Footer() {
                             <li>
                                 <a
                                     href="#"
-                                    className="hover:text-primary transition-colors"
+                                    className="hover:text-bg-muted transition-colors"
                                 >
                                     Succès
                                 </a>
@@ -126,14 +126,14 @@ export default function Footer() {
                     </div>
 
                     <div className="space-y-6">
-                        <h4 className="text-foreground font-bold text-sm uppercase tracking-[0.2em]">
+                        <h4 className="text-primary font-bold text-sm uppercase tracking-[0.2em]">
                             Entreprise
                         </h4>
-                        <ul className="space-y-4 text-[15px] font-medium text-slate-500">
+                        <ul className="space-y-4 text-[15px] font-medium text-gray-300">
                             <li>
                                 <a
                                     href="#"
-                                    className="hover:text-primary transition-colors"
+                                    className="hover:text-background transition-colors"
                                 >
                                     À propos
                                 </a>
@@ -141,7 +141,7 @@ export default function Footer() {
                             <li>
                                 <a
                                     href="#"
-                                    className="hover:text-primary transition-colors"
+                                    className="hover:text-background transition-colors"
                                 >
                                     Carrières
                                 </a>
@@ -149,7 +149,7 @@ export default function Footer() {
                             <li>
                                 <a
                                     href="#"
-                                    className="hover:text-primary transition-colors"
+                                    className="hover:text-background transition-colors"
                                 >
                                     Blog
                                 </a>
@@ -157,7 +157,7 @@ export default function Footer() {
                             <li>
                                 <a
                                     href="/contact"
-                                    className="hover:text-primary transition-colors"
+                                    className="hover:text-background transition-colors"
                                 >
                                     Contact
                                 </a>
@@ -166,14 +166,14 @@ export default function Footer() {
                     </div>
 
                     <div className="space-y-6">
-                        <h4 className="text-foreground font-bold text-sm uppercase tracking-[0.2em]">
+                        <h4 className="text-primary font-bold text-sm uppercase tracking-[0.2em]">
                             Assistance
                         </h4>
-                        <ul className="space-y-4 text-[15px] font-medium text-slate-500">
+                        <ul className="space-y-4 text-[15px] font-medium text-gray-300">
                             <li>
                                 <a
                                     href="#"
-                                    className="hover:text-primary transition-colors"
+                                    className="hover:text-background transition-colors"
                                 >
                                     Centre d'aide
                                 </a>
@@ -181,7 +181,7 @@ export default function Footer() {
                             <li>
                                 <a
                                     href="#"
-                                    className="hover:text-primary transition-colors"
+                                    className="hover:text-background transition-colors"
                                 >
                                     Conditions d'utilisation
                                 </a>
@@ -189,7 +189,7 @@ export default function Footer() {
                             <li>
                                 <a
                                     href="#"
-                                    className="hover:text-primary transition-colors"
+                                    className="hover:text-background transition-colors"
                                 >
                                     Confidentialité
                                 </a>
@@ -197,7 +197,7 @@ export default function Footer() {
                             <li>
                                 <a
                                     href="#"
-                                    className="hover:text-primary transition-colors"
+                                    className="hover:text-background transition-colors"
                                 >
                                     Cookies
                                 </a>
@@ -207,20 +207,20 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="flex flex-col md:flex-row justify-between items-center border-t border-card-border pt-10 gap-6">
-                    <p className="text-sm font-medium text-slate-500">
+                <div className="flex flex-col md:flex-row justify-between items-center border-t border-gray-900 pt-10 gap-6">
+                    <p className="text-sm font-medium text-bg-muted">
                         © 2026{' '}
-                        <span className="text-foreground font-bold">
+                        <span className="text-primary font-bold">
                             CodePlatform
                         </span>
                         . Tous droits réservés.
                     </p>
-                    <div className="flex items-center gap-3 px-4 py-2 bg-white rounded-full border border-card-border shadow-sm">
+                    <div className="flex items-center gap-3 px-4 py-2 rounded-full border border-blue-900 shadow-sm">
                         <span className="relative flex h-2 w-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                         </span>
-                        <span className="text-xs font-bold text-slate-600 uppercase tracking-tighter">
+                        <span className="text-xs font-bold text-slate-400 pascase tracking-tighter">
                             Tous les systèmes sont opérationnels
                         </span>
                     </div>
