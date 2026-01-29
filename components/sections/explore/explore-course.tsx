@@ -4,16 +4,19 @@ import Link from 'next/link';
 import axios from 'axios';
 import { ArrowRight, PlayCircle, Clock, Star } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { Course } from '@/app/generated/prisma';
+import { CourseSkeleton } from '@/components/course-skelleton';
+
 
 export default function Courses() {
-    const [course, setCourse] = useState();
+    const [courses, setCourses] = useState<Course[] | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const getCourse = async () => {
             try {
                 const response = await axios.get('/api/cours');
-                setCourse(response.data);
+                setCourses(response.data);
             } catch (error) {
                 console.error('Axios Error', error);
             } finally {
@@ -25,43 +28,12 @@ export default function Courses() {
     }, []);
 
     if (!loading) {
-        console.log(course);
-        console.log('courseData: ', JSON.stringify(course), 4, null);
+        console.log(courses);
+        console.log('courseData: ', JSON.stringify(courses), 4, null);
     }
 
     const data = [
-        {
-            id: 1,
-            title: 'Masterclass Python 2026',
-            description:
-                "Apprenez la programmation avec Python : de la logique de base à l'Intelligence Artificielle et l'automatisation.",
-            icon: (
-                <div className="size-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-2xl">
-                    Py
-                </div>
-            ),
-            tag: 'Data & Backend',
-            duration: '24h de contenu',
-            rating: 4.9,
-            slug: 'python',
-            color: 'blue',
-        },
-        {
-            id: 2,
-            title: 'JavaScript Expert : FullStack',
-            description:
-                "Maîtrisez l'écosystème moderne de JavaScript : React, Node.js et l'architecture asynchrone pour le web.",
-            icon: (
-                <div className="size-12 rounded-xl bg-yellow-50 text-yellow-600 flex items-center justify-center font-bold text-2xl">
-                    Js
-                </div>
-            ),
-            tag: 'Web Development',
-            duration: '32h de contenu',
-            rating: 5.0,
-            slug: 'javascript',
-            color: 'yellow',
-        },
+        
         {
             id: 3,
             title: 'UI/UX avec HTML5 & CSS3',
@@ -79,8 +51,6 @@ export default function Courses() {
             color: 'orange',
         },
     ];
-
-    const isLoading = false;
 
     return (
         <section className="pb-24 pt-16 bg-gradient-to-t from-white to-[#f8f9fa]">
@@ -115,14 +85,19 @@ export default function Courses() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                    {data.map((course) => (
+                    {loading ? (
+                        [1, 2, 3].map((_, i) =>(
+                            <CourseSkeleton key={i} />
+                        ))
+                    ) : (
+                    courses?.map((course: any) => (
                         <div
                             key={course.id}
                             className="group flex flex-col bg-white rounded-[2rem] border border-card-border p-2 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500"
                         >
                             <div className="bg-bg-muted rounded-[1.8rem] p-8 flex-1 flex flex-col">
                                 <div className="flex justify-between items-start mb-8">
-                                    {course.icon}
+                                    <div dangerouslySetInnerHTML={{__html: course.icon}} />
                                     <div className="flex items-center gap-1 bg-white px-3 py-1 rounded-full border border-card-border shadow-sm">
                                         <Star
                                             size={12}
@@ -170,7 +145,7 @@ export default function Courses() {
                                 </Link>
                             </div>
                         </div>
-                    ))}
+                    )))}
                 </div>
             </div>
         </section>
