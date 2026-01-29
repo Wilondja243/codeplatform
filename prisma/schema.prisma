@@ -5,10 +5,60 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../app/generated/prisma"
+  engineType = "binary"
 }
 
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+/// ================
+/// AUTH
+/// ================
+
+model User {
+  id         String   @id @default(uuid(7)) @db.Uuid
+  name       String
+  email      String   @unique
+  is_active  Boolean @default(true)
+  
+  profile    Profile?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
+}
+
+model Profile {
+  id         String   @id @default(uuid(7)) @db.Uuid
+  user       User @relation(fields: [userId], references: [id])
+  userId     String @unique @db.Uuid
+  phone      String?
+  bio        String?
+  date_bith  String?
+}
+
+
+/// ================
+/// COURS
+/// ================
+
+model Course {
+  id          String   @id @default(uuid()) @db.Uuid
+  title       String
+  description String
+  lesson      Int @default(0)
+  note        Int @default(0)
+  icon        String?
+  tag         String?
+  duration    String?
+  rating      Float @default(0)
+  slug        String   @unique
+  color       String?
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 }

@@ -4,9 +4,8 @@ import Footer from '@/components/layout/footer';
 import Features from '@/components/sections/home/feature';
 import HowItWorks from '@/components/sections/home/roadmap-step';
 import Testimonials from '@/components/sections/home/testimonial';
-import Courses from '@/components/sections/explore/expore-course';
+import Courses from '@/components/sections/explore/explore-course';
 import Ready from '@/components/sections/home/ready';
-
 
 export default function Home() {
     return (

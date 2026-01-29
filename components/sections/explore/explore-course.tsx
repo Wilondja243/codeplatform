@@ -1,9 +1,34 @@
 'use client';
 
 import Link from 'next/link';
+import axios from 'axios';
 import { ArrowRight, PlayCircle, Clock, Star } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export default function Courses() {
+    const [course, setCourse] = useState();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const getCourse = async () => {
+            try {
+                const response = await axios.get('/api/cours');
+                setCourse(response.data);
+            } catch (error) {
+                console.error('Axios Error', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        getCourse();
+    }, []);
+
+    if (!loading) {
+        console.log(course);
+        console.log('courseData: ', JSON.stringify(course), 4, null);
+    }
+
     const data = [
         {
             id: 1,
