@@ -86,8 +86,8 @@ const MainDashboard = () => {
                         Exporter le rapport
                     </button>
                     <Link
-                        href="/admin/cours"
-                        className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-500 transition-all font-bold shadow-lg shadow-blue-600/20"
+                        href="/admin/cours/form"
+                        className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-500 transition-all font-bold shadow-lg shadow-blue-600/20 cursor-pointer"
                     >
                         <Plus size={18} />
                         Ajouter un cours
@@ -126,14 +126,13 @@ const MainDashboard = () => {
                                 vs mois dernier
                             </span>
                         </div>
-                        {/* Effet décoratif en fond */}
                         <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-blue-600/5 blur-3xl rounded-full group-hover:bg-blue-600/10 transition-all" />
                     </div>
                 ))}
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Section Graphique (Simulé par CSS pour le style) */}
+
                 <div className="lg:col-span-2 bg-card border border-card-border rounded-2xl p-6">
                     <div className="flex justify-between items-center mb-8">
                         <h4 className="text-text-main font-bold text-lg">
@@ -147,7 +146,7 @@ const MainDashboard = () => {
                     </div>
 
                     {/* Placeholder graphique premium */}
-                    <div className="h-64 w-full bg-gradient-to-t from-blue-600/5 to-transparent rounded-xl border border-dashed border-gray-800 flex items-center justify-center">
+                    <div className="h-64 w-full bg-gradient-to-t from-blue-600/5 to-transparent rounded-xl border border-card-border flex items-center justify-center">
                         <div className="relative w-full h-full flex items-end justify-between px-4 pb-2">
                             {[40, 70, 45, 90, 65, 80, 30, 50, 85, 45].map(
                                 (h, i) => (

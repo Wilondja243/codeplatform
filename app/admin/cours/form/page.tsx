@@ -12,6 +12,7 @@ import {
     Link,
     Palette,
     FileText,
+    Edit2
 } from 'lucide-react';
 import axios from 'axios';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -23,6 +24,7 @@ import { useValidateCourseForm } from '@/hooks/use-validation-cours-form';
 import CourseFormSkeleton from '@/components/cours-form-skelleton';
 import { CoursFormValues } from '@/lib/cours-schema';
 import useNotification from '@/hooks/use-taost';
+
 
 export default function CourseFormPage() {
     const searchParams = useSearchParams();
@@ -75,6 +77,7 @@ export default function CourseFormPage() {
 
             router.push('/admin/cours');
             router.refresh();
+
         } catch (error) {
             console.log("Erreur lors de l'envoi :", error);
             notifyError('Une erreur est survenue');
@@ -121,10 +124,17 @@ export default function CourseFormPage() {
                                         En cours
                                     </div>
                                 ) : (
-                                    <>
-                                        <Save size={18} />
-                                        Publier le cours
-                                    </>
+                                    isEditing ? (
+                                        <>
+                                            <Edit2 size={18} />
+                                            Modifier le cours
+                                        </>
+                                    ):(
+                                        <>
+                                            <Save size={18} />
+                                            Publier le cours
+                                        </>
+                                    )
                                 )}
                             </button>
                         </div>

@@ -69,9 +69,9 @@ export default function AdminCoursesPage() {
                             </div>
                             <button
                                 onClick={() =>
-                                    router.push('/admin/cours/coursForm')
+                                    router.push('/admin/cours/form')
                                 }
-                                className="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-md font-semibold transition-all shadow-sm"
+                                className="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-md font-semibold transition-all shadow-sm cursor-pointer"
                             >
                                 <Plus size={20} />
                                 Nouveau cours
@@ -84,19 +84,19 @@ export default function AdminCoursesPage() {
                                 icon={<BookOpen className="text-blue-600" />}
                                 label="Total Cours"
                                 value={courses.length.toString()}
-                                color="bg-blue-50"
+                                color="bg-blue-50/10"
                             />
                             <StatCard
                                 icon={<Users className="text-purple-600" />}
                                 label="Étudiants"
                                 value="1,284"
-                                color="bg-purple-50"
+                                color="bg-purple-50/10"
                             />
                             <StatCard
                                 icon={<Star className="text-amber-600" />}
                                 label="Note Moyenne"
                                 value="4.8"
-                                color="bg-amber-50"
+                                color="bg-amber-50/10"
                             />
                         </div>
 
@@ -129,6 +129,7 @@ export default function AdminCoursesPage() {
     );
 }
 
+
 // --- SOUS-COMPOSANTS ---
 
 const StatCard = ({ icon, label, value, color }: any) => (
@@ -141,18 +142,18 @@ const StatCard = ({ icon, label, value, color }: any) => (
     </div>
 );
 
-const AdminCourseCard = ({ course }: { course: Course }) => (
+const AdminCourseCard = ({ course }: any) => (
     <div className="bg-card rounded-2xl border border-card-border overflow-hidden hover:shadow-xl transition-shadow group relative">
+        
         <div className="p-6">
             <div className="flex justify-between items-start mb-4">
-                {/* On utilise ton icône HTML safely ici */}
                 <div dangerouslySetInnerHTML={{ __html: course.icon }} />
                 <button className="text-text-muted hover:text-text-main p-1">
                     <MoreVertical size={20} />
                 </button>
             </div>
 
-            <h3 className="text-lg font-bold text-text-main mb-2 group-hover:text-indigo-600 transition-colors">
+            <h3 className="text-lg font-bold text-text-main mb-2 group-hover:text-primary transition-colors">
                 {course.title}
             </h3>
             <p className="text-text-muted text-sm line-clamp-2 mb-4">
@@ -171,7 +172,7 @@ const AdminCourseCard = ({ course }: { course: Course }) => (
 
         <div className="flex border-t border-card-border bg-slate-50/5">
             <Link
-                href={`/admin/cours/coursForm?id=${course.id}`}
+                href={`/admin/cours/form?id=${course.id}`}
                 className="flex-1 flex items-center justify-center gap-2 py-3 text-sm font-medium text-slate-600 hover:bg-card hover:text-indigo-600 transition-all border-r border-slate-100"
             >
                 <Pencil size={16} /> Éditer
@@ -192,7 +193,7 @@ const EmptyState = ({ error, fetchCourses }: any) =>
             <p className="text-red-500 mb-4">{error}</p>
             <button
                 onClick={() => fetchCourses()}
-                className="bg-indigo-600 text-card px-4 py-2 rounded"
+                className="bg-primary text-card px-4 py-2 rounded"
             >
                 Réessayer
             </button>
@@ -208,7 +209,7 @@ const EmptyState = ({ error, fetchCourses }: any) =>
             <p className="text-slate-500 mb-6">
                 Commencez par ajouter votre première formation premium.
             </p>
-            <button className="bg-indigo-600 text-white px-6 py-2 rounded-lg font-medium">
+            <button className="bg-primary text-white px-6 py-2 rounded-lg font-medium">
                 Ajouter maintenant
             </button>
         </div>

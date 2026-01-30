@@ -4,7 +4,8 @@ import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import { Search, Bell, Sun, Moon, Command } from 'lucide-react';
 
-const TopBar = () => {
+
+export default function TopBar() {
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
@@ -64,7 +65,7 @@ const TopBar = () => {
                 <div className="flex items-center gap-3">
                     <div className="text-right">
                         <p className="text-sm font-bold text-text-main leading-none">
-                            Alex Rivera
+                            Luckson Premier
                         </p>
                         <p className="text-[10px] text-primary font-bold uppercase mt-1 tracking-tighter">
                             System Architect
@@ -72,7 +73,7 @@ const TopBar = () => {
                     </div>
                     <div className="w-10 h-10 rounded-full border-2 border-blue-500/20 p-0.5">
                         <img
-                            src="images/4442.jpg"
+                            src="/images/4442.jpg"
                             alt="Avatar"
                             className="rounded-full"
                         />
@@ -82,5 +83,3 @@ const TopBar = () => {
         </header>
     );
 };
-
-export default TopBar;
