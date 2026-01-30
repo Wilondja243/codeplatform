@@ -8,7 +8,7 @@ export const coursSchema = z.object({
         .min(2, 'Le slug est requis')
         .regex(/^[a-z0-0-]+$/, 'Format slug invalide'),
 
-    lesson: z.coerce
+    lessonCount: z.coerce
         .number()
         .int()
         .min(0, 'Le nombre ne peut pas être négatif')

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
     LayoutDashboard,
@@ -14,8 +14,7 @@ import {
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-
-export default function Sidebar(){
+export default function Sidebar() {
     const pathname = usePathname();
 
     const menuItems = [
@@ -30,7 +29,7 @@ export default function Sidebar(){
             label: 'Catalogue de cours',
             href: '/admin/cours',
         },
-        { icon: Users, label: 'Gestion Étudiants', href: '#'},
+        { icon: Users, label: 'Gestion Étudiants', href: '#' },
         {
             icon: GraduationCap,
             label: 'Certifications',
@@ -51,13 +50,9 @@ export default function Sidebar(){
 
     return (
         <aside className="w-64 h-screen bg-card border-r border-card-border flex flex-col p-6">
-    
             <div className="flex items-center gap-3 mb-10 px-2">
                 <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20">
-                    <BookOpen
-                        className="text-white size-6"
-                        strokeWidth={2.5}
-                    />
+                    <BookOpen className="text-white size-6" strokeWidth={2.5} />
                 </div>
                 <div>
                     <h1 className="text-text-main font-bold leading-tight tracking-tight">
@@ -72,8 +67,10 @@ export default function Sidebar(){
             {/* Navigation principale */}
             <nav className="flex-1 space-y-1.5">
                 {menuItems.map((item) => {
-
-                    const isActive = pathname === item.href || (item.href !== '/admin' && pathname.startsWith(item.href))
+                    const isActive =
+                        pathname === item.href ||
+                        (item.href !== '/admin' &&
+                            pathname.startsWith(item.href));
 
                     return (
                         <Link
@@ -97,8 +94,8 @@ export default function Sidebar(){
                                 {item.label}
                             </span>
                         </Link>
-                    )}
-                )}
+                    );
+                })}
             </nav>
 
             <div className="mt-auto pt-6 space-y-4">
@@ -112,4 +109,4 @@ export default function Sidebar(){
             </div>
         </aside>
     );
-};
+}

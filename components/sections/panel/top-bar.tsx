@@ -4,7 +4,6 @@ import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import { Search, Bell, Sun, Moon, Command } from 'lucide-react';
 
-
 export default function TopBar() {
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
@@ -82,4 +81,4 @@ export default function TopBar() {
             </div>
         </header>
     );
-};
+}

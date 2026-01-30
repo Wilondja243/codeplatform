@@ -48,17 +48,54 @@ model Profile {
 /// ================
 
 model Course {
-  id          String   @id @default(uuid()) @db.Uuid
-  title       String
-  description String
-  lesson      Int @default(0)
-  note        Int @default(0)
-  icon        String?
-  tag         String?
-  duration    String?
-  rating      Float @default(0)
-  slug        String   @unique
-  color       String?
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
+  id               String   @id @default(uuid()) @db.Uuid
+  title            String
+
+  lessons          Lesson[]
+
+  description      String
+  lessonCount      Int @default(0)
+  note             Int @default(0)
+  icon             String?
+  tag              String?
+  duration         String?
+  rating           Float @default(0)
+  slug             String   @unique
+  color            String?
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
+}
+
+model Lesson {
+  id        String   @id @default(uuid())
+  title     String
+  order     Int
+  courseId  String
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  
+  content   LessonContent[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model LessonContent {
+  id        String      @id @default(uuid())
+  lessonId  String
+  lesson    Lesson      @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  
+  type      ContentType
+  value     String      @db.Text
+  
+  label     String?
+  order     Int
+}
+
+enum ContentType {
+  PARAGRAPH
+  SECTION_TITLE
+  COMMAND
+  LINK
+  IMAGE
+  LIST_ITEM
 }

@@ -18,6 +18,7 @@ import TopBar from '@/components/sections/panel/top-bar';
 import Sidebar from '@/components/sections/panel/side-bar';
 import { CourseSkeleton } from '@/components/course-skelleton';
 import useNotification from '@/hooks/use-taost';
+import AdminCourseCard from '@/components/admin-course-card';
 
 export default function AdminCoursesPage() {
     const router = useRouter();
@@ -68,9 +69,7 @@ export default function AdminCoursesPage() {
                                 </p>
                             </div>
                             <button
-                                onClick={() =>
-                                    router.push('/admin/cours/form')
-                                }
+                                onClick={() => router.push('/admin/cours/form')}
                                 className="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-md font-semibold transition-all shadow-sm cursor-pointer"
                             >
                                 <Plus size={20} />
@@ -129,7 +128,6 @@ export default function AdminCoursesPage() {
     );
 }
 
-
 // --- SOUS-COMPOSANTS ---
 
 const StatCard = ({ icon, label, value, color }: any) => (
@@ -138,51 +136,6 @@ const StatCard = ({ icon, label, value, color }: any) => (
         <div>
             <p className="text-sm text-text-main font-medium">{label}</p>
             <p className="text-2xl font-bold text-text-muted">{value}</p>
-        </div>
-    </div>
-);
-
-const AdminCourseCard = ({ course }: any) => (
-    <div className="bg-card rounded-2xl border border-card-border overflow-hidden hover:shadow-xl transition-shadow group relative">
-        
-        <div className="p-6">
-            <div className="flex justify-between items-start mb-4">
-                <div dangerouslySetInnerHTML={{ __html: course.icon }} />
-                <button className="text-text-muted hover:text-text-main p-1">
-                    <MoreVertical size={20} />
-                </button>
-            </div>
-
-            <h3 className="text-lg font-bold text-text-main mb-2 group-hover:text-primary transition-colors">
-                {course.title}
-            </h3>
-            <p className="text-text-muted text-sm line-clamp-2 mb-4">
-                {course.description}
-            </p>
-
-            <div className="flex items-center gap-4 text-xs font-semibold text-text-subtle uppercase tracking-wider">
-                <span className="flex items-center gap-1">
-                    <BookOpen size={14} /> {course.lesson} Leçons
-                </span>
-                <span className="flex items-center gap-1">
-                    <Star size={14} className="text-amber-400" /> {course.note}
-                </span>
-            </div>
-        </div>
-
-        <div className="flex border-t border-card-border bg-slate-50/5">
-            <Link
-                href={`/admin/cours/form?id=${course.id}`}
-                className="flex-1 flex items-center justify-center gap-2 py-3 text-sm font-medium text-slate-600 hover:bg-card hover:text-indigo-600 transition-all border-r border-slate-100"
-            >
-                <Pencil size={16} /> Éditer
-            </Link>
-            <Link
-                href=""
-                className="flex-1 flex items-center justify-center gap-2 py-3 text-sm font-medium text-red-500 hover:bg-card transition-all"
-            >
-                <Trash2 size={16} /> Supprimer
-            </Link>
         </div>
     </div>
 );

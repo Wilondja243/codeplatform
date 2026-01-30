@@ -132,7 +132,6 @@ const MainDashboard = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
                 <div className="lg:col-span-2 bg-card border border-card-border rounded-2xl p-6">
                     <div className="flex justify-between items-center mb-8">
                         <h4 className="text-text-main font-bold text-lg">
