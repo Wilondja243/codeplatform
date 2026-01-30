@@ -69,20 +69,20 @@ const MainDashboard = () => {
     ];
 
     return (
-        <main className="flex-1 bg-[#0a0c11] p-8 overflow-y-auto">
+        <main className="flex-1 bg-background p-8 overflow-y-auto">
             {/* Header de la page */}
             <div className="flex justify-between items-end mb-10">
                 <div>
-                    <h2 className="text-3xl font-bold text-white mb-2">
+                    <h2 className="text-3xl font-bold text-text-main mb-2">
                         Dashboard
                     </h2>
-                    <p className="text-gray-500">
+                    <p className="text-text-muted">
                         Bienvenue, Alex. Voici les performances
                     </p>
                 </div>
 
                 <div className="flex gap-3">
-                    <button className="flex items-center gap-2 px-5 py-2.5 bg-[#161B22] border border-gray-700 text-gray-300 rounded-xl hover:bg-gray-800 transition-all font-medium">
+                    <button className="flex items-center gap-2 px-5 py-2.5 bg-[#161B22] border border-card-border text-gray-300 rounded-xl hover:bg-gray-800 transition-all font-medium">
                         Exporter le rapport
                     </button>
                     <Link
@@ -100,14 +100,14 @@ const MainDashboard = () => {
                 {stats.map((stat) => (
                     <div
                         key={stat.label}
-                        className="bg-[#12151b] border border-gray-800 p-6 rounded-2xl relative overflow-hidden group"
+                        className="bg-card border border-card-border p-6 rounded-md relative overflow-hidden group"
                     >
                         <div className="flex justify-between items-start relative z-10">
                             <div>
-                                <p className="text-gray-500 text-sm font-medium mb-1">
+                                <p className="text-text-muted text-sm font-medium mb-1">
                                     {stat.label}
                                 </p>
-                                <h3 className="text-2xl font-bold text-white tracking-tight">
+                                <h3 className="text-2xl font-bold text-text-main tracking-tight">
                                     {stat.value}
                                 </h3>
                             </div>
@@ -134,9 +134,9 @@ const MainDashboard = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Section Graphique (Simulé par CSS pour le style) */}
-                <div className="lg:col-span-2 bg-[#11141B] border border-gray-800 rounded-2xl p-6">
+                <div className="lg:col-span-2 bg-card border border-card-border rounded-2xl p-6">
                     <div className="flex justify-between items-center mb-8">
-                        <h4 className="text-white font-bold text-lg">
+                        <h4 className="text-text-main font-bold text-lg">
                             Activité des Étudiants (24h)
                         </h4>
                         <div className="flex gap-2">
@@ -163,13 +163,13 @@ const MainDashboard = () => {
                 </div>
 
                 {/* Journal d'activité / Notifications */}
-                <div className="bg-[#11141B] border border-gray-800 rounded-2xl p-6">
+                <div className="bg-card border border-card-border rounded-2xl p-6">
                     <div className="flex justify-between items-center mb-6">
-                        <h4 className="text-white font-bold text-lg">
+                        <h4 className="text-text-main font-bold text-lg">
                             Événements Récents
                         </h4>
                         <MoreHorizontal
-                            className="text-gray-500 cursor-pointer"
+                            className="text-text-muted cursor-pointer hover:text-text-main"
                             size={20}
                         />
                     </div>
@@ -179,13 +179,13 @@ const MainDashboard = () => {
                                 <CheckCircle2 size={16} />
                             </div>
                             <div>
-                                <p className="text-sm text-gray-200 font-medium">
+                                <p className="text-sm text-text-main font-medium">
                                     Nouveau module déployé
                                 </p>
-                                <p className="text-xs text-gray-500 mt-1">
+                                <p className="text-xs text-text-muted mt-1">
                                     Cours "React Native" mis à jour à v2.1
                                 </p>
-                                <span className="text-[10px] text-gray-600 block mt-2">
+                                <span className="text-[10px] text-text-subtle block mt-2">
                                     Il y a 2 min
                                 </span>
                             </div>
@@ -195,13 +195,13 @@ const MainDashboard = () => {
                                 <AlertCircle size={16} />
                             </div>
                             <div>
-                                <p className="text-sm text-gray-200 font-medium">
+                                <p className="text-sm text-text-main font-medium">
                                     Pic de trafic détecté
                                 </p>
-                                <p className="text-xs text-gray-500 mt-1">
+                                <p className="text-xs text-text-muted mt-1">
                                     Cluster Singapore Edge : charge 94%
                                 </p>
-                                <span className="text-[10px] text-gray-600 block mt-2">
+                                <span className="text-[10px] text-text-subtle block mt-2">
                                     Il y a 1 heure
                                 </span>
                             </div>
@@ -210,17 +210,17 @@ const MainDashboard = () => {
                 </div>
 
                 {/* Tableau des cours populaires */}
-                <div className="lg:col-span-3 bg-[#11141B] border border-gray-800 rounded-2xl overflow-hidden">
-                    <div className="p-6 border-b border-gray-800 flex justify-between items-center">
-                        <h4 className="text-white font-bold text-lg">
+                <div className="lg:col-span-3 bg-card border border-card-border rounded-md overflow-hidden">
+                    <div className="p-6 border-b border-card-border flex justify-between items-center">
+                        <h4 className="text-text-main font-bold text-lg">
                             Statut des Infrastructures de Cours
                         </h4>
-                        <button className="text-blue-500 text-sm font-semibold hover:underline">
+                        <button className="text-primary text-sm font-semibold hover:underline">
                             Voir tout
                         </button>
                     </div>
                     <table className="w-full text-left">
-                        <thead className="bg-[#161B22]/50 text-gray-500 text-xs uppercase tracking-wider">
+                        <thead className="bg-[#161B22]/50 text-text-muted text-xs uppercase tracking-wider">
                             <tr>
                                 <th className="px-6 py-4 font-semibold">
                                     Titre du Cours
@@ -247,7 +247,7 @@ const MainDashboard = () => {
                                             <div
                                                 className={`w-2 h-2 rounded-full ${course.color}`}
                                             />
-                                            <span className="text-gray-200 font-medium">
+                                            <span className="text-text-muted font-medium">
                                                 {course.title}
                                             </span>
                                         </div>
@@ -262,12 +262,12 @@ const MainDashboard = () => {
                                                     }}
                                                 />
                                             </div>
-                                            <span className="text-xs text-gray-400 font-mono">
+                                            <span className="text-xs text-text-muted font-mono">
                                                 {course.load}
                                             </span>
                                         </div>
                                     </td>
-                                    <td className="px-6 py-4 text-gray-400 text-sm font-mono">
+                                    <td className="px-6 py-4 text-text-muted text-sm font-mono">
                                         {course.students}
                                     </td>
                                     <td className="px-6 py-4">

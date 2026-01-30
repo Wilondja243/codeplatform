@@ -56,13 +56,13 @@ export default function RoadmapStep() {
                             >
                                 <div
                                     className={`
-                  w-24 h-24 rounded-full flex items-center justify-center text-3xl font-bold transition-all duration-500
-                  ${
-                      step.active
-                          ? 'bg-cyan-500 text-white shadow-md shadow-cyan-200 scale-110 ring-8 ring-cyan-50'
-                          : 'bg-white text-slate-400 border-2 border-slate-200 group-hover:border-cyan-300 group-hover:text-cyan-500'
-                  }
-                `}
+                                        w-24 h-24 rounded-full flex items-center justify-center text-3xl font-bold transition-all duration-500
+                                        ${
+                                            step.active
+                                                ? 'bg-cyan-500 text-white shadow-md shadow-cyan-200 scale-110 ring-8 ring-cyan-50'
+                                                : 'bg-white text-slate-400 border-2 border-slate-200 group-hover:border-cyan-300 group-hover:text-cyan-500'
+                                        }
+                                    `}
                                 >
                                     {step.number}
                                 </div>

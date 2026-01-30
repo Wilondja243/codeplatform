@@ -22,7 +22,7 @@ const Sidebar = () => {
         {
             icon: BookOpen,
             label: 'Catalogue de cours',
-            Link: '#',
+            Link: '/admin/cours',
             active: false,
         },
         { icon: Users, label: 'Gestion Étudiants', Link: '#', active: false },
@@ -48,17 +48,17 @@ const Sidebar = () => {
     ];
 
     return (
-        <aside className="w-64 h-screen bg-card-d border-r border-card-d-border flex flex-col p-6">
+        <aside className="w-64 h-screen bg-card border-r border-card-border flex flex-col p-6">
             {/* Logo CodePlatform */}
             <div className="flex items-center gap-3 mb-10 px-2">
                 <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20">
                     <FileCode className="text-white size-6" />
                 </div>
                 <div>
-                    <h1 className="text-white font-bold leading-tight tracking-tight">
+                    <h1 className="text-text-main font-bold leading-tight tracking-tight">
                         CodePlatform
                     </h1>
-                    <p className="text-[10px] text-blue-500 font-bold tracking-widest uppercase">
+                    <p className="text-[10px] text-primary font-bold tracking-widest uppercase">
                         E-Learning LMS
                     </p>
                 </div>
@@ -73,7 +73,7 @@ const Sidebar = () => {
                         className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group ${
                             item.active
                                 ? 'bg-blue-600/10 text-blue-500 border border-blue-500/20'
-                                : 'text-gray-400 hover:bg-gray-800/50 hover:text-gray-200'
+                                : 'text-text-muted hover:bg-gray-800/50 hover:text-gray-200'
                         }`}
                     >
                         <item.icon

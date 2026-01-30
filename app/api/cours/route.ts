@@ -34,9 +34,11 @@ export async function GET() {
         const fetchData = await prisma.course.findMany({
             orderBy: { created_at: 'desc' },
         });
+
         return NextResponse.json(fetchData);
     } catch (error) {
         console.error('Erreur Fetch:', error);
+
         return NextResponse.json(
             { error: 'Erreur lors de la récupération' },
             { status: 500 },

@@ -4,7 +4,7 @@ import MainDashboard from '@/components/sections/panel/dashboard';
 
 export default function Dashboard() {
     return (
-        <div className="flex h-screen bg-[#0B0E14] overflow-hidden">
+        <div className="flex h-screen bg-background overflow-hidden">
             <Sidebar />
 
             <div className="flex flex-col flex-1 overflow-hidden">

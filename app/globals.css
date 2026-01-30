@@ -1,29 +1,36 @@
 @import 'tailwindcss';
 
 :root {
-    /* Backgrounds */
-    --background: #ffffff;
+    --background: #f4f6f8;
     --foreground: #0f172a;
-
-    --background-dark: #0a0c11;
 
     --primary: #2563eb;
     --primary-light: #dbeafe;
     --primary-dark: #1e40af;
     --accent-cyan: #06b6d4;
 
-    --background-muted: #f4f6f8;
+    --text-main: #0b101d;
+    --text-muted: #666768ce;
+    --text-subtle: #b1b4b8;
 
     --card-bg: #ffffff;
     --card-hover: #f8fafc;
     --card-border: #e2e8f0;
 
-    --card-d: #101218;
-    --card-d-hover: #212126;
-    --card-d-border: #1e1e22;
-
     --radius-premium: 1rem;
-    --radius-button: 0.75rem;
+}
+
+.dark {
+    --background: #0a0c11;
+    --foreground: #f8fafc;
+
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --text-subtle: #64748b;
+
+    --card-bg: #101218;
+    --card-hover: #212126;
+    --card-border: #1e1e22;
 }
 
 * {
@@ -61,37 +68,23 @@
     background: transparent;
 }
 
-/* DARK STYLE */
-
-.dark {
-    --background: #111116;
-    --foreground: #f8f9fa;
-
-    --card-bg: #111113;
-    --card-hover: #18181b;
-    --card-border: #27272a;
-}
-
 @theme inline {
-    --color-background-dark: var(--background-dark);
+    --variant-dark: .dark &;
+
     --color-background: var(--background);
     --color-foreground: var(--foreground);
+
     --color-primary: var(--primary);
     --color-primary-light: var(--primary-light);
-    --color-primary-dark: var(--primary-dark);
     --color-accent: var(--accent-cyan);
 
-    --color-bg-muted: var(--background-muted);
+    --color-text-main: var(--text-main);
+    --color-text-muted: var(--text-muted);
+    --color-text-subtle: var(--text-subtle);
 
     --color-card: var(--card-bg);
     --color-card-hover: var(--card-hover);
     --color-card-border: var(--card-border);
-
-    --color-card-d: var(--card-d);
-    --color-card-d-hover: var(--card-d-hover);
-    --color-card-d-border: var(--card-d-border);
-
-    --breakpoint-lg-nav: 950px;
 
     --radius-xl: var(--radius-premium);
 }

@@ -16,7 +16,8 @@ export const coursSchema = z.object({
         .default(0),
     tag: z.string().optional(),
     duration: z.string().optional(),
-    note: z.coerce.number().min(0).max(5).optional(),
+    rating: z.coerce.number().min(0).max(5).optional(),
+    note: z.coerce.number().min(0).optional(),
     icon: z.string().optional(),
     color: z
         .string()
