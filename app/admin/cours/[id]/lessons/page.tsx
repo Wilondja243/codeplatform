@@ -53,6 +53,7 @@ export default function LessonPage() {
             <div className="flex flex-col flex-1 overflow-hidden">
                 {/* TOP-BAR */}
                 <TopBar />
+
                 <div className="flex-1 p-8 bg-background overflow-y-auto">
                     {/* Header avec Fil d'Ariane */}
                     <div className="max-w-5xl mx-auto mb-10">

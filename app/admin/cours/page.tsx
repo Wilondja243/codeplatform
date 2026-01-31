@@ -17,36 +17,14 @@ import { useRouter } from 'next/navigation';
 import TopBar from '@/components/sections/panel/top-bar';
 import Sidebar from '@/components/sections/panel/side-bar';
 import { CourseSkeleton } from '@/components/course-skelleton';
+import { useCoursesQuery } from '@/lib/query/query.cours';
 import useNotification from '@/hooks/use-taost';
 import AdminCourseCard from '@/components/admin-course-card';
 
 export default function AdminCoursesPage() {
     const router = useRouter();
     const { notifyError } = useNotification();
-    const [courses, setCourses] = useState<Course[]>([]);
-    const [error, setError] = useState<string | null>(null);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchCourses = async () => {
-            try {
-                setError(null);
-                const { data } = await axios.get('/api/cours');
-                setCourses(data);
-            } catch (error) {
-                setError(
-                    'Impossible de charger les cours. Vérifiez votre connexion.',
-                );
-                notifyError(
-                    'Impossible de charger les cours. Vérifiez votre connexion.',
-                );
-                console.error('Erreur chargement:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchCourses();
-    }, []);
+    const { data: courses, isLoading, error, refetch } = useCoursesQuery();
 
     return (
         <div className="flex h-screen bg-background overflow-hidden">
@@ -82,7 +60,7 @@ export default function AdminCoursesPage() {
                             <StatCard
                                 icon={<BookOpen className="text-blue-600" />}
                                 label="Total Cours"
-                                value={courses.length.toString()}
+                                value={courses?.length.toString()}
                                 color="bg-blue-50/10"
                             />
                             <StatCard
@@ -100,7 +78,7 @@ export default function AdminCoursesPage() {
                         </div>
 
                         {/* --- COURSES GRID --- */}
-                        {loading ? (
+                        {isLoading || error || !courses ? (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {Array.from({ length: 6 }).map((_, i) => (
                                     <CourseSkeleton key={i} />
@@ -108,7 +86,7 @@ export default function AdminCoursesPage() {
                             </div>
                         ) : courses.length > 0 ? (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {courses.map((course) => (
+                                {courses.map((course: any) => (
                                     <AdminCourseCard
                                         key={course.id}
                                         course={course}
@@ -116,10 +94,7 @@ export default function AdminCoursesPage() {
                                 ))}
                             </div>
                         ) : (
-                            <EmptyState
-                                error={error}
-                                fetchCourses={fetchCourses}
-                            />
+                            <EmptyState error={error} fetchCourses={refetch} />
                         )}
                     </div>
                 </div>

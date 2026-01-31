@@ -7,8 +7,8 @@ export default function ExploreHero() {
             </div>
 
             <div className="wrapper relative z-10 mt-16">
-                <div className="grid grid-cols-1 lg-nav:grid-cols-2 gap-16 items-center">
-                    <div className="space-y-8 text-center lg-nav:text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div className="space-y-8 lg-nav:text-left">
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-bg-muted rounded-full border border-card-border shadow-sm">
                             <span className="size-2 bg-primary rounded-full animate-pulse" />
                             <span className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-500">
@@ -24,23 +24,23 @@ export default function ExploreHero() {
                                 </span>
                             </h1>
 
-                            <h2 className="text-xl font-bold text-slate-800 tracking-tight italic border-l-4 border-primary pl-6 py-1 mx-auto lg-nav:mx-0 max-w-fit">
+                            <h2 className="text-xl font-bold text-text-main border-l-4 border-primary pl-6 py-1 mx-auto lg-nav:mx-0 max-w-fit">
                                 Apprenez par la pratique, de débutant à
                                 professionnel.
                             </h2>
 
-                            <p className="text-slate-500 text-lg md:text-xl leading-relaxed max-w-xl mx-auto lg-nav:mx-0 font-medium">
+                            <p className="text-slate-500 text-xl md:text-xl leading-relaxed max-w-xl mx-auto lg-nav:mx-0 font-medium">
                                 Maîtrisez les technologies les plus demandées
                                 grâce à nos parcours axés sur la pratique.
                                 Donnez vie à vos idées en réalisant des projets
                                 concrets qui{' '}
-                                <span className="text-foreground font-bold italic underline decoration-primary/30">
+                                <span className="text-primary font-bold decoration-primary/30">
                                     boosteront votre carrière.
                                 </span>
                             </p>
                         </div>
 
-                        <div className="flex flex-wrap items-center justify-center lg-nav:justify-start gap-4 pt-4 text-slate-400 font-bold text-sm uppercase tracking-widest">
+                        <div className="flex flex-wrap items-center justify-left lg-nav:justify-start gap-4 pt-4 text-slate-400 font-bold text-sm uppercase tracking-widest">
                             <div className="flex -space-x-3">
                                 <div className="size-10 rounded-full border-2 border-white bg-bg-muted overflow-hidden">
                                     <img src="/images/4271.jpg" alt="student" />
@@ -62,7 +62,7 @@ export default function ExploreHero() {
                     <div className="relative group">
                         <div className="absolute -inset-4 bg-gradient-to-tr from-primary/10 to-transparent rounded-[2.5rem] blur-2xl group-hover:scale-110 transition-transform duration-700" />
 
-                        <div className="relative rounded-[2.5rem] border-8 border-card overflow-hidden bg-bg-muted">
+                        <div className="relative max-w-[500px] mx-auto rounded-[2.5rem] border-8 border-card overflow-hidden bg-bg-muted">
                             <img
                                 src="images/formation.webp"
                                 alt="Formation CodePlatform"
@@ -86,7 +86,7 @@ export default function ExploreHero() {
                             </div>
                         </div>
 
-                        <div className="absolute -top-6 -right-6 size-20 bg-primary/10 rounded-2xl flex items-center justify-center border border-primary/10 animate-bounce-slow">
+                        <div className="absolute -top-6 right-2 size-20 bg-primary/10 rounded-2xl flex items-center justify-center border border-primary/10 animate-bounce-slow">
                             <div className="size-10 bg-white rounded-lg shadow-sm" />
                         </div>
                     </div>

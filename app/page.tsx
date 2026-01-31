@@ -14,7 +14,7 @@ export default function Home() {
                 <NavBar />
                 <Hero />
             </header>
-            <main>
+            <main className="bg-white">
                 <Features />
                 <Courses />
                 <HowItWorks />

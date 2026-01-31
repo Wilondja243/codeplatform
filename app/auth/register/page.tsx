@@ -12,7 +12,7 @@ export default function RegisterForm() {
     return (
         <>
             <NavBar />
-            <div className="min-h-screen flex items-center justify-center pb-20 pt-40">
+            <div className="bg-white min-h-screen flex items-center justify-center pb-20 pt-40">
                 <div className="w-full max-w-5xl flex flex-col md:flex-row items-center gap-12 lg:gap-24">
                     <div className="hidden md:block w-1/2">
                         <img
