@@ -98,7 +98,7 @@ export default function AdminCourseCard({ course }: any) {
 
             <div className="flex border-t border-card-border bg-slate-50/5">
                 <Link
-                    href={`/admin/cours/${course.id}/form`}
+                    href={`/admin/cours/${course.id}/edit`}
                     className="flex-1 flex items-center justify-center gap-2 py-3 text-sm font-medium text-text-subtle hover:bg-card hover:text-primary transition-all border-r border-card-border"
                 >
                     <Pencil size={16} /> Éditer

@@ -14,7 +14,7 @@ import {
     FileText,
     Edit2,
 } from 'lucide-react';
-import { useRouter, useParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { ClipLoader } from 'react-spinners';
 import TopBar from '@/components/sections/panel/top-bar';
 import Sidebar from '@/components/sections/panel/side-bar';
@@ -28,10 +28,8 @@ import {
 } from '@/lib/query/query.cours';
 import useNotification from '@/hooks/use-taost';
 
-export default function CourseFormPage() {
-    const params = useParams();
-    const courseId = String(params.courseId);
 
+export default function CourseFormPage({courseId}:{courseId?: string}) {
     console.log('courseId: ', courseId);
 
     const router = useRouter();
@@ -54,7 +52,7 @@ export default function CourseFormPage() {
         data,
         isLoading,
         error: retrieveError,
-    } = useRetrieveCourseQuery(courseId);
+    } = useRetrieveCourseQuery(courseId as string);
 
     const {
         register,

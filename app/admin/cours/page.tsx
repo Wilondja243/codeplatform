@@ -47,7 +47,7 @@ export default function AdminCoursesPage() {
                                 </p>
                             </div>
                             <button
-                                onClick={() => router.push('/admin/cours/form')}
+                                onClick={() => router.push('/admin/cours/add')}
                                 className="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-md font-semibold transition-all shadow-sm cursor-pointer"
                             >
                                 <Plus size={20} />
