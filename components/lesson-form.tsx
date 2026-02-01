@@ -1,41 +1,104 @@
 'use client';
 
-import React, { useState } from 'react';
-import { useFieldArray, useForm } from 'react-hook-form';
+import React, { useState, useEffect } from 'react';
+import { useFieldArray } from 'react-hook-form';
 import {
     Type,
     Code,
     Image as ImageIcon,
     Link as LinkIcon,
-    Plus,
     Trash2,
+    Text,
+    Edit2,
     GripVertical,
     Save,
     List,
 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import TopBar from '@/components/sections/panel/top-bar';
 import Sidebar from '@/components/sections/panel/side-bar';
+import { useUpload } from '@/hooks/use-image-upload';
+import { ClipLoader } from 'react-spinners';
+import useNotification from '@/hooks/use-taost';
+import { useValidateLessonForm } from '@/hooks/use-validation-form';
+import {
+    useCreateLessonQuery,
+    useRetrieveLessonQuery,
+    usePatchLessonQuery,
+} from '@/lib/query/query.cours';
 
-const LessonForm = () => {
-    const [loading, setLoading] = useState(false);
+export default function LessonForm({
+    courseId,
+    lessonId,
+}: {
+    courseId: string;
+    lessonId?: string;
+}) {
+    const router = useRouter();
+    const { uploadFile, isUploading } = useUpload();
+    const { notifyError, notifySuccess } = useNotification();
 
-    const { register, control, handleSubmit, watch } = useForm({
-        defaultValues: {
-            title: '',
-            order: 1,
-            contents: [{ type: 'PARAGRAPH', value: '', order: 1 }],
-        },
-    });
+    console.log('courseId: ', courseId);
+    console.log('lessonId: ', lessonId);
+
+    const { register, control, handleSubmit, setValue, watch, reset } =
+        useValidateLessonForm();
 
     const { fields, append, remove, move } = useFieldArray({
         control,
         name: 'contents',
     });
 
-    const onSubmit = async (data: any) => {
-        setLoading(true);
-        console.log("Données à envoyer à l'API :", data);
-        setLoading(false);
+    const {
+        data,
+        isLoading,
+        error: retrieveError,
+    } = useRetrieveLessonQuery(courseId, lessonId as string);
+
+    const { mutateAsync, isPending } = useCreateLessonQuery(courseId);
+
+    const {
+        mutateAsync: patchLesson,
+        isPending: patchPending,
+        isError: patchIsError,
+        error: patchError,
+    } = usePatchLessonQuery();
+
+    useEffect(() => {
+        if (data) {
+            reset(data);
+        }
+    }, [data, reset]);
+
+    if (!isLoading) console.log('Lessons: ', JSON.stringify(data, null, 4));
+
+    const onFileChange = async (
+        e: React.ChangeEvent<HTMLInputElement>,
+        index: number,
+    ) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        const url = await uploadFile(file);
+        if (url) {
+            setValue(`contents.${index}.value`, url);
+        }
+    };
+
+    const isEditing = !!lessonId;
+
+    const onSubmit = async (formData: any) => {
+        if (isEditing && lessonId) {
+            await patchLesson({ courseId, lessonId, data: formData });
+            notifySuccess('Cours mise à jour avec success');
+        } else {
+            await mutateAsync({ ...formData, courseId });
+
+            notifySuccess('Cours crée avec succès !');
+        }
+
+        router.push(`/admin/cours/${courseId}/lessons`);
+        router.refresh();
     };
 
     return (
@@ -55,15 +118,30 @@ const LessonForm = () => {
                     <div className="flex justify-between items-end border-b border-card-border pb-6">
                         <div className="space-y-1">
                             <h2 className="text-3xl font-bold text-text-main">
-                                Nouvelle Leçon
+                                {isEditing
+                                    ? 'Modifier la Leçon'
+                                    : 'Nouvelle Leçon'}
                             </h2>
                             <p className="text-text-muted">
-                                Structurez votre contenu pédagogique par blocs.
+                                Structurez votre contenu pédagogique.
                             </p>
                         </div>
-                        <button className="bg-primary hover:opacity-90 text-white px-8 py-3 rounded-md font-bold flex items-center gap-2 transition-all shadow-md">
-                            <Save size={20} />
-                            Enregistrer la leçon
+                        <button
+                            type="submit"
+                            disabled={isPending}
+                            className="flex items-center gap-2 px-6 py-2.5 bg-primary text-white rounded-md hover:opacity-90 disabled:opacity-50 font-bold shadow-lg"
+                        >
+                            {isPending ? (
+                                <ClipLoader size={20} color="white" />
+                            ) : isEditing ? (
+                                <>
+                                    <Edit2 size={18} /> Modifier
+                                </>
+                            ) : (
+                                <>
+                                    <Save size={18} /> Enregistrer
+                                </>
+                            )}
                         </button>
                     </div>
 
@@ -95,8 +173,8 @@ const LessonForm = () => {
                                 </label>
                                 <input
                                     {...register('title')}
-                                    placeholder="ex: 1. Introduction aux variables"
-                                    className="text-2xl w-full bg-transparent border-b-2 border-card-border focus:border-primary outline-none pb-2 font-bold transition-all"
+                                    placeholder="mettez le titre de votre lecon ici."
+                                    className="placeholder:text-[12px] text-lg w-full bg-transparent border-b-2 border-card-border focus:border-primary outline-none pb-2 font-bold transition-all"
                                 />
                             </div>
 
@@ -114,8 +192,13 @@ const LessonForm = () => {
                                             <span className="flex items-center gap-2 text-xs font-bold py-1 px-3 bg-background rounded-full border border-card-border">
                                                 {watch(
                                                     `contents.${index}.type`,
-                                                ) === 'PARAGRAPH' && (
+                                                ) === 'SECTION_TITLE' && (
                                                     <Type size={14} />
+                                                )}
+                                                {watch(
+                                                    `contents.${index}.type`,
+                                                ) === 'PARAGRAPH' && (
+                                                    <Text size={14} />
                                                 )}
                                                 {watch(
                                                     `contents.${index}.type`,
@@ -126,6 +209,11 @@ const LessonForm = () => {
                                                     `contents.${index}.type`,
                                                 ) === 'IMAGE' && (
                                                     <ImageIcon size={14} />
+                                                )}
+                                                {watch(
+                                                    `contents.${index}.type`,
+                                                ) === 'LINK' && (
+                                                    <LinkIcon size={14} />
                                                 )}
                                                 {watch(
                                                     `contents.${index}.type`,
@@ -146,21 +234,78 @@ const LessonForm = () => {
                                                 {...register(
                                                     `contents.${index}.value` as const,
                                                 )}
-                                                placeholder="Écrivez votre paragraphe ici..."
-                                                className="w-full bg-background border border-card-border rounded-xl p-4 min-h-[120px] outline-none focus:ring-2 ring-primary/10 resize-none"
+                                                className="w-full bg-background border border-card-border rounded-xl p-4 min-h-[120px] outline-none focus:ring-2 ring-primary/10"
+                                                placeholder="Écrivez votre texte..."
                                             />
+                                        ) : watch(`contents.${index}.type`) ===
+                                          'IMAGE' ? (
+                                            <div className="space-y-4">
+                                                {/* Zone d'upload ou Aperçu */}
+                                                {watch(
+                                                    `contents.${index}.value`,
+                                                ) ? (
+                                                    <div className="relative w-full h-48 rounded-xl overflow-hidden border border-card-border bg-background">
+                                                        <img
+                                                            src={watch(
+                                                                `contents.${index}.value`,
+                                                            )}
+                                                            className="w-full h-full object-contain"
+                                                            alt="Aperçu"
+                                                        />
+                                                        <button
+                                                            onClick={() =>
+                                                                setValue(
+                                                                    `contents.${index}.value`,
+                                                                    '',
+                                                                )
+                                                            }
+                                                            className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full hover:bg-red-600 transition-colors"
+                                                        >
+                                                            <Trash2 size={16} />
+                                                        </button>
+                                                    </div>
+                                                ) : (
+                                                    <label className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed border-card-border rounded-xl cursor-pointer hover:bg-primary/5 hover:border-primary/50 transition-all">
+                                                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                                            <ImageIcon
+                                                                className="text-text-muted mb-2"
+                                                                size={32}
+                                                            />
+                                                            <p className="text-sm text-text-muted">
+                                                                Cliquez pour
+                                                                uploader une
+                                                                image
+                                                            </p>
+                                                            <p className="text-[10px] text-text-subtle uppercase mt-1">
+                                                                PNG, JPG ou WebP
+                                                            </p>
+                                                        </div>
+                                                        {/* Input caché qui déclenche l'upload */}
+                                                        <input
+                                                            type="file"
+                                                            className="hidden"
+                                                            accept="image/*"
+                                                            onChange={(e) =>
+                                                                onFileChange(
+                                                                    e,
+                                                                    index,
+                                                                )
+                                                            }
+                                                        />
+                                                    </label>
+                                                )}
+                                                <input
+                                                    type="hidden"
+                                                    {...register(
+                                                        `contents.${index}.value`,
+                                                    )}
+                                                />
+                                            </div>
                                         ) : (
                                             <input
                                                 {...register(
                                                     `contents.${index}.value` as const,
                                                 )}
-                                                placeholder={
-                                                    watch(
-                                                        `contents.${index}.type`,
-                                                    ) === 'IMAGE'
-                                                        ? "URL de l'image..."
-                                                        : 'Commande ou valeur...'
-                                                }
                                                 className="w-full bg-background border border-card-border rounded-xl p-4 outline-none font-mono text-sm"
                                             />
                                         )}
@@ -175,7 +320,18 @@ const LessonForm = () => {
                                 </p>
                                 <ToolbarButton
                                     icon={<Type size={18} />}
-                                    label="Texte"
+                                    label="Titre"
+                                    onClick={() =>
+                                        append({
+                                            type: 'SECTION_TITLE',
+                                            value: '',
+                                            order: fields.length + 1,
+                                        })
+                                    }
+                                />
+                                <ToolbarButton
+                                    icon={<Text size={18} />}
+                                    label="Paragraphe"
                                     onClick={() =>
                                         append({
                                             type: 'PARAGRAPH',
@@ -235,7 +391,7 @@ const LessonForm = () => {
             </div>
         </div>
     );
-};
+}
 
 const ToolbarButton = ({ icon, label, onClick }: any) => (
     <button
@@ -246,5 +402,3 @@ const ToolbarButton = ({ icon, label, onClick }: any) => (
         {icon} {label}
     </button>
 );
-
-export default LessonForm;

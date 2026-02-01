@@ -19,6 +19,8 @@ export default function AdminCourseCard({ course }: any) {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
+    const courseId = course?.id;
+
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (
@@ -54,17 +56,17 @@ export default function AdminCourseCard({ course }: any) {
                         {isOpen && (
                             <div className="absolute right-0 mt-2 w-56 bg-card border border-card-border rounded-xl shadow-xl z-50 py-2 animate-in fade-in zoom-in duration-200">
                                 <DropdownLink
-                                    href={`/admin/cours/${course.id}/lessons/add`}
+                                    href={`/admin/cours/${courseId}/lessons/add`}
                                     icon={<PlusCircle size={16} />}
                                     label="Ajouter une leçon"
                                 />
                                 <DropdownLink
-                                    href={`/admin/cours/${course.id}/lessons`}
+                                    href={`/admin/cours/${courseId}/lessons`}
                                     icon={<Eye size={16} />}
                                     label="Voir les leçons"
                                 />
                                 <DropdownLink
-                                    href={`/admin/analytics/${course.id}`}
+                                    href={`/admin/analytics/${courseId}`}
                                     icon={<BarChart3 size={16} />}
                                     label="Statistiques"
                                 />
@@ -96,7 +98,7 @@ export default function AdminCourseCard({ course }: any) {
 
             <div className="flex border-t border-card-border bg-slate-50/5">
                 <Link
-                    href={`/admin/cours/form?id=${course.id}`}
+                    href={`/admin/cours/${course.id}/form`}
                     className="flex-1 flex items-center justify-center gap-2 py-3 text-sm font-medium text-text-subtle hover:bg-card hover:text-primary transition-all border-r border-card-border"
                 >
                     <Pencil size={16} /> Éditer

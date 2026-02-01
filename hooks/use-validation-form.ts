@@ -2,7 +2,12 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CoursFormValues, coursSchema } from '@/lib/cours-schema';
+import {
+    CoursFormValues,
+    coursSchema,
+    LessonFormValues,
+    lessonSchema,
+} from '@/lib/cours-schema';
 
 export const useValidateCourseForm = (
     initialData?: Partial<CoursFormValues>,
@@ -14,7 +19,7 @@ export const useValidateCourseForm = (
                   title: initialData.title || '',
                   description: initialData.description || '',
                   slug: initialData.slug || '',
-                  lesson: initialData.lesson || 0,
+                  lesson_count: initialData.lesson_count || 0,
                   note: initialData.note || 0,
                   tag: initialData.tag || '',
                   duration: initialData.duration || '',
@@ -27,9 +32,27 @@ export const useValidateCourseForm = (
             title: '',
             description: '',
             slug: '',
-            lesson: 0,
+            lesson_count: 0,
             note: 0,
             rating: 0,
+        },
+    });
+
+    return form;
+};
+
+// Lesson form validation
+export const useValidateLessonForm = (
+    initialData?: Partial<LessonFormValues>,
+) => {
+    const form = useForm<LessonFormValues>({
+        resolver: zodResolver(lessonSchema),
+        mode: 'all',
+        values: {
+            title: initialData?.title || '',
+            description: initialData?.description || '',
+            order: initialData?.order || 1,
+            contents: (initialData?.contents as any) || [],
         },
     });
 

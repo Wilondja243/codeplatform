@@ -1,0 +1,10 @@
+Frontend Design
+UI/UX avec HTML5 & CSS3
+Créez des interfaces modernes, réponsives et esthétiques avec les dernières techniques Flexbox, Grid et Animations.
+
+Web Development
+JavaScript de Zero à Hero
+Maîtrisez l'écosystème moderne de JavaScript : React, Node.js et l'architecture asynchrone pour le web.
+
+Masterclass Python 2026
+Apprenez la programmation avec Python : de la logique de base à l'Intelligence Artificielle et l'automatisation.

@@ -6,13 +6,13 @@ import { coursSchema } from '@/lib/cours-schema';
 
 export async function GET(
     req: Request,
-    { params }: { params: Promise<{ id: string }> },
+    { params }: { params: Promise<{ courseId: string }> },
 ) {
-    const { id } = await params;
+    const { courseId } = await params;
 
     try {
         const retrieveCourse = await prisma.course.findUnique({
-            where: { id: id },
+            where: { id: courseId },
         });
 
         if (!retrieveCourse) {
@@ -34,11 +34,11 @@ export async function GET(
 
 export async function PATCH(
     req: Request,
-    { params }: { params: Promise<{ id: string }> },
+    { params }: { params: Promise<{ courseId: string }> },
 ) {
     const body = await req.json();
     const validated = coursSchema.safeParse(body);
-    const { id } = await params;
+    const { courseId } = await params;
 
     if (!validated.success) {
         return NextResponse.json(
@@ -49,7 +49,7 @@ export async function PATCH(
 
     try {
         const updatedCourse = await prisma.course.update({
-            where: { id: id },
+            where: { id: courseId },
             data: validated.data,
         });
 

@@ -10,40 +10,31 @@ import {
     Eye,
     FileText,
     Clock,
+    BookOpen,
     CheckCircle2,
     CircleDashed,
     ChevronLeft,
 } from 'lucide-react';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import TopBar from '@/components/sections/panel/top-bar';
 import Sidebar from '@/components/sections/panel/side-bar';
-
-const mockLessons = [
-    {
-        id: '1',
-        title: 'Introduction à Python',
-        duration: '10min',
-        status: 'published',
-        order: 1,
-    },
-    {
-        id: '2',
-        title: "Installation de l'environnement",
-        duration: '15min',
-        status: 'published',
-        order: 2,
-    },
-    {
-        id: '3',
-        title: 'Les variables et types de données',
-        duration: '25min',
-        status: 'draft',
-        order: 3,
-    },
-];
+import { useLessonsQuery } from '@/lib/query/query.cours';
 
 export default function LessonPage() {
+    const { courseId } = useParams();
+
+    console.log('courseId: ', courseId);
+
     const [searchTerm, setSearchTerm] = useState('');
+
+    const {
+        data: Lessons,
+        isLoading,
+        error,
+    } = useLessonsQuery(String(courseId));
+
+    console.log('Lessons :', JSON.stringify(Lessons, null, 4));
 
     return (
         <div className="flex h-screen bg-background overflow-hidden">
@@ -128,68 +119,78 @@ export default function LessonPage() {
 
                     {/* Liste des Leçons */}
                     <div className="max-w-5xl mx-auto space-y-3">
-                        {mockLessons.map((lesson) => (
-                            <div
-                                key={lesson.id}
-                                className="bg-card border border-card-border rounded-2xl p-4 flex items-center gap-4 group hover:border-primary/40 transition-all hover:shadow-md"
-                            >
-                                {/* Drag Handle (Visuel) */}
-                                <div className="cursor-grab text-card-border group-hover:text-text-muted transition-colors">
-                                    <GripVertical size={20} />
+                        {isLoading ? (
+                            // Skeleton Loader simple
+                            [1, 2, 3].map((i) => (
+                                <div
+                                    key={i}
+                                    className="h-20 w-full bg-card/50 animate-pulse rounded-2xl border border-card-border"
+                                />
+                            ))
+                        ) : error || !Lessons || Lessons.length === 0 ? (
+                            // État vide ou erreur
+                            <div className="text-center py-12 bg-card rounded-2xl border-2 border-dashed border-card-border">
+                                <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <BookOpen
+                                        size={24}
+                                        className="text-primary"
+                                    />
                                 </div>
+                                <p className="text-text-muted font-medium">
+                                    Aucune leçon pour le moment.
+                                </p>
+                                <Link
+                                    href={`/admin/cours/${courseId}/lessons/add`}
+                                    className="text-primary text-sm font-bold hover:underline mt-2 inline-block"
+                                >
+                                    Ajouter votre première leçon
+                                </Link>
+                            </div>
+                        ) : (
+                            Lessons.map((lesson: any) => (
+                                <div
+                                    key={lesson.id}
+                                    className="bg-card border border-card-border rounded-2xl p-4 flex items-center gap-4 group hover:border-primary/40 transition-all hover:shadow-md"
+                                >
+                                    <div className="cursor-grab text-card-border group-hover:text-text-muted transition-colors">
+                                        <GripVertical size={20} />
+                                    </div>
 
-                                {/* Order Badge */}
-                                <div className="w-8 h-8 rounded-lg bg-background border border-card-border flex items-center justify-center text-xs font-bold text-text-muted">
-                                    {lesson.order}
-                                </div>
+                                    <div className="w-10 h-10 rounded-xl bg-background border border-card-border flex items-center justify-center text-sm font-black text-primary shadow-sm">
+                                        {lesson.order}
+                                    </div>
 
-                                {/* Title & Info */}
-                                <div className="flex-1">
-                                    <h3 className="font-bold text-text-main group-hover:text-primary transition-colors">
-                                        {lesson.title}
-                                    </h3>
-                                    <div className="flex items-center gap-4 mt-1">
-                                        <span className="text-[11px] text-text-muted flex items-center gap-1 font-medium">
-                                            <Clock size={12} />{' '}
-                                            {lesson.duration}
-                                        </span>
-                                        <span
-                                            className={`text-[11px] font-bold flex items-center gap-1 uppercase tracking-wider ${
-                                                lesson.status === 'published'
-                                                    ? 'text-green-500'
-                                                    : 'text-amber-500'
-                                            }`}
-                                        >
-                                            {lesson.status === 'published' ? (
-                                                <CheckCircle2 size={12} />
-                                            ) : (
-                                                <CircleDashed size={12} />
-                                            )}
-                                            {lesson.status === 'published'
-                                                ? 'Publiée'
-                                                : 'Brouillon'}
-                                        </span>
+                                    <div className="flex-1 min-w-0">
+                                        <h3 className="font-bold text-text-main group-hover:text-primary transition-colors truncate">
+                                            {lesson.title}
+                                        </h3>
+                                        <div className="flex items-center gap-4 mt-1">
+                                            <span className="text-[11px] text-text-muted flex items-center gap-1 font-medium">
+                                                <Clock size={12} />{' '}
+                                                {lesson.duration || '5 min'}
+                                            </span>
+                                            {/* <Status status={lesson.status} /> */}
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center gap-1 bg-background/50 p-1 rounded-xl border border-card-border opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <ActionLink
+                                            href={`/admin/cours/${courseId}/lessons/${lesson.id}`}
+                                            icon={<Pencil size={16} />}
+                                            className="hover:bg-primary/10 hover:text-primary"
+                                        />
+                                        {/* <ActionLink
+                        href={`/cours/${course.slug}/${lesson.id}`}
+                        icon={<Eye size={16} />}
+                        className="hover:bg-blue-500/10 hover:text-blue-500"
+                    /> */}
+                                        <button className="p-2 text-text-muted hover:text-red-500 hover:bg-red-500/10 rounded-lg transition-all">
+                                            <Trash2 size={16} />
+                                        </button>
                                     </div>
                                 </div>
-
-                                {/* Actions */}
-                                <div className="flex items-center gap-2">
-                                    <ActionLink
-                                        href={`/admin/lessons/edit/${lesson.id}`}
-                                        icon={<Pencil size={16} />}
-                                        label="Éditer"
-                                    />
-                                    <ActionLink
-                                        href={`/lessons/${lesson.id}`}
-                                        icon={<Eye size={16} />}
-                                        label="Voir"
-                                    />
-                                    <button className="p-2 text-text-muted hover:text-red-500 hover:bg-red-500/10 rounded-lg transition-all">
-                                        <Trash2 size={16} />
-                                    </button>
-                                </div>
-                            </div>
-                        ))}
+                            ))
+                        )}
                     </div>
                 </div>
             </div>

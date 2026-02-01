@@ -127,18 +127,21 @@ const EmptyState = ({ error, fetchCourses }: any) =>
             </button>
         </div>
     ) : (
-        <div className="text-center py-20 bg-card-d rounded-md border border-card-d-border">
-            <div className="bg-slate-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <BookOpen size={40} className="text-slate-300" />
+        <div className="text-center py-20 bg-card rounded-xl border border-card-border">
+            <div className="bg-slate-600/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BookOpen size={40} className="text-text-muted" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900">
+            <h3 className="text-xl font-bold text-text-subtle">
                 Aucun cours pour le moment
             </h3>
-            <p className="text-slate-500 mb-6">
+            <p className="text-text-muted mb-6">
                 Commencez par ajouter votre première formation premium.
             </p>
-            <button className="bg-primary text-white px-6 py-2 rounded-lg font-medium">
+            <Link
+                href="/admin/cours/form"
+                className="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-primary-dark cursor-pointer"
+            >
                 Ajouter maintenant
-            </button>
+            </Link>
         </div>
     );

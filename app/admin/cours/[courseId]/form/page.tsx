@@ -14,77 +14,78 @@ import {
     FileText,
     Edit2,
 } from 'lucide-react';
-import axios from 'axios';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { SubmitHandler } from 'react-hook-form';
+import { useRouter, useParams } from 'next/navigation';
 import { ClipLoader } from 'react-spinners';
 import TopBar from '@/components/sections/panel/top-bar';
 import Sidebar from '@/components/sections/panel/side-bar';
-import { useValidateCourseForm } from '@/hooks/use-validation-cours-form';
+import { useValidateCourseForm } from '@/hooks/use-validation-form';
 import CourseFormSkeleton from '@/components/cours-form-skelleton';
 import { CoursFormValues } from '@/lib/cours-schema';
+import {
+    usePostCourseQuery,
+    usePatchCourseQuery,
+    useRetrieveCourseQuery,
+} from '@/lib/query/query.cours';
 import useNotification from '@/hooks/use-taost';
 
 export default function CourseFormPage() {
-    const searchParams = useSearchParams();
-    const id = searchParams.get('id');
+    const params = useParams();
+    const courseId = String(params.courseId);
+
+    console.log('courseId: ', courseId);
+
     const router = useRouter();
-    const [loading, setLoading] = useState(false);
-    const [fetching, setFetching] = useState(!!id);
     const { notifyError, notifySuccess } = useNotification();
-    const [initialData, setInitialData] = useState<any>(null);
+    const {
+        mutateAsync: createCourse,
+        isPending,
+        isError,
+        error,
+    } = usePostCourseQuery();
 
-    useEffect(() => {
-        if (id) {
-            console.log("Appel API pour l'ID:", id);
-            axios
-                .get(`/api/cours/${id}`)
-                .then((res) => {
-                    console.log('DONNÉES REÇUES :', res.data);
-                    setInitialData({ ...res.data, courseId: id });
-                    setFetching(false);
-                })
-                .catch((err) => {
-                    console.error('Erreur API:', err);
-                    notifyError('Impossible de charger le cours');
-                    setFetching(false);
-                });
-        }
-    }, [id]);
+    const {
+        mutateAsync: patchCourse,
+        isPending: patchPending,
+        isError: patchIsError,
+        error: patchError,
+    } = usePatchCourseQuery();
 
-    console.log('courseData : ', JSON.stringify(initialData, null, 4));
+    const {
+        data,
+        isLoading,
+        error: retrieveError,
+    } = useRetrieveCourseQuery(courseId);
 
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useValidateCourseForm(initialData);
+        reset,
+    } = useValidateCourseForm();
 
-    const isEditing = !!id;
-
-    const onSubmit: SubmitHandler<CoursFormValues> = async (data) => {
-        setLoading(true);
-
-        try {
-            if (isEditing) {
-                await axios.patch(`/api/cours/${id}`, data);
-                notifySuccess('Cours mise à jour avec success');
-            } else {
-                await axios.post('/api/cours', data);
-                notifySuccess('Cours crée avec succès !');
-            }
-
-            router.push('/admin/cours');
-            router.refresh();
-        } catch (error) {
-            console.log("Erreur lors de l'envoi :", error);
-            notifyError('Une erreur est survenue');
-        } finally {
-            setLoading(false);
+    useEffect(() => {
+        if (data && courseId) {
+            reset(data);
         }
-    };
+    }, [data, courseId, reset]);
 
-    const formKey = initialData ? initialData.courseId : 'new-course';
+    if (!isLoading) console.log('Course: ', JSON.stringify(data, null, 4));
+
+    const isEditing = !!courseId;
+
+    const onSubmit = async (formData: any) => {
+        if (isEditing && courseId) {
+            await patchCourse({ courseId, data: { ...formData } });
+            notifySuccess('Cours mise à jour avec success');
+        } else {
+            await createCourse({ ...formData });
+
+            notifySuccess('Cours crée avec succès !');
+        }
+
+        router.push('/admin/cours');
+        router.refresh();
+    };
 
     return (
         <div className="flex h-screen bg-background overflow-hidden">
@@ -94,11 +95,10 @@ export default function CourseFormPage() {
                 {/* ToBar */}
                 <TopBar />
 
-                {fetching ? (
+                {isLoading ? (
                     <CourseFormSkeleton />
                 ) : (
                     <form
-                        key={formKey}
                         onSubmit={handleSubmit(onSubmit)}
                         className="flex-1 py-10 overflow-y-auto bg-background custom-scrollbar"
                     >
@@ -113,10 +113,10 @@ export default function CourseFormPage() {
                                 </p>
                             </div>
                             <button
-                                disabled={loading}
+                                disabled={isPending}
                                 className="flex items-center gap-2 px-6 py-2.5 bg-primary text-bg-muted cursor-pointer rounded-md hover:opacity-90 transition-all font-bold shadow-lg shadow-primary/20"
                             >
-                                {loading ? (
+                                {isPending || patchPending ? (
                                     <div className="flex gap-x-3 items-center text-white">
                                         <ClipLoader size={20} color="white" />
                                         En cours
@@ -188,13 +188,16 @@ export default function CourseFormPage() {
                                             />
                                             <input
                                                 type="number"
-                                                {...register('lesson')}
+                                                {...register('lesson_count')}
                                                 placeholder="nombre de leçons"
                                                 className="w-full bg-background text-text-muted border border-card-border rounded-sm py-3 pl-10 pr-4 focus:border-primary/50 outline-none"
                                             />
-                                            {errors.lesson && (
+                                            {errors.lesson_count && (
                                                 <span className="text-red-500 pt-0.5 font-semibold">
-                                                    {errors.lesson.message}
+                                                    {
+                                                        errors.lesson_count
+                                                            .message
+                                                    }
                                                 </span>
                                             )}
                                         </div>

@@ -31,6 +31,8 @@ model User {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
   deleted_at DateTime?
+
+  @@map("user")
 }
 
 model Profile {
@@ -40,6 +42,8 @@ model Profile {
   phone      String?
   bio        String?
   date_bith  String?
+
+  @@map("profile")
 }
 
 
@@ -54,7 +58,7 @@ model Course {
   lessons          Lesson[]
 
   description      String
-  lessonCount      Int @default(0)
+  lesson_count      Int @default(0)
   note             Int @default(0)
   icon             String?
   tag              String?
@@ -64,31 +68,38 @@ model Course {
   color            String?
   created_at       DateTime @default(now())
   updated_at       DateTime @updatedAt
+
+  @@map("course")
 }
 
 model Lesson {
-  id        String   @id @default(uuid())
+  id        String   @id @default(uuid()) @db.Uuid
   title     String
   order     Int
-  courseId  String
+  courseId  String   @db.Uuid
   course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
   
-  content   LessonContent[]
+  contents   LessonContent[]
+  description String?
   
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("lesson")
 }
 
 model LessonContent {
-  id        String      @id @default(uuid())
-  lessonId  String
+  id        String      @id @default(uuid()) @db.Uuid
+  lessonId  String      @db.Uuid
   lesson    Lesson      @relation(fields: [lessonId], references: [id], onDelete: Cascade)
   
   type      ContentType
-  value     String      @db.Text
+  value     String?      @db.Text
   
   label     String?
   order     Int
+
+  @@map("lessoncontent")
 }
 
 enum ContentType {

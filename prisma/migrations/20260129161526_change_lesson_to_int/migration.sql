@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE "Course" ADD COLUMN     "note" INTEGER NOT NULL DEFAULT 0;
