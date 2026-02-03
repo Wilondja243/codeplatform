@@ -37,7 +37,7 @@ export default function Course9() {
             </p>
             <div className="bg-gray-100 p-4 rounded-md border-l-4 border-blue-500">
                 <pre className="text-sm overflow-x-auto">
-{`class Voiture:
+                    {`class Voiture:
     def __init__(self, couleur):
         self.couleur = couleur  # Attribut de l'objet
 
@@ -61,7 +61,7 @@ print(ma_voiture.couleur)  # Affiche: rouge`}
             </p>
             <div className="bg-gray-100 p-4 rounded-md border-l-4 border-blue-500">
                 <pre className="text-sm overflow-x-auto">
-{`class Personne:
+                    {`class Personne:
     def __init__(self, nom, age):
         self.nom = nom
         self.age = age
@@ -96,7 +96,7 @@ print(p.age)  # 25`}
             </p>
             <div className="bg-gray-100 p-4 rounded-md border-l-4 border-blue-500">
                 <pre className="text-sm overflow-x-auto">
-{`class Voiture:
+                    {`class Voiture:
     def __init__(self, vitesse):
         self.vitesse = vitesse
 
@@ -106,12 +106,10 @@ print(p.age)  # 25`}
 ma_voiture = Voiture(55)
 ma_voiture.rouler()  # Affiche: La voiture de vitesse 55`}
                 </pre>
-                
             </div>
             <p className="text-gray-700">
-                Ici <code>rouler</code> est une méthode. Elle utilise
-                l'attribut <code>self.vitesse</code> pour afficher un
-                message personnalisé.
+                Ici <code>rouler</code> est une méthode. Elle utilise l'attribut{' '}
+                <code>self.vitesse</code> pour afficher un message personnalisé.
             </p>
 
             <h3 className="text-md font-semibold text-gray-800">
@@ -134,12 +132,11 @@ ma_voiture.rouler()  # Affiche: La voiture de vitesse 55`}
 mon_compte = CompteBancaire(100)
 mon_compte.deposer(50)  # Nouveau solde : 150`}
                 </pre>
-                
             </div>
             <p className="text-gray-700">
                 Ici <code>montant</code> est un paramètre passé à la méthode{' '}
-                <code>deposer</code>, qui modifie l’attribut{' '}
-                <code>solde</code> de l’objet.
+                <code>deposer</code>, qui modifie l’attribut <code>solde</code>{' '}
+                de l’objet.
             </p>
 
             {/* 3. Utilisation des objets */}
@@ -165,7 +162,6 @@ chien2 = Chien("Max")
 chien1.aboyer()  # Rex aboie! Woof Woof!
 chien2.aboyer()  # Max aboie! Woof Woof!`}
                 </pre>
-                
             </div>
             <p className="text-gray-700">
                 Chaque objet possède ses propres données et peut appeler les
@@ -252,15 +248,13 @@ p2.vendre(60)       # Quantité insuffisante`}
             <p className="text-gray-700">
                 1. Créez une classe <code>Animal</code> avec des attributs{' '}
                 <code>nom</code> et <code>age</code>. <br />
-                2. Ajoutez une méthode{' '}
-                <code>parler()</code> qui affiche un message utilisant le nom de
-                l’animal. <br />
-                3. Créez au moins deux objets et testez leurs
-                méthodes. <br />
+                2. Ajoutez une méthode <code>parler()</code> qui affiche un
+                message utilisant le nom de l’animal. <br />
+                3. Créez au moins deux objets et testez leurs méthodes. <br />
                 4. Modifiez la classe pour ajouter un attribut{' '}
                 <code>couleur</code> et utilisez-le dans la méthode. <br />
-                5. Testez vos objets pour vérifier que chaque instance conserve ses
-                propres valeurs.
+                5. Testez vos objets pour vérifier que chaque instance conserve
+                ses propres valeurs.
             </p>
         </div>
     );
