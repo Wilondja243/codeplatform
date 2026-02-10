@@ -38,10 +38,9 @@ const useNotification = () => {
             <div
                 className={`${
                     t.visible ? 'animate-enter' : 'animate-leave'
-                } bg-red-100 text-red-600 p-3 rounded shadow flex items-center`}
+                } flex justify-center items-center bg-card text-red-600 p-3 rounded-md border border-card-border shadow`}
                 style={{
-                    borderRadius: '3px',
-                    background: '#f5f5f5',
+                    background: '#101218',
                     color: '#ff4d4f',
                     width: 350,
                     padding: '12px 16px',

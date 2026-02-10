@@ -1,13 +1,48 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useTransition } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { ClipLoader } from 'react-spinners';
 import { ArrowRight, Mail, User, Lock, Eye, EyeOff } from 'lucide-react';
+import { signIn, signOut, useSession } from 'next-auth/react';
+import GoogleLoginButton from '@/utils/browser-window';
 import Footer from '@/components/layout/footer';
 import NavBar from '@/components/layout/nav-bar';
+import { registerAction } from '@/actions/auth/account/register';
+import { useUserRegisterValidationForm } from '@/hooks/use-validation-form';
 
 export default function RegisterForm() {
-    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const router = useRouter();
+    const handleLogin = GoogleLoginButton();
+    const { data: session } = useSession();
+    const [isPending, startTransition] = useTransition();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useUserRegisterValidationForm();
+    const [error, setError] = useState<string | undefined | null>(null);
+
+    const onSubmit = async (data: any) => {
+        startTransition(async () => {
+            const result = await registerAction(data);
+
+            if (result.success) {
+                const loginResult = await signIn('credentials', {
+                    email: data.email,
+                    password: data.password,
+                    redirect: false,
+                });
+                if (loginResult?.ok) {
+                    window.location.href = '/explore';
+                }
+            } else {
+                console.log('registerError: ', result.errors || result.message);
+                setError(result.message);
+            }
+        });
+    };
 
     return (
         <>
@@ -32,48 +67,95 @@ export default function RegisterForm() {
                             </p>
                         </div>
 
-                        <form className="space-y-5">
+                        <form
+                            onSubmit={handleSubmit(onSubmit)}
+                            className="space-y-5"
+                        >
+                            {error && (
+                                <div className="border-l-2 border-red-500 p-3 bg-red-100 text-red-600">
+                                    {error}
+                                </div>
+                            )}
+
                             <div className="space-y-1">
-                                <div className="relative border border-gray-500 rounded-sm">
+                                <div className="relative border border-gray-500 rounded-md">
                                     <User
                                         className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"
                                         size={18}
                                     />
                                     <input
                                         type="text"
-                                        className="w-full h-14 pl-12 pr-4 rounded-2xl focus:bg-white border-2 border-transparent focus:border-primary outline-none transition-all font-semibold"
+                                        required
+                                        {...register('name')}
+                                        className="w-full h-14 pl-12 pr-4 rounded-md border-2 border-transparent focus:border-primary outline-none transition-all font-semibold"
                                         placeholder="Nom complet"
                                     />
                                 </div>
+                                {errors.name && (
+                                    <small className="text-red-500 pt-0.5 font-semibold">
+                                        {errors.name.message}
+                                    </small>
+                                )}
                             </div>
 
                             <div className="space-y-1">
-                                <div className="relative border border-gray-500 rounded-sm">
+                                <div className="relative border border-gray-500 rounded-md">
                                     <Mail
                                         className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"
                                         size={18}
                                     />
                                     <input
                                         type="email"
-                                        className="w-full h-14 pl-12 pr-4 rounded-sm focus:bg-white border-2 border-transparent focus:border-primary outline-none transition-all font-semibold"
+                                        required
+                                        {...register('email')}
+                                        className="w-full h-14 pl-12 pr-4 rounded-md focus:bg-white border border-transparent focus:border-primary outline-none transition-all font-semibold"
                                         placeholder="exemple@gmail.com"
                                     />
                                 </div>
+                                {errors.email && (
+                                    <small className="text-red-500 pt-0.5 font-semibold">
+                                        {errors.email.message}
+                                    </small>
+                                )}
                             </div>
 
                             <label className="flex items-center gap-3 cursor-pointer py-2">
                                 <input
                                     type="checkbox"
-                                    className="size-5 rounded-lg border-2 border-slate-200 accent-primary cursor-pointer"
+                                    className="size-5 rounded-lg border border-slate-200 accent-primary cursor-pointer"
                                 />
                                 <span className="text-sm text-slate-500 font-medium">
                                     J'accepte les conditions d'utilisation
                                 </span>
                             </label>
 
-                            <button className="w-full h-14 bg-slate-900 text-card rounded-md font-bold text-lg hover:bg-slate-900/80 transition-all flex items-center justify-center gap-2 cursor-pointer">
-                                Créer mon compte
-                                <ArrowRight size={20} />
+                            <button
+                                disabled={isPending}
+                                className={`w-full mt-10 py-3 rounded-lg font-semibold flex items-center justify-center gap-2
+                                    ${isPending ? 'bg-indigo-700 text-gray-400 cursor-not-allowed' : 'bg-indigo-900 text-white hover:bg-slate-800'}
+                                    transition-all group`}
+                            >
+                                {isPending ? (
+                                    <>
+                                        <ClipLoader
+                                            size={18}
+                                            color={
+                                                isPending
+                                                    ? '#b1b4b8'
+                                                    : '#ffffff'
+                                            }
+                                        />
+                                        Enregistrement...
+                                    </>
+                                ) : (
+                                    <>
+                                        S'enregistrer
+                                        <ArrowRight
+                                            size={18}
+                                            className="group-hover:translate-x-1 transition-transform"
+                                        />
+                                    </>
+                                )}
                             </button>
                         </form>
 
@@ -84,9 +166,12 @@ export default function RegisterForm() {
                             </span>
                         </div>
 
-                        <button className="bg-gray-200 w-full h-14 flex items-center justify-center gap-3 border-2 border-card-border rounded-md font-bold text-slate-600 hover:bg-gray-100 cursor-pointer">
+                        <button
+                            onClick={handleLogin}
+                            className="bg-gray-200 w-full h-14 flex items-center justify-center gap-3 border-2 border-card-border rounded-md font-bold text-slate-600 hover:bg-gray-100 cursor-pointer"
+                        >
                             <img
-                                src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                                src="/google.svg"
                                 className="size-5"
                                 alt="Google"
                             />

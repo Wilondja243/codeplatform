@@ -1,13 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 import { ArrowRight, PlayCircle, Clock, Star } from 'lucide-react';
-import { useCoursesQuery } from '@/lib/query/query.cours';
+import { useCoursesQuery } from '@/lib/query/course.query';
 import { CourseSkeleton } from '@/components/course-skelleton';
 
 export default function Courses() {
-    const { data: courses, isLoading, error } = useCoursesQuery();
+    const { data: courses, isLoading, error, refetch } = useCoursesQuery();
+
+    if (!isLoading) {
+        console.log('courses: ', JSON.stringify(courses, null, 4));
+    }
 
     return (
         <section className="pb-24 pt-16 bg-gradient-to-t from-white to-[#f8f9fa]">
@@ -42,10 +45,10 @@ export default function Courses() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                    {isLoading || error || !courses ? (
+                    {isLoading || error || !courses?.data ? (
                         [1, 2, 3].map((_, i) => <CourseSkeleton key={i} />)
-                    ) : courses.length > 0 ? (
-                        courses?.map((course: any) => (
+                    ) : courses?.data?.length > 0 ? (
+                        courses?.data?.map((course: any) => (
                             <div
                                 key={course.id}
                                 className="group flex flex-col bg-white rounded-[2rem] border border-card-border p-2 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500"
@@ -93,7 +96,7 @@ export default function Courses() {
                                     </div>
 
                                     <Link
-                                        href={`/roadmaps/${course.slug}`}
+                                        href={`/roadmaps/steps?courseId=${course.id}&?slug=${course.slug}`}
                                         className="w-full h-14 bg-white border border-card-border text-text-main font-black rounded-2xl flex items-center justify-center gap-2 group-hover:bg-slate-900 group-hover:text-white group-hover:border-slate-900 transition-all duration-300"
                                     >
                                         Détails du parcours

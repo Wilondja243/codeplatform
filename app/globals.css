@@ -5,7 +5,7 @@
     --foreground: #0f172a;
 
     --primary: #4f39f6;
-    --primary-dark: #1e40af;
+    --primary-dark: #1a3797;
     --accent-cyan: #06b6d4;
 
     --text-main: #0b101d;
@@ -20,14 +20,14 @@
 }
 
 .dark {
-    --background: #0a0c11;
+    --background: #050505;
     --foreground: #f8fafc;
 
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
     --text-subtle: #64748b;
 
-    --card-bg: #101218;
+    --card-bg: #0f0f12;
     --card-hover: #212126;
     --card-border: #1e1e22;
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { BookOpen } from 'lucide-react';
+import { BookOpenText } from 'lucide-react';
 
 export default function Footer() {
     return (
@@ -10,7 +10,7 @@ export default function Footer() {
                     <div className="space-y-8">
                         <div className="flex items-center gap-3 group cursor-pointer w-fit">
                             <div className="relative size-11 flex items-center justify-center bg-primary rounded-2xl transition-all duration-500 group-hover:rotate-6 shadow-xl shadow-primary/20">
-                                <BookOpen
+                                <BookOpenText
                                     size={22}
                                     className="text-white"
                                     strokeWidth={2.5}

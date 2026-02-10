@@ -1,13 +1,45 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useTransition } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ArrowRight, Mail, User, Lock, Eye, EyeOff } from 'lucide-react';
+import { signOut, useSession, signIn } from 'next-auth/react';
+import { ClipLoader } from 'react-spinners';
 import Footer from '@/components/layout/footer';
 import NavBar from '@/components/layout/nav-bar';
+import GoogleLoginButton from '@/utils/browser-window';
+import { loginAction } from '@/actions/auth/account/login';
+import { useUserLoginValidationForm } from '@/hooks/use-validation-form';
 
-export default function RegisterForm() {
-    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+export default function LoginForm() {
+    const router = useRouter();
+    const handleLogin = GoogleLoginButton();
+    const [isPending, startTransition] = useTransition();
+    const [error, setError] = useState<string | undefined | null>(null);
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useUserLoginValidationForm();
+    const { data: session } = useSession();
+
+    const onSubmit = async (data: any) => {
+        startTransition(async ()=> {
+            const result = await signIn('credentials', {
+                email: data.email,
+                password: data.password,
+                redirect: false,
+            });
+
+            if (result?.error) {
+                console.log('loginError: ', result.error);
+                setError(result.error);
+            } else {
+                window.location.href = '/explore';
+            }
+        })
+    };
 
     return (
         <>
@@ -29,7 +61,16 @@ export default function RegisterForm() {
                             </h1>
                         </div>
 
-                        <form className="space-y-5">
+                        <form
+                            onSubmit={handleSubmit(onSubmit)}
+                            className="space-y-5"
+                        >
+                            {error && (
+                                <div className="border-l-2 border-red-500 p-3 bg-red-100 text-red-600">
+                                    {error}
+                                </div>
+                            )}
+
                             <div className="space-y-1">
                                 <div className="relative border border-gray-500 rounded-sm">
                                     <Mail
@@ -38,15 +79,46 @@ export default function RegisterForm() {
                                     />
                                     <input
                                         type="email"
+                                        required
+                                        {...register('email')}
                                         className="w-full h-14 pl-12 pr-4 rounded-sm focus:bg-white border-2 border-transparent focus:border-primary outline-none transition-all font-semibold"
                                         placeholder="Email"
                                     />
                                 </div>
+                                {errors.email && (
+                                    <small className="text-red-500 pt-0.5 font-semibold">
+                                        {errors.email.message}
+                                    </small>
+                                )}
                             </div>
 
-                            <button className="w-full h-14 bg-slate-900 text-card rounded-md font-bold text-lg hover:bg-slate-900/80 transition-all flex items-center justify-center gap-2 cursor-pointer">
-                                Continuer
-                                <ArrowRight size={20} />
+                            <button
+                                disabled={isPending}
+                                className={`w-full mt-10 py-3 rounded-lg font-semibold flex items-center justify-center gap-2
+                                    ${isPending ? 'bg-indigo-700 text-gray-400 cursor-not-allowed' : 'bg-indigo-900 text-white hover:bg-slate-800'}
+                                    transition-all group`}
+                            >
+                                {isPending ? (
+                                    <>
+                                        <ClipLoader
+                                            size={18}
+                                            color={
+                                                isPending
+                                                    ? '#b1b4b8'
+                                                    : '#ffffff'
+                                            }
+                                        />
+                                        Connexion...
+                                    </>
+                                ) : (
+                                    <>
+                                        Se connecter
+                                        <ArrowRight
+                                            size={18}
+                                            className="group-hover:translate-x-1 transition-transform"
+                                        />
+                                    </>
+                                )}
                             </button>
                         </form>
 
@@ -57,9 +129,12 @@ export default function RegisterForm() {
                             </span>
                         </div>
 
-                        <button className="bg-gray-200 w-full h-14 flex items-center justify-center gap-3 border-2 border-card-border rounded-md font-bold text-slate-600 hover:bg-gray-100 cursor-pointer">
+                        <button
+                            onClick={handleLogin}
+                            className="bg-gray-200 w-full h-14 flex items-center justify-center gap-3 border-2 border-card-border rounded-md font-bold text-slate-600 hover:bg-gray-100 cursor-pointer"
+                        >
                             <img
-                                src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                                src="/google.svg"
                                 className="size-5"
                                 alt="Google"
                             />

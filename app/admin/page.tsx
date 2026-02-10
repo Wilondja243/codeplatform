@@ -7,7 +7,7 @@ export default function Dashboard() {
         <div className="flex h-screen bg-background overflow-hidden">
             <Sidebar />
 
-            <div className="flex flex-col flex-1 overflow-hidden">
+            <div className="relative flex flex-col flex-1 overflow-hidden">
                 <TopBar />
 
                 <div className="flex-1 overflow-y-auto custom-scrollbar">

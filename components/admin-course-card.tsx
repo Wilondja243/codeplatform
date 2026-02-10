@@ -2,114 +2,155 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import {
-    MoreVertical,
     BookOpen,
     Star,
+    Map,
     Pencil,
     Trash2,
-    PlusCircle,
-    Eye,
-    BarChart3,
-    ChevronRight,
+    Layers,
+    ChevronDown,
 } from 'lucide-react';
-import Link from 'next/link';
-import DropdownLink from './ui/drop-down';
+import { useRouter } from 'next/navigation';
+import ModuleActions from './module-action';
 
-export default function AdminCourseCard({ course }: any) {
-    const [isOpen, setIsOpen] = useState(false);
-    const dropdownRef = useRef<HTMLDivElement>(null);
-
+export const CourseItem = ({
+    course,
+    isExpanded,
+    onToggle,
+    onEdit,
+    setSelectedCourse,
+    setSelectedModule,
+    setModuleToDelete,
+    setDeleteModalOpen,
+    setIsModalOpen,
+}: any) => {
+    const router = useRouter();
     const courseId = course?.id;
 
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (
-                dropdownRef.current &&
-                !dropdownRef.current.contains(event.target as Node)
-            ) {
-                setIsOpen(false);
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () =>
-            document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
-
     return (
-        <div className="bg-card rounded-2xl border border-card-border overflow-hidden hover:shadow-xl transition-all group relative">
-            <div className="p-6">
-                <div className="flex justify-between items-start mb-4">
+        <div
+            className={`group transition-all duration-500 rounded-2xl border ${isExpanded ? 'bg-card border-indigo-500/30 shadow-2xl' : 'bg-[#0f0f12]/50 border-white/5 hover:border-white/10'}`}
+        >
+            <div className="p-4 md:px-6 flex items-center justify-between gap-4">
+                <div
+                    className="flex items-center gap-6 cursor-pointer flex-1"
+                    onClick={onToggle}
+                >
                     <div
-                        className="p-3 rounded-xl bg-primary/10 text-primary"
-                        dangerouslySetInnerHTML={{ __html: course.icon }}
-                    />
+                        className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 ${isExpanded ? 'bg-indigo-600 text-white rotate-6' : 'bg-white/5 text-slate-400 group-hover:bg-white/10'}`}
+                    >
+                        <BookOpen size={28} />
+                    </div>
+                    <div>
+                        <h3 className="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">
+                            {course.title}
+                        </h3>
+                        <div className="flex items-center gap-4 mt-1">
+                            <span className="text-xs font-medium text-slate-500 flex items-center gap-1.5">
+                                <Layers size={14} />{' '}
+                                {course.modules?.length || 0} Modules
+                            </span>
+                            <span className="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+                                Actif
+                            </span>
+                        </div>
+                    </div>
+                </div>
 
-                    <div className="relative" ref={dropdownRef}>
+                <div className="flex items-center gap-1">
+                    <button
+                        onClick={onEdit}
+                        title="Modifier le cours"
+                        className="p-3 hover:bg-white/5 rounded-xl text-slate-400 hover:text-white transition-all cursor-pointer"
+                    >
+                        <Pencil size={20} />
+                    </button>
+                    <button
+                        title="Supprimer le cours"
+                        className="p-3 hover:bg-red-500/10 rounded-xl text-slate-500 hover:text-red-500 transition-all cursor-pointer"
+                    >
+                        <Trash2 size={20} />
+                    </button>
+                    <button
+                        onClick={() =>
+                            router.push(
+                                `/admin-1001/cours/${courseId}/roadmaps/add`,
+                            )
+                        }
+                        title="Ajouter un roadmap"
+                        className="p-3 hover:bg-white/5 rounded-xl text-slate-400 hover:text-white transition-all cursor-pointer"
+                    >
+                        <Map size={20} />
+                    </button>
+                    <button
+                        onClick={onToggle}
+                        className={`p-3 rounded-xl transition-all ${isExpanded ? 'bg-indigo-500/10 text-indigo-400 rotate-180' : 'text-slate-600'}`}
+                    >
+                        <ChevronDown size={24} />
+                    </button>
+                </div>
+            </div>
+
+            {/* --- MODULES EXPANDABLE --- */}
+            {isExpanded && (
+                <div className="px-6 pb-6 space-y-3 animate-in fade-in slide-in-from-top-4 duration-300">
+                    <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-6" />
+                    <div className="flex items-center justify-between px-2 mb-4">
+                        <span className="text-xs font-black uppercase tracking-widest text-indigo-500">
+                            Structure du curriculum
+                        </span>
                         <button
-                            onClick={() => setIsOpen(!isOpen)}
-                            className={`p-2 rounded-lg transition-colors ${isOpen ? 'bg-primary/10 text-primary' : 'text-text-muted hover:bg-background hover:text-text-main'}`}
+                            onClick={() => {
+                                setSelectedCourse({
+                                    id: course.id,
+                                    title: course.title,
+                                });
+                                setIsModalOpen(true);
+                            }}
+                            className="..."
                         >
-                            <MoreVertical size={20} />
+                            + Ajouter un module
                         </button>
+                    </div>
 
-                        {/* Menu Déroulant */}
-                        {isOpen && (
-                            <div className="absolute right-0 mt-2 w-56 bg-card border border-card-border rounded-xl shadow-xl z-50 py-2 animate-in fade-in zoom-in duration-200">
-                                <DropdownLink
-                                    href={`/admin/cours/${courseId}/lessons/add`}
-                                    icon={<PlusCircle size={16} />}
-                                    label="Ajouter une leçon"
-                                />
-                                <DropdownLink
-                                    href={`/admin/cours/${courseId}/lessons`}
-                                    icon={<Eye size={16} />}
-                                    label="Voir les leçons"
-                                />
-                                <DropdownLink
-                                    href={`/admin/analytics/${courseId}`}
-                                    icon={<BarChart3 size={16} />}
-                                    label="Statistiques"
-                                />
-                                <button className="w-full flex items-center gap-3 px-4 py-2 text-sm text-red-500 border-t border-card-border hover:bg-red-500/10 transition-colors">
-                                    <Trash2 size={16} /> Supprimer le cours
-                                </button>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                        {course.modules?.length > 0 ? (
+                            course.modules.map((m: any, idx: number) => (
+                                <div
+                                    key={m.id}
+                                    className="flex items-center justify-between p-4 bg-white/[0.03] border border-white/[0.05] rounded-2xl group/module hover:bg-white/[0.06] transition-all"
+                                >
+                                    <div className="flex items-center gap-4">
+                                        <span className="text-[10px] font-bold text-indigo-500 size-6 rounded-full bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20">
+                                            {idx + 1}
+                                        </span>
+                                        <span className="font-semibold text-sm">
+                                            {m.title}
+                                        </span>
+                                    </div>
+                                    <ModuleActions
+                                        m={m}
+                                        courseId={courseId}
+                                        course={course}
+                                        setModuleToDelete={setModuleToDelete}
+                                        setDeleteModalOpen={setDeleteModalOpen}
+                                        setSelectedCourse={setSelectedCourse}
+                                        setSelectedModule={setSelectedModule}
+                                        setIsModalOpen={setIsModalOpen}
+                                    />
+                                </div>
+                            ))
+                        ) : (
+                            <div className="col-span-full py-8 text-center rounded-3xl border border-dashed border-white/10 bg-white/[0.01]">
+                                <p className="text-sm text-slate-500 italic">
+                                    Aucun module n&apos;a encore été créé pour
+                                    cette formation.
+                                </p>
                             </div>
                         )}
                     </div>
                 </div>
-
-                <h3 className="text-lg font-bold text-text-main mb-2 group-hover:text-primary transition-colors">
-                    {course.title}
-                </h3>
-                <p className="text-text-muted text-sm line-clamp-2 mb-4">
-                    {course.description}
-                </p>
-
-                <div className="flex items-center gap-4 text-xs font-semibold text-text-subtle uppercase tracking-wider">
-                    <span className="flex items-center gap-1">
-                        <BookOpen size={14} /> {course.lesson} Leçons
-                    </span>
-                    <span className="flex items-center gap-1">
-                        <Star size={14} className="text-amber-400" />{' '}
-                        {course.rating || course.note}
-                    </span>
-                </div>
-            </div>
-
-            <div className="flex border-t border-card-border bg-slate-50/5">
-                <Link
-                    href={`/admin/cours/${course.id}/edit`}
-                    className="flex-1 flex items-center justify-center gap-2 py-3 text-sm font-medium text-text-subtle hover:bg-card hover:text-primary transition-all border-r border-card-border"
-                >
-                    <Pencil size={16} /> Éditer
-                </Link>
-                <Link
-                    href={`/cours/${course.slug}`}
-                    className="flex-1 flex items-center justify-center gap-2 py-3 text-sm font-medium text-text-subtle hover:bg-background hover:text-indigo-500 transition-all"
-                >
-                    <Eye size={16} /> Aperçu
-                </Link>
-            </div>
+            )}
         </div>
     );
-}
+};

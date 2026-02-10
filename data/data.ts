@@ -1,16 +1,3 @@
-export const courses = [
-    {
-        title: 'Machine Learning Foundation',
-        description:
-            'Apprenez les algorithmes de régression, classification et clustering avec Scikit-Learn.',
-        icon: 'monitoring',
-        gradient: 'indigo',
-        level: 'Intermédiaire',
-        duration: '60 heures',
-        link: '#',
-    },
-];
-
 export const features = [
     {
         id: 1,
@@ -63,5 +50,35 @@ export const testimonials = [
         image: 'images/4436.jpg',
         feedback:
             "CodePlatform m'a aidée à passer d'un rôle support à l'ingénierie. Le parcours Python est parfaitement structuré pour les débutants.",
+    },
+];
+
+const courses = [
+    {
+        title: 'JavaScript pour Débutant',
+        description:
+            "Maîtrisez l'écosystème moderne de JavaScript : React, Node.js et l'architecture asynchrone pour le web.",
+        duration: 24,
+        level: 'Débutant',
+        category: 'Développement Web',
+        slug: 'frontend-developer',
+    },
+    {
+        title: 'Masterclass Python 2026',
+        description:
+            "Apprenez la programmation avec Python : de la logique de base à l'Intelligence Artificielle et l'automatisation.",
+        duration: 48,
+        level: 'Débutant',
+        category: 'Software Engineering',
+        slug: 'python',
+    },
+    {
+        title: 'UI/UX avec HTML5 & CSS3',
+        description:
+            'Créez des interfaces modernes, réponsives et esthétiques avec les dernières techniques Flexbox, Grid et Animations.',
+        duration: 32,
+        level: 'Débutant',
+        category: 'Développement Web',
+        slug: 'HTML-CSS',
     },
 ];

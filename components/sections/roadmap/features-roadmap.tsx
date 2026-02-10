@@ -1,39 +1,13 @@
+'use client';
+
 import Link from 'next/link';
 import { ArrowRight, Sparkles, BookOpen, BarChart3, Clock } from 'lucide-react';
 import { CourseSkeleton } from '../../course-skelleton';
+import { useCoursesQuery } from '@/lib/query/course.query';
 
 export default function FeatureRoadmap() {
-    const data = [
-        {
-            title: 'JavaScript pour Débutant',
-            description:
-                "Maîtrisez l'écosystème moderne de JavaScript : React, Node.js et l'architecture asynchrone pour le web.",
-            duration: 24,
-            level: 'Débutant',
-            category: 'Développement Web',
-            slug: 'frontend-developer',
-        },
-        {
-            title: 'Masterclass Python 2026',
-            description:
-                "Apprenez la programmation avec Python : de la logique de base à l'Intelligence Artificielle et l'automatisation.",
-            duration: 48,
-            level: 'Débutant',
-            category: 'Software Engineering',
-            slug: 'python',
-        },
-        {
-            title: 'UI/UX avec HTML5 & CSS3',
-            description:
-                'Créez des interfaces modernes, réponsives et esthétiques avec les dernières techniques Flexbox, Grid et Animations.',
-            duration: 32,
-            level: 'Débutant',
-            category: 'Développement Web',
-            slug: 'HTML-CSS',
-        },
-    ];
+    const { data: courses, isLoading, error } = useCoursesQuery();
 
-    const isLoading = false;
     const skeletons = Array.from({ length: 3 });
 
     return (
@@ -65,7 +39,8 @@ export default function FeatureRoadmap() {
                         ? skeletons.map((_, index) => (
                               <CourseSkeleton key={index} />
                           ))
-                        : data.map((course, index) => (
+                        : Array.isArray(courses?.data) &&
+                          courses?.data.map((course, index) => (
                               <div
                                   key={index}
                                   className="group flex flex-col bg-white border border-slate-100 rounded-[2rem] overflow-hidden hover:shadow-2xl hover:shadow-slate-200/50 hover:-translate-y-2 transition-all duration-500"
@@ -82,7 +57,7 @@ export default function FeatureRoadmap() {
                                               />
                                           </div>
                                           <span className="px-3 py-1 bg-black/20 backdrop-blur-md rounded-full text-[10px] font-black text-white uppercase tracking-widest">
-                                              {course.category}
+                                              {course.tag}
                                           </span>
                                       </div>
 
@@ -106,7 +81,7 @@ export default function FeatureRoadmap() {
                                                   size={14}
                                                   className="text-primary"
                                               />
-                                              {course.level}
+                                              {course.note}
                                           </span>
                                       </div>
 
@@ -125,7 +100,7 @@ export default function FeatureRoadmap() {
                                       </div>
 
                                       <Link
-                                          href={`/roadmaps/${course.slug}`}
+                                          href={`/roadmaps/steps?courseId=${course.id}&?slug=${course.slug}`}
                                           className="w-full h-14 bg-slate-50 group-hover:bg-slate-900 group-hover:text-white rounded-xl flex items-center justify-center gap-2 font-black text-sm transition-all duration-300"
                                       >
                                           Voir la Roadmap

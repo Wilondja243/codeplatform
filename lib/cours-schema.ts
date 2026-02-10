@@ -1,5 +1,76 @@
 import { z } from 'zod';
 
+/*====== AUTH SCHEMA =======*/
+
+export const RoleEnum = z.enum(['USER', 'ADMIN']);
+
+export const AdminRegisterSchema = z.object({
+    name: z
+        .string()
+        .min(2, 'Le nom est trop court')
+        .regex(/^[a-zA-ZÀ-ÿ\s]+$/, 'Le nom ne doit contenir que des lettres'),
+    email: z
+        .string()
+        .email("Format d'email invalide")
+        .regex(
+            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            "L'email contient des caractères non autorisés",
+        ),
+    password: z
+        .string()
+        .min(8, 'Mot de passe trop court')
+        .regex(/[A-Z]/, 'Au moins une majuscule')
+        .regex(/[0-9]/, 'Au moins un chiffre'),
+    role: RoleEnum.default('USER'),
+    is_active: z.boolean().default(true),
+});
+export type AdminRegisterInput = z.infer<typeof AdminRegisterSchema>;
+
+export const AdminLoginSchema = z.object({
+    email: z
+        .string()
+        .email("Format d'email invalide")
+        .regex(
+            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            "L'email contient des caractères non autorisés",
+        ),
+    password: z
+        .string()
+        .min(8, 'Mot de passe trop court')
+        .regex(/[A-Z]/, 'Au moins une majuscule')
+        .regex(/[0-9]/, 'Au moins un chiffre'),
+});
+export type AdminLoginInput = z.infer<typeof AdminLoginSchema>;
+
+export const UserRegisterSchema = z.object({
+    name: z
+        .string()
+        .min(2, 'Le nom est trop court')
+        .regex(/^[a-zA-ZÀ-ÿ\s]+$/, 'Le nom ne doit contenir que des lettres'),
+    email: z
+        .string()
+        .email("Format d'email invalide")
+        .regex(
+            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            "L'email contient des caractères non autorisés",
+        ),
+    is_active: z.boolean().default(true),
+});
+export type UserRegisterInput = z.infer<typeof UserRegisterSchema>;
+
+export const UserLoginSchema = z.object({
+    email: z
+        .string()
+        .email("Format d'email invalide")
+        .regex(
+            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            "L'email contient des caractères non autorisés",
+        ),
+});
+export type UserLoginInput = z.infer<typeof UserLoginSchema>;
+
+/*====== COURSE SCHEMA =======*/
+
 export const coursSchema = z.object({
     title: z.string().min(4, 'Le titre doit contenir au moins 4 caractères'),
     description: z.string().min(10, 'La description est trop courte'),
@@ -61,8 +132,50 @@ export const lessonSchema = z.object({
         .min(1, 'Vous devez ajouter au moins un bloc de contenu'),
 });
 
-export const lessonApiSchema = lessonSchema.extend({
-    courseId: z.string().min(1, "L'ID du cours est requis"),
-});
-
 export type LessonFormValues = z.infer<typeof lessonSchema>;
+
+/*====== MODULE SCHEMA =======*/
+
+export const moduleSchema = z.object({
+    title: z.string().min(5, 'Le titre est trop court.'),
+    description: z
+        .string()
+        .min(10, 'La description est trop courte')
+        .optional()
+        .or(z.literal('')),
+});
+export type ModuleFormSchema = z.infer<typeof moduleSchema>;
+
+/*====== ROADMAP SCHEMA =======*/
+
+export const roadmapSchema = z.object({
+    title: z.string().min(3, 'Le titre est requis'),
+    description: z.string().optional(),
+    slug: z.string().min(5, 'Slug est trop court'),
+    steps: z
+        .array(
+            z.object({
+                order: z.number().int(),
+                title: z.string().min(2, "Titre de l'étape requis"),
+                description: z.string().min(5, 'Description requise'),
+                icon: z.string().default('book'),
+                status: z
+                    .enum(['NOT_STARTED', 'IN_PROGRESS', 'COMPLETED'])
+                    .default('NOT_STARTED'),
+                topics: z.preprocess((val) => {
+                    if (Array.isArray(val)) return val;
+
+                    if (typeof val === 'string') {
+                        return val
+                            .split(',')
+                            .map((t) => t.trim())
+                            .filter((t) => t != '');
+                    }
+                    return [];
+                }, z.array(z.string())),
+                moduleId: z.string().uuid('Module invalide'),
+            }),
+        )
+        .min(1, 'Ajoutez au moins une étape'),
+});
+export type RoadmapFormSchema = z.infer<typeof roadmapSchema>;

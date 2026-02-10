@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 interface StartProps {
     title: string;
@@ -31,7 +31,7 @@ export function Start({
 
                     <div className="start-actions">
                         {start_course ? (
-                            <Link to={`${path}`} className="btn btn-primary">
+                            <Link href={`${path}`} className="btn btn-primary">
                                 <span className="material-symbols-outlined">
                                     rocket_launch
                                 </span>

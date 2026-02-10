@@ -21,13 +21,13 @@ export default function Sidebar() {
         {
             icon: LayoutDashboard,
             label: 'Tableau de bord',
-            href: '/admin',
+            href: '/admin-1001',
             active: true,
         },
         {
             icon: BookOpen,
             label: 'Catalogue de cours',
-            href: '/admin/cours',
+            href: '/admin-1001/cours',
         },
         { icon: Users, label: 'Gestion Étudiants', href: '#' },
         {
@@ -69,7 +69,7 @@ export default function Sidebar() {
                 {menuItems.map((item) => {
                     const isActive =
                         pathname === item.href ||
-                        (item.href !== '/admin' &&
+                        (item.href !== '/admin-1001' &&
                             pathname.startsWith(item.href));
 
                     return (

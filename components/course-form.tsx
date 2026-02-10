@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useTransition } from 'react';
 import {
     ArrowLeft,
     Save,
@@ -20,39 +20,19 @@ import TopBar from '@/components/sections/panel/top-bar';
 import Sidebar from '@/components/sections/panel/side-bar';
 import { useValidateCourseForm } from '@/hooks/use-validation-form';
 import CourseFormSkeleton from '@/components/cours-form-skelleton';
-import { CoursFormValues } from '@/lib/cours-schema';
 import {
-    usePostCourseQuery,
-    usePatchCourseQuery,
-    useRetrieveCourseQuery,
-} from '@/lib/query/query.cours';
+    createCourseAction,
+    updateCourseAction,
+    getCourseByIdAction,
+} from '@/actions/course/course';
+import { CoursFormValues } from '@/lib/cours-schema';
 import useNotification from '@/hooks/use-taost';
 
-
-export default function CourseFormPage({courseId}:{courseId?: string}) {
-    console.log('courseId: ', courseId);
-
+export default function CourseFormPage({ courseId }: { courseId?: string }) {
     const router = useRouter();
     const { notifyError, notifySuccess } = useNotification();
-    const {
-        mutateAsync: createCourse,
-        isPending,
-        isError,
-        error,
-    } = usePostCourseQuery();
-
-    const {
-        mutateAsync: patchCourse,
-        isPending: patchPending,
-        isError: patchIsError,
-        error: patchError,
-    } = usePatchCourseQuery();
-
-    const {
-        data,
-        isLoading,
-        error: retrieveError,
-    } = useRetrieveCourseQuery(courseId as string);
+    const [isPending, startTransition] = useTransition();
+    const [isInitialLoading, setIsInitialLoading] = useState(!!courseId);
 
     const {
         register,
@@ -62,27 +42,45 @@ export default function CourseFormPage({courseId}:{courseId?: string}) {
     } = useValidateCourseForm();
 
     useEffect(() => {
-        if (data && courseId) {
-            reset(data);
+        if (courseId) {
+            setIsInitialLoading(true);
+            startTransition(async () => {
+                const result = await getCourseByIdAction(courseId);
+                if (result.success) {
+                    reset(result.data as any);
+                } else {
+                    notifyError(result.message as string);
+                }
+                setIsInitialLoading(false);
+            });
         }
-    }, [data, courseId, reset]);
-
-    if (!isLoading) console.log('Course: ', JSON.stringify(data, null, 4));
+    }, [courseId, reset]);
 
     const isEditing = !!courseId;
 
-    const onSubmit = async (formData: any) => {
-        if (isEditing && courseId) {
-            await patchCourse({ courseId, data: { ...formData } });
-            notifySuccess('Cours mise à jour avec success');
-        } else {
-            await createCourse({ ...formData });
+    const onSubmit = (data: any) => {
+        startTransition(async () => {
+            let result;
+            if (isEditing && courseId) {
+                result = await updateCourseAction(courseId, data);
+            } else {
+                result = await createCourseAction(data);
+            }
 
-            notifySuccess('Cours crée avec succès !');
-        }
-
-        router.push('/admin/cours');
-        router.refresh();
+            if (result.success) {
+                notifySuccess(
+                    isEditing
+                        ? 'Cours mise à jour avec success'
+                        : 'Cours crée avec succès !',
+                );
+                router.push('/admin-1001/cours');
+                router.refresh();
+            } else {
+                notifyError(
+                    (result.message as string) || 'Une erreur est survenue.',
+                );
+            }
+        });
     };
 
     return (
@@ -93,7 +91,7 @@ export default function CourseFormPage({courseId}:{courseId?: string}) {
                 {/* ToBar */}
                 <TopBar />
 
-                {isLoading ? (
+                {isInitialLoading ? (
                     <CourseFormSkeleton />
                 ) : (
                     <form
@@ -114,7 +112,7 @@ export default function CourseFormPage({courseId}:{courseId?: string}) {
                                 disabled={isPending}
                                 className="flex items-center gap-2 px-6 py-2.5 bg-primary text-bg-muted cursor-pointer rounded-md hover:opacity-90 transition-all font-bold shadow-lg shadow-primary/20"
                             >
-                                {isPending || patchPending ? (
+                                {isPending ? (
                                     <div className="flex gap-x-3 items-center text-white">
                                         <ClipLoader size={20} color="white" />
                                         En cours

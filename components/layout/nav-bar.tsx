@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import {
-    BookOpen,
     Menu,
     X,
     Sun,
@@ -12,16 +11,18 @@ import {
     Map,
     Phone,
     ChevronRight,
+    BookOpenText,
 } from 'lucide-react';
+import useUser from '@/hooks/use-user-data';
 import LanguageDropdown from '../language-dropdown';
 import useNotification from '../../hooks/use-taost';
 
 export default function NavBar() {
-    const data = null;
     const { notifyInfo } = useNotification();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+
+    const { data, isLoading } = useUser();
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -73,7 +74,7 @@ export default function NavBar() {
                     <div className="flex items-center gap-12">
                         <div className="flex items-center gap-2.5 group cursor-pointer">
                             <div className="relative size-10 flex items-center justify-center bg-blue-600 rounded-xl transition-transform group-hover:rotate-6 shadow-lg shadow-blue-200">
-                                <BookOpen
+                                <BookOpenText
                                     size={20}
                                     className="text-white"
                                     strokeWidth={2.5}
@@ -109,21 +110,50 @@ export default function NavBar() {
 
                     <div className="flex items-center gap-3">
                         <div className="hidden md:flex items-center gap-3">
-                            <a
-                                href="/auth/login"
-                                className="px-5 py-2.5 text-[14px] font-bold text-slate-700 hover:bg-slate-50 rounded-xl transition-colors"
-                            >
-                                Connexion
-                            </a>
-                            <a
-                                href="/auth/register"
-                                className="px-6 py-2.5 text-[14px] font-bold bg-slate-900 text-white rounded-xl shadow-xl shadow-slate-200 hover:bg-blue-600 hover:shadow-blue-100 transition-all active:scale-95"
-                            >
-                                Essai Gratuit
-                            </a>
+                            {data?.user ? (
+                                <>
+                                    <a
+                                        href="/dashboard"
+                                        className="flex items-center gap-2 px-5 py-2.5 text-[14px] font-bold bg-blue-50 text-blue-600 rounded-xl hover:bg-blue-100 transition-all active:scale-95"
+                                    >
+                                        {/* <LayoutDashboard size={16} /> */}
+                                        Mon Espace
+                                    </a>
+
+                                    <a
+                                        href="/dashboard/settings"
+                                        className="size-10 rounded-xl border-2 border-slate-100 p-0.5 hover:border-blue-200 transition-all group"
+                                    >
+                                        <div className="w-10 h-10 rounded-full border-2 border-blue-500/20 p-0.5">
+                                            <img
+                                                src={
+                                                    data.user?.image ||
+                                                    '/images/user.jpg'
+                                                }
+                                                alt="Avatar"
+                                                className="rounded-full w-full h-full object-cover"
+                                            />
+                                        </div>
+                                    </a>
+                                </>
+                            ) : (
+                                <>
+                                    <a
+                                        href="/auth/login"
+                                        className="px-5 py-2.5 text-[14px] font-bold text-slate-700 hover:bg-slate-50 rounded-xl transition-colors"
+                                    >
+                                        Connexion
+                                    </a>
+                                    <a
+                                        href="/auth/register"
+                                        className="px-6 py-2.5 text-[14px] font-bold bg-slate-900 text-white rounded-xl shadow-xl shadow-slate-200 hover:bg-blue-600 transition-all active:scale-95"
+                                    >
+                                        Essai Gratuit
+                                    </a>
+                                </>
+                            )}
                         </div>
 
-                        {/* Mobile Toggle */}
                         <button
                             className="lg:hidden p-2.5 bg-slate-50 rounded-xl text-slate-900 border border-slate-200"
                             onClick={toggleMenu}
